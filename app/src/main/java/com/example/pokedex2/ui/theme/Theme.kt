@@ -58,7 +58,7 @@ fun Pokedex2Theme(
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typography,
+        typography = PokemonFont,
         content = content
     )
 }

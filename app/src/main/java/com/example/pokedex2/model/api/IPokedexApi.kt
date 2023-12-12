@@ -1,6 +1,7 @@
 package com.example.pokedex2.model.api
 
 import com.example.pokedex2.model.api.pokemon.PokemonResponse
+import com.example.pokedex2.model.api.type.TypeResponse
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -18,4 +19,7 @@ interface IPokedexApi {
 
     @GET("pokemon?limit=100000&offset=0")
     suspend fun getPokemons(): PokemonResponse
+
+    @GET("pokemon?limit=100000&offset=0")
+    suspend fun getTypes(): TypeResponse
 }
