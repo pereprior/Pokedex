@@ -1,11 +1,14 @@
 package com.example.pokedex2.model.api
 
-import com.example.pokedex2.model.api.pokemon.PokemonResponse
-import com.example.pokedex2.model.api.type.TypeResponse
+import com.example.pokedex2.model.api.ability.Ability
+import com.example.pokedex2.model.api.move.Move
+import com.example.pokedex2.model.api.pokemon.Pokemon
+import com.example.pokedex2.model.api.type.Type
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 interface IPokedexApi {
     companion object {
@@ -17,9 +20,24 @@ interface IPokedexApi {
             .create(IPokedexApi::class.java)
     }
 
-    @GET("pokemon?limit=100000&offset=0")
-    suspend fun getPokemons(): PokemonResponse
+    @GET("pokemon/{dex}")
+    suspend fun getPokemonInfo(
+        @Path("dex") dex:Int
+    ): Pokemon
 
-    @GET("pokemon?limit=100000&offset=0")
-    suspend fun getTypes(): TypeResponse
+
+    @GET("type/{id}")
+    suspend fun getTypes(
+        @Path("id") id:Int
+    ): Type
+
+    @GET("ability/{id}")
+    suspend fun getAbility(
+        @Path("id") id:Int
+    ): Ability
+
+    @GET("move/{id}")
+    suspend fun getMove(
+        @Path("id") id:Int
+    ): Move
 }
