@@ -19,16 +19,16 @@ class PokedexRepository(
         }
     }
 
-    suspend fun getPokemonInfo(dexNumber:Int): Result<PokemonInfo> {
+    suspend fun getPokemonInfo(id:String): Result<PokemonInfo> {
         return try {
-            val response = api.getPokemonInfo(dexNumber)
+            val response = api.getPokemonInfo(id)
             Result.success(response)
         } catch (e: Exception) {
             Result.failure(e)
         }
     }
 
-    suspend fun getTypes(id:Int): Result<TypeInfo> {
+    suspend fun getTypes(id:String): Result<TypeInfo> {
         return try {
             val response = api.getTypes(id)
             Result.success(response)
@@ -37,7 +37,7 @@ class PokedexRepository(
         }
     }
 
-    suspend fun getAbility(id:Int): Result<AbilityInfo> {
+    suspend fun getAbility(id:String): Result<AbilityInfo> {
         return try {
             val response = api.getAbility(id)
             Result.success(response)
@@ -46,7 +46,7 @@ class PokedexRepository(
         }
     }
 
-    suspend fun getMove(id:Int): Result<MoveInfo> {
+    suspend fun getMove(id:String): Result<MoveInfo> {
         return try {
             val response = api.getMove(id)
             Result.success(response)
@@ -55,7 +55,7 @@ class PokedexRepository(
         }
     }
 
-    suspend fun getItem(id:Int): Result<ItemInfo> {
+    suspend fun getItem(id:String): Result<ItemInfo> {
         return try {
             val response = api.getItem(id)
             Result.success(response)

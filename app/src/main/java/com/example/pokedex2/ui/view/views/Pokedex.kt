@@ -16,13 +16,15 @@ import com.example.pokedex2.viewModel.PokemonViewModel
 fun Pokedex(vm: PokemonViewModel) {
     /**
      * PARA LLAMAR LA INFORMACION DE UN POKEMON EN ESPECIFICO:
-     * vm.getPokemon(888)
-     * EL NUMERO PONES EL SUYO DE LA POKEDEX
+     * vm.getPokemon("1") o vm.getPokemon("bulbasaur")
+     * PUEDES PONER TANTO EL NUMERO DE LA POKEDEX COMO EL NOMBRE DEL POKEMON
+     * SI PONES EL NOMBRE, ASEGURATE QUE LO ESCRIBES BIEN
      *
      * PARA LLAMAR A TODOS LOS POKEMON A LA VEZ:
      * vm.getAllData("pokemon")
      *
-     * ES EN TODOS IGUAL, CUALQUIER DUDA O FALLO QUE ENCUENTRES AVISAME ;)
+     * ACUERDATE QUE TODA LA INFORMACION ESTA EN INGLES
+     * ES EN TODOS LOS MENUS IGUAL, CUALQUIER DUDA O FALLO QUE ENCUENTRES AVISAME ;)
      */
 
     vm.getAllData("pokemon")

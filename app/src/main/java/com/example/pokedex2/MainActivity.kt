@@ -17,9 +17,10 @@ import com.example.pokedex2.ui.view.views.Favoritos
 import com.example.pokedex2.ui.view.views.Habilidades
 import com.example.pokedex2.ui.view.views.Mapas
 import com.example.pokedex2.ui.view.views.Movimientos
-import com.example.pokedex2.ui.view.views.Objetos
+import com.example.pokedex2.ui.view.views.objects.Objetos
 import com.example.pokedex2.ui.view.views.Pokedex
 import com.example.pokedex2.ui.view.views.TablaDeTipos
+import com.example.pokedex2.ui.view.views.objects.Medicina
 import com.example.pokedex2.viewModel.PokemonViewModel
 
 class MainActivity : ComponentActivity() {
@@ -35,30 +36,15 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     NavHost(navController = navController, startDestination = "mainMenu"){
-                        composable("Pokedex"){
-                            Pokedex(viewModel)
-                        }
-                        composable("Mapas"){
-                            Mapas(viewModel)
-                        }
-                        composable("Tabla de Tipos"){
-                            TablaDeTipos(viewModel)
-                        }
-                        composable("Habilidades") {
-                            Habilidades(viewModel)
-                        }
-                        composable("Movimientos") {
-                            Movimientos(viewModel)
-                        }
-                        composable("Objetos") {
-                            Objetos(viewModel, navController)
-                        }
-                        composable("Favoritos") {
-                            Favoritos(viewModel)
-                        }
-                        composable("mainMenu") {
-                            MainMenu(navController)
-                        }
+                        composable("Pokedex"){ Pokedex(viewModel) }
+                        composable("Mapas"){ Mapas(viewModel) }
+                        composable("Tabla de Tipos"){ TablaDeTipos(viewModel) }
+                        composable("Habilidades") { Habilidades(viewModel) }
+                        composable("Movimientos") { Movimientos(viewModel) }
+                        composable("Objetos") { Objetos(navController) }
+                        composable("Favoritos") { Favoritos(viewModel) }
+                        composable("mainMenu") { MainMenu(navController) }
+                        composable("Medicina") { Medicina(viewModel) }
                     }
                 }
             }

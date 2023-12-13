@@ -1,4 +1,4 @@
-package com.example.pokedex2.ui.view.views
+package com.example.pokedex2.ui.view.views.objects
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -15,11 +15,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
-import com.example.pokedex2.viewModel.PokemonViewModel
+import androidx.navigation.NavHostController
 
 @Composable
-fun Objetos(viewModel: PokemonViewModel, navController: NavController?) {
+fun Objetos(navController: NavHostController) {
     /*val outline = FontFamily(
         Font(R.font.outline, FontWeight.Light),
         Font(R.font.outline, FontWeight.Normal),
@@ -56,7 +55,7 @@ fun Objetos(viewModel: PokemonViewModel, navController: NavController?) {
 
 
         Button(
-            onClick = {navController?.navigate("Medicina") },
+            onClick = { navController.navigate("Medicina") },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(55.dp)
@@ -71,7 +70,7 @@ fun Objetos(viewModel: PokemonViewModel, navController: NavController?) {
         Spacer(modifier = Modifier.height(10.dp))
 
         Button(
-            onClick = {navController?.navigate("Poké-Balls") },
+            onClick = { navController.navigate("Poké-Balls") },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(55.dp)
@@ -86,7 +85,7 @@ fun Objetos(viewModel: PokemonViewModel, navController: NavController?) {
         Spacer(modifier = Modifier.height(10.dp))
 
         Button(
-            onClick = {navController?.navigate("Mt's/MO's") },
+            onClick = { navController.navigate("Mt's/MO's") },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(55.dp)
@@ -101,7 +100,7 @@ fun Objetos(viewModel: PokemonViewModel, navController: NavController?) {
         Spacer(modifier = Modifier.height(10.dp))
 
         Button(
-            onClick = {navController?.navigate("Bayas") },
+            onClick = { navController.navigate("Bayas") },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(55.dp)
@@ -116,7 +115,7 @@ fun Objetos(viewModel: PokemonViewModel, navController: NavController?) {
         Spacer(modifier = Modifier.height(10.dp))
 
         Button(
-            onClick = {navController?.navigate("Cartas") },
+            onClick = { navController.navigate("Cartas") },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(55.dp)
@@ -131,7 +130,7 @@ fun Objetos(viewModel: PokemonViewModel, navController: NavController?) {
         Spacer(modifier = Modifier.height(10.dp))
 
         Button(
-            onClick = {navController?.navigate("Obj. Batalla") },
+            onClick = { navController.navigate("Obj. Batalla") },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(55.dp)
@@ -146,7 +145,7 @@ fun Objetos(viewModel: PokemonViewModel, navController: NavController?) {
         Spacer(modifier = Modifier.height(10.dp))
 
         Button(
-            onClick = {navController?.navigate("Obj. Clave") },
+            onClick = { navController.navigate("Obj. Clave") },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(55.dp)
@@ -157,7 +156,5 @@ fun Objetos(viewModel: PokemonViewModel, navController: NavController?) {
                 fontSize = 30.sp
             )
         }
-
-
     }
 }

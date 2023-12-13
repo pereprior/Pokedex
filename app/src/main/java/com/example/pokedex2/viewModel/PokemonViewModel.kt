@@ -29,11 +29,11 @@ class PokemonViewModel(
         state = state.copy(isLoading = false)
     }
 
-    fun getPokemon(dexNumber:Int){
+    fun getPokemon(id:String){
         state = state.copy(isLoading = true)
 
         viewModelScope.launch {
-            repository.getPokemonInfo(dexNumber).onSuccess {
+            repository.getPokemonInfo(id).onSuccess {
                 state = state.copy(
                     data = it
                 )
@@ -43,7 +43,7 @@ class PokemonViewModel(
         state = state.copy(isLoading = false)
     }
 
-    fun getType(id:Int){
+    fun getType(id:String){
         state = state.copy(isLoading = true)
 
         viewModelScope.launch {
@@ -57,7 +57,7 @@ class PokemonViewModel(
         state = state.copy(isLoading = false)
     }
 
-    fun getAbility(id:Int){
+    fun getAbility(id:String){
         state = state.copy(isLoading = true)
 
         viewModelScope.launch {

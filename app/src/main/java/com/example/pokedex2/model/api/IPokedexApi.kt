@@ -27,28 +27,28 @@ interface IPokedexApi {
         @Path("item") item:String
     ): PokedexResponse
 
-    @GET("pokemon/{dex}")
+    @GET("pokemon/{id}")
     suspend fun getPokemonInfo(
-        @Path("dex") dex:Int
+        @Path("id") id:String
     ): PokemonInfo
 
     @GET("type/{id}")
     suspend fun getTypes(
-        @Path("id") id:Int
+        @Path("id") id:String
     ): TypeInfo
 
     @GET("ability/{id}")
     suspend fun getAbility(
-        @Path("id") id:Int
+        @Path("id") id:String
     ): AbilityInfo
 
     @GET("move/{id}")
     suspend fun getMove(
-        @Path("id") id:Int
+        @Path("id") id:String
     ): MoveInfo
 
     @GET("item/{id}")
     suspend fun getItem(
-        @Path("id") id:Int
+        @Path("id") id:String
     ): ItemInfo
 }
