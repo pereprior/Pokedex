@@ -6,48 +6,68 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pokedex2.model.api.IPokedexApi
-import com.example.pokedex2.model.PokedexRepository
+import com.example.pokedex2.model.api.PokedexRepository
 import kotlinx.coroutines.launch
 
 class PokemonViewModel(
     private val repository: PokedexRepository = PokedexRepository(IPokedexApi.instance)
 ) : ViewModel() {
-    var state by mutableStateOf(MainState())
+    var state by mutableStateOf(MainState(false,""))
         private set
 
-    fun getPokemon(dexNumber:Int){
+    fun getAllData(item:String){
+        state = state.copy(isLoading = true)
+
         viewModelScope.launch {
-            state = state.copy(isLoading = true)
-            repository.getPokemonInfo(dexNumber).onSuccess {
+            repository.getGenericData(item).onSuccess {
                 state = state.copy(
-                    pokemon = it
+                    data = it
                 )
             }.onFailure { /* TODO */}
-            state = state.copy(isLoading = false)
         }
+
+        state = state.copy(isLoading = false)
+    }
+
+    fun getPokemon(dexNumber:Int){
+        state = state.copy(isLoading = true)
+
+        viewModelScope.launch {
+            repository.getPokemonInfo(dexNumber).onSuccess {
+                state = state.copy(
+                    data = it
+                )
+            }.onFailure { /* TODO */}
+        }
+
+        state = state.copy(isLoading = false)
     }
 
     fun getType(id:Int){
+        state = state.copy(isLoading = true)
+
         viewModelScope.launch {
-            state = state.copy(isLoading = true)
             repository.getTypes(id).onSuccess {
                 state = state.copy(
-                    type = it
+                    data = it
                 )
             }.onFailure { /* TODO */}
-            state = state.copy(isLoading = false)
         }
+
+        state = state.copy(isLoading = false)
     }
 
     fun getAbility(id:Int){
+        state = state.copy(isLoading = true)
+
         viewModelScope.launch {
-            state = state.copy(isLoading = true)
             repository.getAbility(id).onSuccess {
                 state = state.copy(
-                    ability = it
+                    data = it
                 )
             }.onFailure { /* TODO */}
-            state = state.copy(isLoading = false)
         }
+
+        state = state.copy(isLoading = false)
     }
 }

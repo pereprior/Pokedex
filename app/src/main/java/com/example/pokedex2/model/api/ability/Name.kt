@@ -1,6 +1,0 @@
-package com.example.pokedex2.model.api.ability
-
-data class Name(
-    val language: Language,
-    val name: String
-)
