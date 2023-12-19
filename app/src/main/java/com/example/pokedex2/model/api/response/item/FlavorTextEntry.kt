@@ -1,7 +1,9 @@
 package com.example.pokedex2.model.api.response.item
 
+import com.example.pokedex2.model.api.response.ResponsedUrlData
+
 data class FlavorTextEntry(
-    val language: Language,
-    val text: String,
-    val version_group: VersionGroup
+    val language: ResponsedUrlData,
+    val flavor_text: String,
+    val version_group: ResponsedUrlData
 )

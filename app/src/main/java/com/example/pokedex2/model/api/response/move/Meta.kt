@@ -1,9 +1,11 @@
 package com.example.pokedex2.model.api.response.move
 
+import com.example.pokedex2.model.api.response.ResponsedUrlData
+
 data class Meta(
-    val ailment: Ailment,
+    val ailment: ResponsedUrlData,
     val ailment_chance: Int,
-    val category: Category,
+    val category: ResponsedUrlData,
     val crit_rate: Int,
     val drain: Int,
     val flinch_chance: Int,

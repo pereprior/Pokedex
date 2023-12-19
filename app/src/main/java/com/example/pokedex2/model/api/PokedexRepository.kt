@@ -3,6 +3,7 @@ package com.example.pokedex2.model.api
 import com.example.pokedex2.model.api.response.PokedexResponse
 import com.example.pokedex2.model.api.response.ability.AbilityInfo
 import com.example.pokedex2.model.api.response.item.ItemInfo
+import com.example.pokedex2.model.api.response.item.PocketInfo
 import com.example.pokedex2.model.api.response.move.MoveInfo
 import com.example.pokedex2.model.api.response.pokemon.PokemonInfo
 import com.example.pokedex2.model.api.response.type.TypeInfo
@@ -21,7 +22,7 @@ class PokedexRepository(
 
     suspend fun getPokemonInfo(id:String): Result<PokemonInfo> {
         return try {
-            val response = api.getPokemonInfo(id)
+            val response = api.getPokemon(id)
             Result.success(response)
         } catch (e: Exception) {
             Result.failure(e)
@@ -58,6 +59,15 @@ class PokedexRepository(
     suspend fun getItem(id:String): Result<ItemInfo> {
         return try {
             val response = api.getItem(id)
+            Result.success(response)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    suspend fun getItemsCategory(id:String): Result<PocketInfo> {
+        return try {
+            val response = api.getItemPocket(id)
             Result.success(response)
         } catch (e: Exception) {
             Result.failure(e)

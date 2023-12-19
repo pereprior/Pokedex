@@ -24,21 +24,24 @@ val SpDefColor = Color(1f, 0f, 0.8f, 0.7f)
 val SpdColor = Color(0f, 1f, 0.063f, 0.55f)
 
 // Types
-val TypeNormal = Color(0xFFA8A77A)
-val TypeFire = Color(0xFFEE8130)
-val TypeWater = Color(0xFF6390F0)
-val TypeElectric = Color(0xFFF7D02C)
-val TypeGrass = Color(0xFF7AC74C)
-val TypeIce = Color(0xFF96D9D6)
-val TypeFighting = Color(0xFFC22E28)
-val TypePoison = Color(0xFFA33EA1)
-val TypeGround = Color(0xFFE2BF65)
-val TypeFlying = Color(0xFFA98FF3)
-val TypePsychic = Color(0xFFF95587)
-val TypeBug = Color(0xFFA6B91A)
-val TypeRock = Color(0xFFB6A136)
-val TypeGhost = Color(0xFF735797)
-val TypeDragon = Color(0xFF6F35FC)
-val TypeDark = Color(0xFF705746)
-val TypeSteel = Color(0xFFB7B7CE)
-val TypeFairy = Color(0xFFD685AD)
+data class TypeColor(val name:String,val color:Color)
+val TypesColor = listOf(
+    TypeColor("normal", Color(0xFFA8A77A)),
+    TypeColor("fire", Color(0xFFEE8130)),
+    TypeColor("water", Color(0xFF6390F0)),
+    TypeColor("electric", Color(0xFFF7D02C)),
+    TypeColor("grass", Color(0xFF7AC74C)),
+    TypeColor("ice", Color(0xFF96D9D6)),
+    TypeColor("fighting", Color(0xFFC22E28)),
+    TypeColor("poison", Color(0xFFA33EA1)),
+    TypeColor("ground", Color(0xFFE2BF65)),
+    TypeColor("flying", Color(0xFFA98FF3)),
+    TypeColor("psychic", Color(0xFFF95587)),
+    TypeColor("bug", Color(0xFFA6B91A)),
+    TypeColor("rock", Color(0xFFB6A136)),
+    TypeColor("ghost", Color(0xFF735797)),
+    TypeColor("dragon", Color(0xFF6F35FC)),
+    TypeColor("dark", Color(0xFF705746)),
+    TypeColor("steel", Color(0xFFB7B7CE)),
+    TypeColor("fairy", Color(0xFFD685AD))
+)
