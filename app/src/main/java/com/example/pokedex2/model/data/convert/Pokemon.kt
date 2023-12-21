@@ -1,6 +1,7 @@
 package com.example.pokedex2.model.data.convert
 
 import com.example.pokedex2.model.api.response.pokemon.PokemonInfo
+import com.example.pokedex2.model.api.response.pokemon.Stat
 
 class Pokemon(private val p:PokemonInfo = PokemonInfo()) {
     val dexNumber: Int = p.id
@@ -11,7 +12,7 @@ class Pokemon(private val p:PokemonInfo = PokemonInfo()) {
 
     val weight: Float = p.weight.toFloat()
 
-    val stats: List<Int> = p.stats.map { it.base_stat }
+    val stats: List<Stat> = p.stats.map { it }
 
     val types = p.types
 

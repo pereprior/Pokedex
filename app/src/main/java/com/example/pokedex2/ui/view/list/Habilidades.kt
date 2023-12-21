@@ -1,5 +1,6 @@
 package com.example.pokedex2.ui.view.list
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,6 +11,9 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.DrawerState
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -20,11 +24,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.pokedex2.model.api.response.PokedexResponse
+import com.example.pokedex2.ui.view.MyTopAppBar
 import com.example.pokedex2.viewModel.PokemonViewModel
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Habilidades(vm: PokemonViewModel) {
+fun Habilidades(vm: PokemonViewModel, drawerState: DrawerState, navController: NavHostController) {
     LaunchedEffect(Unit) {
         vm.getAbilityList()
     }
@@ -40,29 +48,34 @@ fun Habilidades(vm: PokemonViewModel) {
             CircularProgressIndicator()
         }
     } else {
-        LazyColumn(modifier = Modifier.fillMaxSize()) {
-            items(abilityList) { ability ->
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(6.dp)
-                ) {
-                    Button(
-                        onClick = {
-                            // Handle button click for the specific ability item
-                        },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(55.dp)
-                    ) {
-                        Text(
-                            text = ability.name.replaceFirstChar { it.uppercaseChar() },
-                            textAlign = TextAlign.Center,
-                            fontSize = 28.sp
-                        )
+        Scaffold(
+            topBar = { MyTopAppBar(drawerState) },
+            content = {
+                LazyColumn(modifier = Modifier.fillMaxSize()) {
+                    items(abilityList) { ability ->
+                        Column(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(6.dp)
+                        ) {
+                            Button(
+                                onClick = {
+                                    navController.navigate("AbilityView/${ability.name}")
+                                },
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .height(55.dp)
+                            ) {
+                                Text(
+                                    text = ability.name.replaceFirstChar { it.uppercaseChar() },
+                                    textAlign = TextAlign.Center,
+                                    fontSize = 28.sp
+                                )
+                            }
+                        }
                     }
                 }
             }
-        }
+        )
     }
 }

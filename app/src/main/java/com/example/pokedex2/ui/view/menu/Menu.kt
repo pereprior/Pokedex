@@ -11,6 +11,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
+import androidx.compose.material3.DrawerState
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.navigation.NavController
@@ -22,8 +24,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.pokedex2.R
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MainMenu(navController : NavController?) {
+fun MainMenu(navController: NavController?, drawerState: DrawerState) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -98,7 +101,7 @@ fun MainMenu(navController : NavController?) {
         Spacer(modifier = Modifier.height(10.dp))
 
         Button(
-            onClick = {navController?.navigate("Skills") },
+            onClick = {navController?.navigate("Abilities") },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(55.dp)
@@ -113,7 +116,7 @@ fun MainMenu(navController : NavController?) {
         Spacer(modifier = Modifier.height(10.dp))
 
         Button(
-            onClick = {navController?.navigate("Movements") },
+            onClick = {navController?.navigate("Moves") },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(55.dp)
