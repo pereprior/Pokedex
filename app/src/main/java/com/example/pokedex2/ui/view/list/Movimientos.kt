@@ -26,7 +26,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.pokedex2.model.api.response.PokedexResponse
-import com.example.pokedex2.ui.view.MyTopAppBar
+import com.example.pokedex2.ui.view.utils.MyTopAppBar
 import com.example.pokedex2.viewModel.PokemonViewModel
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -49,7 +49,7 @@ fun Movimientos(vm: PokemonViewModel, drawerState: DrawerState, navController: N
         }
     } else {
         Scaffold(
-            topBar = { MyTopAppBar(drawerState) },
+            topBar = { MyTopAppBar(drawerState, navController, moveList) },
             content = {
                 LazyColumn(modifier = Modifier.fillMaxSize()) {
                     items(moveList) { move ->

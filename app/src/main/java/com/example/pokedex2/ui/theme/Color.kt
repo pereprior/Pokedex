@@ -14,6 +14,8 @@ val Pink40 = Color(0xFF7D5260)
 
 // Default
 val PrimaryPokedexColor = Color(0xFFC92133)
+val DarkGrey = Color(0xFF2b292c)
+val MyGrey = Color(0xff6d6a6d)
 
 // Bar Color
 val HPColor = Color(0xFFF5FF00)

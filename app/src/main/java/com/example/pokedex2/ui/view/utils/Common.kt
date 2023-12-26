@@ -1,11 +1,18 @@
-package com.example.pokedex2.ui.view
+package com.example.pokedex2.ui.view.utils
 
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -14,8 +21,8 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.outlined.Notifications
 import androidx.compose.material3.DrawerState
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
@@ -33,20 +40,40 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.TransformOrigin
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.pokedex2.R
+import com.example.pokedex2.model.api.response.ResponsedUrlData
+import com.example.pokedex2.ui.view.views.pokemon.MySearchBar
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MyTopAppBar(drawerState:DrawerState) {
+fun MyTopAppBar(
+    drawerState: DrawerState,
+    navController: NavHostController,
+    pokemonList: List<ResponsedUrlData>
+) {
     val scope = rememberCoroutineScope()
-    var showMenu by remember { mutableStateOf(false) }
+    val helpValue by rememberInfiniteTransition(label = "").animateFloat(
+        initialValue = 25f,
+        targetValue = -25f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(
+                durationMillis = 600,
+                easing = LinearEasing
+            ),
+            repeatMode = RepeatMode.Reverse
+        ),
+        label = ""
+    )
 
     TopAppBar(
+        modifier = Modifier.fillMaxWidth().height(100.dp),
         title = { Text(text = "") },
         colors = TopAppBarDefaults.smallTopAppBarColors(containerColor = MaterialTheme.colorScheme.primary),
         navigationIcon = {
@@ -57,24 +84,34 @@ fun MyTopAppBar(drawerState:DrawerState) {
                             if (isClosed) open() else close()
                         }
                     }
-                }
+                },
+                modifier = Modifier.fillMaxHeight()
             ) {
                 Icon(imageVector = Icons.Filled.Menu, contentDescription = "Back", tint = MaterialTheme.colorScheme.onPrimary)
             }
         },
         actions = {
-            IconButton(onClick = { showMenu = !showMenu }) {
-                Icon(imageVector = Icons.Filled.Search, contentDescription = "Search", tint = MaterialTheme.colorScheme.onPrimary)
-            }
+            MySearchBar(navController, pokemonList)
 
-            IconButton(onClick = { showMenu = !showMenu }) {
-                Icon(imageVector = Icons.Filled.MoreVert, contentDescription = "Menu", tint = MaterialTheme.colorScheme.onPrimary)
+            IconButton(onClick = { /*TODO*/ }) {
+                Icon (
+                    imageVector = Icons.Outlined.Notifications,
+                    contentDescription = "Help Bell",
+                    tint = MaterialTheme.colorScheme.onPrimary,
+                    modifier = Modifier
+                        .graphicsLayer {
+                            transformOrigin = TransformOrigin(
+                                pivotFractionX = 0.5f,
+                                pivotFractionY = 0.0f
+                            )
+                            rotationZ = helpValue
+                        }
+                )
             }
         },
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ModaDrawer(navController: NavHostController, drawerState: DrawerState){
     Column {
@@ -106,21 +143,20 @@ fun ModaDrawer(navController: NavHostController, drawerState: DrawerState){
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun ModalDrawerOption(navController: NavHostController, route:String, image:Int, drawerState: DrawerState) {
     val scope = rememberCoroutineScope()
 
     Row(
         modifier = Modifier
-            .clickable( onClick = {
+            .clickable(onClick = {
                 navController.navigate(route)
                 scope.launch {
                     drawerState.apply {
                         if (isClosed) open() else close()
                     }
                 }
-            } )
+            })
             .fillMaxWidth()
             .padding(16.dp)
     ) {

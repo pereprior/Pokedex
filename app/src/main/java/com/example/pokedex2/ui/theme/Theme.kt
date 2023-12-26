@@ -14,7 +14,7 @@ import androidx.core.view.WindowCompat
 
 private val DarkColorScheme = darkColorScheme(
     primary = PrimaryPokedexColor,
-    secondary = PurpleGrey80,
+    secondary = DarkGrey,
     tertiary = Pink80,
     background = Color.Black,
     surface = Color.Black,
@@ -27,7 +27,7 @@ private val DarkColorScheme = darkColorScheme(
 
 private val LightColorScheme = lightColorScheme(
     primary = PrimaryPokedexColor,
-    secondary = PurpleGrey40,
+    secondary = DarkGrey,
     tertiary = Pink40,
     background = Color.White,
     surface = Color.White,

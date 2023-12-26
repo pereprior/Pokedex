@@ -19,7 +19,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.pokedex2.ui.theme.Pokedex2Theme
-import com.example.pokedex2.ui.view.ModaDrawer
+import com.example.pokedex2.ui.view.utils.ModaDrawer
 import com.example.pokedex2.ui.view.menu.MainMenu
 import com.example.pokedex2.ui.view.list.Favoritos
 import com.example.pokedex2.ui.view.list.Habilidades
@@ -37,7 +37,7 @@ import com.example.pokedex2.ui.view.list.objects.Medicina
 import com.example.pokedex2.ui.view.list.objects.PokeBalls
 import com.example.pokedex2.ui.view.views.AbilityView
 import com.example.pokedex2.ui.view.views.MoveView
-import com.example.pokedex2.ui.view.views.PokemonView
+import com.example.pokedex2.ui.view.views.pokemon.PokemonView
 import com.example.pokedex2.ui.view.views.TypeView
 import com.example.pokedex2.viewModel.PokemonViewModel
 

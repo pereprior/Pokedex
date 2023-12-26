@@ -10,6 +10,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.DrawerState
@@ -27,11 +29,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.pokedex2.model.api.response.PokedexResponse
-import com.example.pokedex2.ui.view.MyTopAppBar
+import com.example.pokedex2.ui.view.utils.MyTopAppBar
 import com.example.pokedex2.viewModel.PokemonViewModel
 import java.util.Locale
 
-@OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun Pokedex(vm: PokemonViewModel, navController: NavHostController, drawerState: DrawerState) {
@@ -51,12 +52,12 @@ fun Pokedex(vm: PokemonViewModel, navController: NavHostController, drawerState:
         }
     } else {
         Scaffold(
-            topBar = { MyTopAppBar(drawerState) },
+            topBar = { MyTopAppBar(drawerState, navController, pokemonList) },
             content = {
                 LazyColumn(
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(top = 60.dp)
+                        .padding(top = 100.dp)
                 ) {
                     itemsIndexed(pokemonList) { i, pokemon ->
                         Column(
@@ -78,7 +79,7 @@ fun Pokedex(vm: PokemonViewModel, navController: NavHostController, drawerState:
                                         if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString()
                                     }}",
                                     textAlign = TextAlign.Start,
-                                    fontSize = 28.sp,
+                                    fontSize = 24.sp,
                                     modifier = Modifier.fillMaxWidth()
                                 )
                             }

@@ -14,6 +14,8 @@ class Pokemon(private val p:PokemonInfo = PokemonInfo()) {
 
     val stats: List<Stat> = p.stats.map { it }
 
+    val abilities = p.abilities
+
     val types = p.types
 
     val normalSprite: String = p.sprites.other.home.front_default
