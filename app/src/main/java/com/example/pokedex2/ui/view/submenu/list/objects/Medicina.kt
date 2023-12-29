@@ -1,13 +1,13 @@
-package com.example.pokedex2.ui.view.list.objects
+package com.example.pokedex2.ui.view.submenu.list.objects
 
 import androidx.compose.material3.DrawerState
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
-import com.example.pokedex2.viewModel.PokemonViewModel
+import com.example.pokedex2.viewModel.PokedexViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Medicina(vm: PokemonViewModel, drawerState: DrawerState) {
+fun Medicina(vm: PokedexViewModel, drawerState: DrawerState) {
     /*LaunchedEffect(Unit) {
         vm.getItemList()
     }

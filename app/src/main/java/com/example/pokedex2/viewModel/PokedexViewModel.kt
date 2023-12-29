@@ -14,7 +14,7 @@ import com.example.pokedex2.model.data.convert.Pokemon
 import com.example.pokedex2.model.data.convert.Type
 import kotlinx.coroutines.launch
 
-class PokemonViewModel(
+class PokedexViewModel(
     private val repository: PokedexRepository = PokedexRepository(IPokedexApi.instance)
 ) : ViewModel() {
 

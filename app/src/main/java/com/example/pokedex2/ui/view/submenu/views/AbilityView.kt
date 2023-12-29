@@ -1,4 +1,4 @@
-package com.example.pokedex2.ui.view.views
+package com.example.pokedex2.ui.view.submenu.views
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -7,11 +7,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.navigation.NavHostController
 import com.example.pokedex2.model.data.convert.Ability
-import com.example.pokedex2.viewModel.PokemonViewModel
+import com.example.pokedex2.viewModel.PokedexViewModel
 
 @Composable
 fun AbilityView (
-    vm: PokemonViewModel,
+    vm: PokedexViewModel,
     selectedAbility: String?,
     navController: NavHostController
 ) {

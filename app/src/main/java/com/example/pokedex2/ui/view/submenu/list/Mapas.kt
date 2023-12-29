@@ -1,4 +1,4 @@
-package com.example.pokedex2.ui.view.list
+package com.example.pokedex2.ui.view.submenu.list
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -16,12 +16,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
-import com.example.pokedex2.viewModel.PokemonViewModel
+import com.example.pokedex2.viewModel.PokedexViewModel
 import androidx.compose.material3.DrawerState
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Mapas(viewModel: PokemonViewModel, drawerState: DrawerState) {
+fun Mapas(viewModel: PokedexViewModel, drawerState: DrawerState) {
     val mapsData = mapsData.testmapsData.distinct()
     var showDialog by remember { mutableStateOf(false) }
     var selectedItem by remember { mutableStateOf<TestDataItem?>(null) }

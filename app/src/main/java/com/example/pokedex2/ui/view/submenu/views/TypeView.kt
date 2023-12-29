@@ -1,20 +1,17 @@
-package com.example.pokedex2.ui.view.views
+package com.example.pokedex2.ui.view.submenu.views
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import com.example.pokedex2.model.data.convert.Type
-import com.example.pokedex2.viewModel.PokemonViewModel
+import com.example.pokedex2.viewModel.PokedexViewModel
 
 @Composable
 fun TypeView (
-    vm: PokemonViewModel,
+    vm: PokedexViewModel,
     selectedType: String?,
     navController: NavHostController
 ) {

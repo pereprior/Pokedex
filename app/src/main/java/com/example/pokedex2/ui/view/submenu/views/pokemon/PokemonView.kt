@@ -1,4 +1,4 @@
-package com.example.pokedex2.ui.view.views.pokemon
+package com.example.pokedex2.ui.view.submenu.views.pokemon
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Canvas
@@ -47,15 +47,15 @@ import com.example.pokedex2.model.api.response.pokemon.Stat
 import com.example.pokedex2.model.data.convert.Pokemon
 import com.example.pokedex2.model.api.response.pokemon.Type
 import com.example.pokedex2.ui.theme.*
-import com.example.pokedex2.ui.view.utils.BackFab
-import com.example.pokedex2.viewModel.PokemonViewModel
+import com.example.pokedex2.ui.nav.BackFab
+import com.example.pokedex2.viewModel.PokedexViewModel
 import kotlinx.coroutines.delay
 import java.util.Locale
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun PokemonView(
-    vm: PokemonViewModel,
+    vm: PokedexViewModel,
     selectedPokemon: String?,
     navController: NavHostController
 ) {

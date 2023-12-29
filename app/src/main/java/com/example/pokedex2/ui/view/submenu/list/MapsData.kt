@@ -1,4 +1,4 @@
-package com.example.pokedex2.ui.view.list
+package com.example.pokedex2.ui.view.submenu.list
 
 import com.example.pokedex2.R
 
