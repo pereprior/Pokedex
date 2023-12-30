@@ -18,10 +18,12 @@ import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import com.example.pokedex2.viewModel.PokedexViewModel
 import androidx.compose.material3.DrawerState
+import com.example.pokedex2.model.data.maps.MapData
+import com.example.pokedex2.model.data.maps.TestDataItem
 
 @Composable
 fun Mapas(viewModel: PokedexViewModel, drawerState: DrawerState) {
-    val mapsData = mapsData.testmapsData.distinct()
+    val mapsData = MapData.testmapsData.distinct()
     var showDialog by remember { mutableStateOf(false) }
     var selectedItem by remember { mutableStateOf<TestDataItem?>(null) }
 
