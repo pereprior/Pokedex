@@ -1,4 +1,4 @@
-package com.example.pokedex2.ui.view.submenu.list.objects
+package com.example.pokedex2.ui.view.submenu.list.unique.objects
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

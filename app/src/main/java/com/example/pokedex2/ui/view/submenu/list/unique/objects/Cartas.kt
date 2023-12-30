@@ -1,4 +1,4 @@
-package com.example.pokedex2.ui.view.submenu.list.objects
+package com.example.pokedex2.ui.view.submenu.list.unique.objects
 
 import androidx.compose.material3.DrawerState
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -8,6 +8,6 @@ import com.example.pokedex2.viewModel.PokedexViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun KeyItem(vm: PokedexViewModel, drawerState: DrawerState) {
-    Text(text = "Hola, soy Objetos Clave")
+fun Cards(vm: PokedexViewModel, drawerState: DrawerState) {
+    Text(text = "Hola, soy Cartas")
 }

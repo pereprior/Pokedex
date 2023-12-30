@@ -11,22 +11,19 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
-import androidx.compose.material3.DrawerState
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
-import androidx.navigation.NavController
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.material3.Text
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.pokedex2.R
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MainMenu(navController: NavController?, drawerState: DrawerState) {
+fun MainMenu(navController: NavHostController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -56,7 +53,7 @@ fun MainMenu(navController: NavController?, drawerState: DrawerState) {
 
 
         Button(
-            onClick = {navController?.navigate("Pokedex") },
+            onClick = {navController.navigate("Pokedex") },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(55.dp)
@@ -71,7 +68,7 @@ fun MainMenu(navController: NavController?, drawerState: DrawerState) {
         Spacer(modifier = Modifier.height(10.dp))
 
         Button(
-            onClick = {navController?.navigate("Maps") },
+            onClick = {navController.navigate("Maps") },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(55.dp)
@@ -86,7 +83,7 @@ fun MainMenu(navController: NavController?, drawerState: DrawerState) {
         Spacer(modifier = Modifier.height(10.dp))
 
         Button(
-            onClick = {navController?.navigate("TypeTable") },
+            onClick = {navController.navigate("TypeTable") },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(55.dp)
@@ -101,7 +98,7 @@ fun MainMenu(navController: NavController?, drawerState: DrawerState) {
         Spacer(modifier = Modifier.height(10.dp))
 
         Button(
-            onClick = {navController?.navigate("Abilities") },
+            onClick = {navController.navigate("Abilities") },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(55.dp)
@@ -116,7 +113,7 @@ fun MainMenu(navController: NavController?, drawerState: DrawerState) {
         Spacer(modifier = Modifier.height(10.dp))
 
         Button(
-            onClick = {navController?.navigate("Moves") },
+            onClick = {navController.navigate("Moves") },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(55.dp)
@@ -131,7 +128,7 @@ fun MainMenu(navController: NavController?, drawerState: DrawerState) {
         Spacer(modifier = Modifier.height(10.dp))
 
         Button(
-            onClick = {navController?.navigate("Items") },
+            onClick = {navController.navigate("Items") },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(55.dp)
@@ -146,7 +143,7 @@ fun MainMenu(navController: NavController?, drawerState: DrawerState) {
         Spacer(modifier = Modifier.height(10.dp))
 
         Button(
-            onClick = {navController?.navigate("Favorites") },
+            onClick = {navController.navigate("Favorites") },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(55.dp)

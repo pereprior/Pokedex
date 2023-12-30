@@ -1,4 +1,4 @@
-package com.example.pokedex2.ui.view.submenu.list
+package com.example.pokedex2.ui.view.submenu.list.unique
 
 import android.annotation.SuppressLint
 import androidx.compose.material3.DrawerState
@@ -8,7 +8,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.navigation.NavHostController
 import com.example.pokedex2.model.api.response.PokedexResponse
-import com.example.pokedex2.ui.view.submenu.MySearchBar
+import com.example.pokedex2.ui.WaitCircle
+import com.example.pokedex2.ui.view.submenu.list.generic.SubMenu
 import com.example.pokedex2.viewModel.PokedexViewModel
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -21,10 +22,14 @@ fun Pokedex(vm: PokedexViewModel, navController: NavHostController, drawerState:
     val dataList by vm.pokemonList.observeAsState(initial = PokedexResponse())
     val pokemonList = dataList.results
 
-    MySearchBar(
-        navController = navController,
-        drawerState = drawerState,
-        data = pokemonList,
-        route = "PokemonView"
-    )
+    if (pokemonList.isEmpty()) {
+        WaitCircle()
+    } else {
+        SubMenu(
+            navController = navController,
+            drawerState = drawerState,
+            data = pokemonList,
+            route = "PokemonView"
+        )
+    }
 }

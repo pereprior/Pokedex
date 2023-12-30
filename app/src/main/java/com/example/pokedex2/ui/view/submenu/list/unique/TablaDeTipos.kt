@@ -1,4 +1,4 @@
-package com.example.pokedex2.ui.view.submenu.list
+package com.example.pokedex2.ui.view.submenu.list.unique
 
 import android.annotation.SuppressLint
 import androidx.compose.material3.DrawerState
@@ -9,11 +9,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.navigation.NavHostController
 import com.example.pokedex2.model.api.response.PokedexResponse
-import com.example.pokedex2.ui.view.submenu.MySearchBar
+import com.example.pokedex2.ui.WaitCircle
+import com.example.pokedex2.ui.view.submenu.list.generic.SubMenu
 import com.example.pokedex2.viewModel.PokedexViewModel
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TablaDeTipos(vm: PokedexViewModel, drawerState: DrawerState, navController: NavHostController) {
     LaunchedEffect(Unit) {
@@ -23,10 +23,14 @@ fun TablaDeTipos(vm: PokedexViewModel, drawerState: DrawerState, navController: 
     val dataList by vm.typeList.observeAsState(initial = PokedexResponse())
     val typeList = dataList.results
 
-    MySearchBar(
-        navController = navController,
-        drawerState = drawerState,
-        data = typeList,
-        route = "TypeView"
-    )
+    if (typeList.isEmpty()) {
+        WaitCircle()
+    } else {
+        SubMenu(
+            navController = navController,
+            drawerState = drawerState,
+            data = typeList,
+            route = "TypeView"
+        )
+    }
 }

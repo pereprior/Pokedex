@@ -1,4 +1,4 @@
-package com.example.pokedex2.ui.view.submenu.list
+package com.example.pokedex2.ui.view.submenu.list.unique
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -19,7 +19,6 @@ import androidx.compose.ui.window.DialogProperties
 import com.example.pokedex2.viewModel.PokedexViewModel
 import androidx.compose.material3.DrawerState
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Mapas(viewModel: PokedexViewModel, drawerState: DrawerState) {
     val mapsData = mapsData.testmapsData.distinct()

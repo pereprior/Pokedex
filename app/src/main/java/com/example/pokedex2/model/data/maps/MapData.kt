@@ -1,15 +1,8 @@
-package com.example.pokedex2.ui.view.submenu.list
+package com.example.pokedex2.model.data.maps
 
 import com.example.pokedex2.R
 
-data class TestDataItem(
-    var id: String,
-    var title: String,
-    var drawable: Int
-)
-
-
-object mapsData {
+object MapData {
     val imageList = listOf(
         R.drawable.mapaalola,
         R.drawable.mapagalar,
@@ -48,4 +41,3 @@ object mapsData {
         }
     }
 }
-

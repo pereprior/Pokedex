@@ -2,10 +2,19 @@ package com.example.pokedex2.ui
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Warning
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Icon
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavHostController
+import kotlinx.coroutines.delay
 import java.util.Locale
 
 fun capitalized(s:String):String {
@@ -20,4 +29,43 @@ fun WaitCircle() {
     ) {
         CircularProgressIndicator()
     }
+}
+
+@Composable
+fun NotFoundDialog(
+    onDismissRequest: () -> Unit,
+    onConfirmation: () -> Unit
+) {
+    AlertDialog(
+        icon = {
+            Icon(imageVector = Icons.Filled.Warning, contentDescription = "")
+        },
+        title = {
+            Text(text = "ERROR 404 NOT FOUND")
+        },
+        text = {
+            Text(text = "The name is not correct. Please, check it and try again.")
+        },
+        onDismissRequest = {
+            onDismissRequest()
+        },
+        confirmButton = {
+            TextButton(
+                onClick = {
+                    onConfirmation()
+                }
+            ) {
+                Text("Confirm")
+            }
+        },
+        dismissButton = {
+            TextButton(
+                onClick = {
+                    onDismissRequest()
+                }
+            ) {
+                Text("Dismiss")
+            }
+        }
+    )
 }

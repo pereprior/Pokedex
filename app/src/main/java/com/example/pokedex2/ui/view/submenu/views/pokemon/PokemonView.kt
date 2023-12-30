@@ -19,7 +19,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FavoriteBorder
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -29,9 +28,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -46,10 +42,10 @@ import com.example.pokedex2.model.api.response.pokemon.Ability
 import com.example.pokedex2.model.api.response.pokemon.Stat
 import com.example.pokedex2.model.data.convert.Pokemon
 import com.example.pokedex2.model.api.response.pokemon.Type
+import com.example.pokedex2.ui.WaitCircle
 import com.example.pokedex2.ui.theme.*
 import com.example.pokedex2.ui.nav.BackFab
 import com.example.pokedex2.viewModel.PokedexViewModel
-import kotlinx.coroutines.delay
 import java.util.Locale
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -66,30 +62,7 @@ fun PokemonView(
     val p by vm.selectedPokemon.observeAsState(initial = Pokemon())
 
     if (p.name.isEmpty()) {
-        var errorMessage by rememberSaveable { mutableStateOf("") }
-        Column (
-            modifier = Modifier.fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
-        ) {
-            Text(
-                text = errorMessage,
-                color = Color.Red,
-                fontSize = 20.sp,
-                modifier = Modifier.padding(bottom = 8.dp)
-            )
-            CircularProgressIndicator()
-        }
-
-        LaunchedEffect(p.name) {
-            delay(10000)
-
-            if (p.name.isEmpty()) {
-                errorMessage = "404 ERROR: POKEMON NOT FOUND"
-                delay(3000)
-                navController.navigate("Pokedex")
-            }
-        }
+        WaitCircle()
     } else {
         Scaffold (
             floatingActionButton = { BackFab(navController,"Pokedex") },
