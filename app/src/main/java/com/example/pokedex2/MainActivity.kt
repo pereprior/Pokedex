@@ -20,27 +20,27 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.pokedex2.ui.menu.MainMenu
 import com.example.pokedex2.ui.theme.Pokedex2Theme
 import com.example.pokedex2.ui.nav.MyModalDrawer
-import com.example.pokedex2.ui.view.menu.MainMenu
-import com.example.pokedex2.ui.view.submenu.list.unique.Favoritos
-import com.example.pokedex2.ui.view.submenu.list.unique.Habilidades
-import com.example.pokedex2.ui.view.submenu.list.unique.Mapas
-import com.example.pokedex2.ui.view.submenu.list.unique.Movimientos
-import com.example.pokedex2.ui.view.submenu.list.unique.objects.Objetos
-import com.example.pokedex2.ui.view.submenu.list.unique.Pokedex
-import com.example.pokedex2.ui.view.submenu.list.unique.TablaDeTipos
-import com.example.pokedex2.ui.view.submenu.list.unique.objects.BattleItem
-import com.example.pokedex2.ui.view.submenu.list.unique.objects.Berries
-import com.example.pokedex2.ui.view.submenu.list.unique.objects.Cards
-import com.example.pokedex2.ui.view.submenu.list.unique.objects.Discs
-import com.example.pokedex2.ui.view.submenu.list.unique.objects.KeyItem
-import com.example.pokedex2.ui.view.submenu.list.unique.objects.Medicina
-import com.example.pokedex2.ui.view.submenu.list.unique.objects.PokeBalls
-import com.example.pokedex2.ui.view.submenu.views.ability.AbilityView
-import com.example.pokedex2.ui.view.submenu.views.move.MoveView
-import com.example.pokedex2.ui.view.submenu.views.pokemon.PokemonView
-import com.example.pokedex2.ui.view.submenu.views.type.TypeView
+import com.example.pokedex2.ui.views.list.Favoritos
+import com.example.pokedex2.ui.views.list.Habilidades
+import com.example.pokedex2.ui.views.list.Mapas
+import com.example.pokedex2.ui.views.list.Movimientos
+import com.example.pokedex2.ui.views.list.Pokedex
+import com.example.pokedex2.ui.views.list.TablaDeTipos
+import com.example.pokedex2.ui.views.list.objects.BattleItem
+import com.example.pokedex2.ui.views.list.objects.Berries
+import com.example.pokedex2.ui.views.list.objects.Cards
+import com.example.pokedex2.ui.views.list.objects.Discs
+import com.example.pokedex2.ui.views.list.objects.KeyItem
+import com.example.pokedex2.ui.views.list.objects.Medicina
+import com.example.pokedex2.ui.views.list.objects.Objetos
+import com.example.pokedex2.ui.views.list.objects.PokeBalls
+import com.example.pokedex2.ui.views.view.AbilityView
+import com.example.pokedex2.ui.views.view.MoveView
+import com.example.pokedex2.ui.views.view.PokemonView
+import com.example.pokedex2.ui.views.view.TypeView
 import com.example.pokedex2.viewModel.PokedexViewModel
 
 class MainActivity : ComponentActivity() {
@@ -77,7 +77,7 @@ class MainActivity : ComponentActivity() {
     ) {
         NavHost(navController = navController, startDestination = "mainMenu") {
             composable("Pokedex") { Pokedex(viewModel, navController, drawerState) }
-            composable("Maps") { Mapas(viewModel, drawerState) }
+            composable("Maps") { Mapas(navController) }
             composable("TypeTable") { TablaDeTipos(viewModel, drawerState, navController) }
             composable("Abilities") { Habilidades(viewModel, drawerState, navController) }
             composable("Moves") { Movimientos(viewModel, drawerState, navController) }

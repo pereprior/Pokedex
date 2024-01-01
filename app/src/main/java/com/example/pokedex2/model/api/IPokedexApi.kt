@@ -2,7 +2,6 @@ package com.example.pokedex2.model.api
 
 import com.example.pokedex2.model.api.response.PokedexResponse
 import com.example.pokedex2.model.api.response.ability.AbilityInfo
-import com.example.pokedex2.model.api.response.item.CategoryInfo
 import com.example.pokedex2.model.api.response.item.ItemInfo
 import com.example.pokedex2.model.api.response.item.PocketInfo
 import com.example.pokedex2.model.api.response.move.MoveInfo
