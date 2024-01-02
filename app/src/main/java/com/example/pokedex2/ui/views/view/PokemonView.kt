@@ -237,7 +237,7 @@ private fun MyAbilityLabel(ability: Ability?) {
             .height(30.dp)
             .padding(horizontal = 8.dp)
             .clip(RoundedCornerShape(16.dp))
-            .background(PrimaryPokedexColor),
+            .background(MaterialTheme.colorScheme.onSecondary),
         contentAlignment = Alignment.Center
     ) {
         Text(text = ability!!.ability.name)

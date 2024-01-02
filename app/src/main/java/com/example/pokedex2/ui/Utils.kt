@@ -31,7 +31,6 @@ fun WaitCircle() {
 @Composable
 fun NotFoundDialog(
     onDismissRequest: () -> Unit,
-    onConfirmation: () -> Unit
 ) {
     AlertDialog(
         icon = {
@@ -46,15 +45,7 @@ fun NotFoundDialog(
         onDismissRequest = {
             onDismissRequest()
         },
-        confirmButton = {
-            TextButton(
-                onClick = {
-                    onConfirmation()
-                }
-            ) {
-                Text("Confirm")
-            }
-        },
+        confirmButton = {},
         dismissButton = {
             TextButton(
                 onClick = {

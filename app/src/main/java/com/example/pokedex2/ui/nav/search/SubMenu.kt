@@ -21,9 +21,6 @@ fun SubMenu(navController: NavHostController, drawerState: DrawerState, data: Li
     MySearchBar(query, vm, filteredData, navController, route, drawerState)
 
     if (isOpenDialog) {
-        NotFoundDialog(
-            onDismissRequest = { vm.setOpenDialog(false) },
-            onConfirmation = { vm.setOpenDialog(false) }
-        )
+        NotFoundDialog(onDismissRequest = { vm.setOpenDialog(false) })
     }
 }
