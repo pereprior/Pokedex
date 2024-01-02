@@ -3,7 +3,6 @@ package com.example.pokedex2.ui.nav
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -11,6 +10,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.DrawerState
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -27,33 +27,39 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun MyModalDrawer(navController: NavHostController, drawerState: DrawerState){
-    Column {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 16.dp),
-            contentAlignment = Alignment.Center
-        ){
-            Image(
-                painter = painterResource(id = R.drawable.pokedex),
-                contentDescription = "Pokedex",
-                modifier = Modifier
-                    .width(200.dp)
-                    .height(164.dp),
-                contentScale = ContentScale.Crop,
-            )
+    LazyColumn(
+        content = {
+            item {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 16.dp),
+                    contentAlignment = Alignment.Center
+                ){
+                    Image(
+                        painter = painterResource(id = R.drawable.pokedex),
+                        contentDescription = "Pokedex",
+                        modifier = Modifier
+                            .width(200.dp)
+                            .height(164.dp),
+                        contentScale = ContentScale.Crop,
+                    )
+                }
+            }
+
+            item { Spacer(modifier = Modifier.size(30.dp)) }
+
+            item {
+                ModalDrawerOption(navController,"Pokedex", R.drawable.pokeball_icon,drawerState)
+                ModalDrawerOption(navController,"Maps", R.drawable.pokeball_icon,drawerState)
+                ModalDrawerOption(navController,"TypeTable", R.drawable.pokeball_icon,drawerState)
+                ModalDrawerOption(navController,"Abilities", R.drawable.pokeball_icon,drawerState)
+                ModalDrawerOption(navController,"Moves", R.drawable.pokeball_icon,drawerState)
+                ModalDrawerOption(navController,"Items", R.drawable.pokeball_icon,drawerState)
+                ModalDrawerOption(navController,"Favorites", R.drawable.pokeball_icon,drawerState)
+            }
         }
-        Spacer(modifier = Modifier.size(30.dp))
-
-        ModalDrawerOption(navController,"Pokedex", R.drawable.pokeball_icon,drawerState)
-        ModalDrawerOption(navController,"Maps", R.drawable.pokeball_icon,drawerState)
-        ModalDrawerOption(navController,"TypeTable", R.drawable.pokeball_icon,drawerState)
-        ModalDrawerOption(navController,"Abilities", R.drawable.pokeball_icon,drawerState)
-        ModalDrawerOption(navController,"Moves", R.drawable.pokeball_icon,drawerState)
-        ModalDrawerOption(navController,"Items", R.drawable.pokeball_icon,drawerState)
-        ModalDrawerOption(navController,"Favorites", R.drawable.pokeball_icon,drawerState)
-
-    }
+    )
 }
 
 @Composable

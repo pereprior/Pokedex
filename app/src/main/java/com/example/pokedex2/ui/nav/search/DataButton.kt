@@ -25,7 +25,7 @@ fun DataButton(navController: NavHostController, name: String, route: String) {
         Text(
             text = capitalized(name),
             textAlign = TextAlign.Start,
-            fontSize = 24.sp,
+            fontSize = 30.sp,
             modifier = Modifier.fillMaxWidth()
         )
     }

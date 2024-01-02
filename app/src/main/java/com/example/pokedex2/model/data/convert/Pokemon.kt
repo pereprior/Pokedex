@@ -24,5 +24,5 @@ class Pokemon(private val p:PokemonInfo = PokemonInfo()) {
 
     val forms:List<String> = p.forms.map { it.name }
 
-    val favorite = false
+    var favorite = false
 }

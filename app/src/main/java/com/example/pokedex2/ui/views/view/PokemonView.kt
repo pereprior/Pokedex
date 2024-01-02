@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -28,6 +29,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -71,7 +75,7 @@ fun PokemonView(
                     modifier = Modifier.background(MaterialTheme.colorScheme.secondary),
                     content = {
                         item {
-                            PokemonImage(p)
+                            PokemonImage(p,vm)
                             Spacer(modifier = Modifier.padding(4.dp))
                             PokemonName(p.name)
                             PokemonType(p.types)
@@ -87,7 +91,8 @@ fun PokemonView(
 }
 
 @Composable
-private fun PokemonImage(p: Pokemon) {
+private fun PokemonImage(p: Pokemon, vm: PokedexViewModel) {
+    var isFav by rememberSaveable { mutableStateOf(false) }
     Box (
         modifier = Modifier
             .fillMaxWidth()
@@ -102,9 +107,14 @@ private fun PokemonImage(p: Pokemon) {
                 .padding(16.dp),
             contentAlignment = Alignment.TopStart
         ) {
-            IconButton(onClick = { /*TODO*/ }) {
+            IconButton(
+                onClick = {
+                    vm.setFavorite(p)
+                    isFav = !isFav
+                }
+            ) {
                 Icon(
-                    imageVector = Icons.Filled.FavoriteBorder,
+                    imageVector = if (isFav) Icons.Filled.Favorite else Icons.Filled.FavoriteBorder,
                     contentDescription = "",
                     modifier = Modifier.size(32.dp),
                     tint = Color.White
@@ -370,9 +380,4 @@ private fun MySize(value: Float, size: SizeType) {
 private enum class SizeType(val value: String) {
     KG("Weight"),
     M("Height")
-}
-
-@Composable
-private fun FavoriteButton() {
-
 }

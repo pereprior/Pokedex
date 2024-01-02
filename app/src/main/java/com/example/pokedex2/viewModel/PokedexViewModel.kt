@@ -140,4 +140,13 @@ class PokedexViewModel(
         }
     }
 
+    fun setFavorite(pokemon: Pokemon) {
+        _favorites.value?.add(pokemon)
+        _pokemon.value?.favorite = true
+    }
+    fun deleteFavorite(pokemon: Pokemon) {
+        _favorites.value?.removeIf { it == pokemon }
+        _pokemon.value?.favorite = false
+    }
+
 }
