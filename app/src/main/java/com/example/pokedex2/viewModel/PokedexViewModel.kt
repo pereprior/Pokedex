@@ -109,15 +109,10 @@ class PokedexViewModel(
         }
     }
 
-    fun getItemList(category:String) {
+    fun getItemList() {
         viewModelScope.launch {
             repository.getGenericData("item").onSuccess {
-
-                repository.getItemsCategory(category).onSuccess {
-
-                }.onFailure { /* TODO */ }
                 _itemList.value = it
-
             }.onFailure { /* TODO */ }
         }
     }

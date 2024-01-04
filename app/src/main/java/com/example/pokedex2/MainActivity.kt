@@ -29,15 +29,9 @@ import com.example.pokedex2.ui.views.list.Mapas
 import com.example.pokedex2.ui.views.list.Movimientos
 import com.example.pokedex2.ui.views.list.Pokedex
 import com.example.pokedex2.ui.views.list.TablaDeTipos
-import com.example.pokedex2.ui.views.list.objects.BattleItem
-import com.example.pokedex2.ui.views.list.objects.Berries
-import com.example.pokedex2.ui.views.list.objects.Cards
-import com.example.pokedex2.ui.views.list.objects.Discs
-import com.example.pokedex2.ui.views.list.objects.KeyItem
-import com.example.pokedex2.ui.views.list.objects.Medicina
-import com.example.pokedex2.ui.views.list.objects.Objetos
-import com.example.pokedex2.ui.views.list.objects.PokeBalls
+import com.example.pokedex2.ui.views.list.Objetos
 import com.example.pokedex2.ui.views.view.AbilityView
+import com.example.pokedex2.ui.views.view.ItemView
 import com.example.pokedex2.ui.views.view.MoveView
 import com.example.pokedex2.ui.views.view.PokemonView
 import com.example.pokedex2.viewModel.PokedexViewModel
@@ -80,16 +74,9 @@ class MainActivity : ComponentActivity() {
             composable("TypeTable") { TablaDeTipos(viewModel, navController) }
             composable("Abilities") { Habilidades(viewModel, drawerState, navController) }
             composable("Moves") { Movimientos(viewModel, drawerState, navController) }
-            composable("Items") { Objetos(navController, drawerState) }
+            composable("Items") { Objetos(viewModel, navController, drawerState) }
             composable("Favorites") { Favoritos(viewModel, drawerState) }
             composable("mainMenu") { MainMenu(navController) }
-            composable("Medicina") { Medicina(viewModel, drawerState) }
-            composable("Poké-Balls") { PokeBalls(viewModel, drawerState) }
-            composable("Mt's/MO's") { Discs(viewModel, drawerState) }
-            composable("Berries") { Berries(viewModel, drawerState) }
-            composable("Cards") { Cards(viewModel, drawerState) }
-            composable("Battle Item") { BattleItem(viewModel, drawerState) }
-            composable("Key Item") { KeyItem(viewModel, drawerState) }
             composable(
                 route = "PokemonView/{selectedPokemon}",
                 arguments = listOf(navArgument("selectedPokemon") { type = NavType.StringType })
@@ -110,6 +97,13 @@ class MainActivity : ComponentActivity() {
             ) { backStackEntry ->
                 val selectedMove = backStackEntry.arguments?.getString("selectedMove")
                 MoveView(viewModel, selectedMove, navController)
+            }
+            composable(
+                route = "ItemView/{selectedItem}",
+                arguments = listOf(navArgument("selectedItem") { type = NavType.StringType })
+            ) { backStackEntry ->
+                val selectedItem = backStackEntry.arguments?.getString("selectedItem")
+                ItemView(viewModel, navController, selectedItem)
             }
         }
     }
