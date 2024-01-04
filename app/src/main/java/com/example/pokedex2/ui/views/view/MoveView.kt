@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -15,6 +16,7 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.capitalize
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
@@ -43,33 +45,100 @@ fun MoveView (
         Scaffold(
             floatingActionButton = { BackFab(navController, "Moves") },
             content = {
-                Column(
+                LazyColumn(
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(16.dp)
                 ) {
-                    Text(
-                        text = "Description: ${m.description}",
-                        modifier = Modifier.padding(bottom = 8.dp)
-                    )
-                    Spacer(modifier = Modifier.height(16.dp))
-
-                    Text(
-                        text = buildAnnotatedString {
-                            append("Category: ")
-                            withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
-                                append("${m.category}")
-                            }
-                        }
-                    )
-
-                    Spacer(modifier = Modifier.height(16.dp))
-
-                    Text(text = "Learned by:")
-                    for (pokemonName in m.learnedBy) {
-                        Text(text = "- ${pokemonName.capitalize()}",
-                            fontWeight = FontWeight.Bold
+                    item {
+                        Text(
+                            text = buildAnnotatedString {
+                                withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
+                                    append("Description: ")
+                                }
+                                append(m.description)
+                            },
+                            modifier = Modifier.padding(bottom = 8.dp)
                         )
+                    }
+
+                    item {
+                        Spacer(modifier = Modifier.height(16.dp))
+                    }
+
+                    item {
+                        Text(
+                            text = buildAnnotatedString {
+                                withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
+                                    append("Category: ")
+                                }
+                                append("${m.category.capitalize()}")
+                            }
+                        )
+                    }
+
+                    item {
+                        Spacer(modifier = Modifier.height(16.dp))
+                    }
+
+                    item {
+                        Text(
+                            text = buildAnnotatedString {
+                                withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
+                                    append("PP: ")
+                                }
+                                append("${m.pp}")
+                            }
+                        )
+                    }
+
+                    item {
+                        Text(
+                            text = buildAnnotatedString {
+                                withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
+                                    append("Power: ")
+                                }
+                                append("${m.power}")
+                            }
+                        )
+                    }
+
+                    item {
+                        Text(
+                            text = buildAnnotatedString {
+                                withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
+                                    append("Accuracy: ")
+                                }
+                                append("${m.accuracy}")
+                            }
+                        )
+                    }
+
+                    item {
+                        Text(
+                            text = buildAnnotatedString {
+                                withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
+                                    append("Priority: ")
+                                }
+                                append("${m.priority}")
+                            }
+                        )
+                    }
+
+                    item {
+                        Spacer(modifier = Modifier.height(16.dp))
+                    }
+                    item {
+                        Text(
+                            text = buildAnnotatedString {
+                                withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
+                                    append("Learned by: ")
+                                }
+                            }
+                        )
+                        for (pokemonName in m.learnedBy) {
+                            Text(text = "- ${pokemonName.capitalize()}")
+                        }
                     }
                 }
             }

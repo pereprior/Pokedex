@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -42,38 +43,54 @@ fun AbilityView(
         Scaffold(
             floatingActionButton = { BackFab(navController, "Abilities") },
             content = {
-                Column(
+                LazyColumn(
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(16.dp)
                 ) {
-                    Text(
-                        text = buildAnnotatedString {
-                            withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
-                                append("Description: ")
-                            }
-                            append(a.description)
-                        },
-                        modifier = Modifier.padding(bottom = 8.dp) // Añade espacio en la parte inferior del texto
-                    )
-
-                    Spacer(modifier = Modifier.height(16.dp))
-
-                    Text(text = "Learned by: ")
-                    for (pokemonName in a.owners) {
-                        Text(text = "- ${pokemonName.capitalize()}",
-                            fontWeight = FontWeight.Bold)
+                    item {
+                        Text(
+                            text = buildAnnotatedString {
+                                withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
+                                    append("Description: ")
+                                }
+                                append(a.description)
+                            },
+                            modifier = Modifier.padding(bottom = 8.dp) // Añade espacio en la parte inferior del texto
+                        )
                     }
 
-                    Spacer(modifier = Modifier.height(16.dp))
-                    Text(
-                        text = buildAnnotatedString {
-                            withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
-                                append("Effect: ")
+                    item {
+                        Spacer(modifier = Modifier.height(16.dp))
+                    }
+
+                    item {
+                        Text(
+                            text = buildAnnotatedString {
+                                withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
+                                    append("Learned by: ")
+                                }
                             }
-                            append(a.effect)
+                        )
+                        for (pokemonName in a.owners) {
+                            Text(text = "- ${pokemonName.capitalize()}")
                         }
-                    )
+                    }
+
+                    item {
+                        Spacer(modifier = Modifier.height(16.dp))
+                    }
+
+                    item {
+                        Text(
+                            text = buildAnnotatedString {
+                                withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
+                                    append("Effect: ")
+                                }
+                                append(a.effect)
+                            }
+                        )
+                    }
                 }
             }
         )
