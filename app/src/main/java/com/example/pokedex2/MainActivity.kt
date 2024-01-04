@@ -40,7 +40,6 @@ import com.example.pokedex2.ui.views.list.objects.PokeBalls
 import com.example.pokedex2.ui.views.view.AbilityView
 import com.example.pokedex2.ui.views.view.MoveView
 import com.example.pokedex2.ui.views.view.PokemonView
-import com.example.pokedex2.ui.views.view.TypeView
 import com.example.pokedex2.viewModel.PokedexViewModel
 
 class MainActivity : ComponentActivity() {
@@ -78,7 +77,7 @@ class MainActivity : ComponentActivity() {
         NavHost(navController = navController, startDestination = "mainMenu") {
             composable("Pokedex") { Pokedex(viewModel, navController, drawerState) }
             composable("Maps") { Mapas(navController) }
-            composable("TypeTable") { TablaDeTipos(viewModel, drawerState, navController) }
+            composable("TypeTable") { TablaDeTipos(viewModel, navController) }
             composable("Abilities") { Habilidades(viewModel, drawerState, navController) }
             composable("Moves") { Movimientos(viewModel, drawerState, navController) }
             composable("Items") { Objetos(navController, drawerState) }
@@ -97,13 +96,6 @@ class MainActivity : ComponentActivity() {
             ) { backStackEntry ->
                 val selectedPokemon = backStackEntry.arguments?.getString("selectedPokemon")
                 PokemonView(viewModel, selectedPokemon, navController)
-            }
-            composable(
-                route = "TypeView/{selectedType}",
-                arguments = listOf(navArgument("selectedType") { type = NavType.StringType })
-            ) { backStackEntry ->
-                val selectedType = backStackEntry.arguments?.getString("selectedType")
-                TypeView(viewModel, selectedType, navController)
             }
             composable(
                 route = "AbilityView/{selectedAbility}",

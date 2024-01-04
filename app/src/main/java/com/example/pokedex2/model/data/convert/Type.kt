@@ -19,7 +19,7 @@ class Type(private val t:TypeInfo = TypeInfo()) {
 
     val weakTo:List<String> = t.damage_relations.half_damage_to.map { it.name }
 
-    val inmmunityFrom:List<String> = t.damage_relations.no_damage_from.map { it.name }
+    val inmunityFrom:List<String> = t.damage_relations.no_damage_from.map { it.name }
 
     val inmunityTo:List<String> = t.damage_relations.no_damage_to.map { it.name }
 }

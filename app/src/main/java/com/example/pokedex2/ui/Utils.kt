@@ -12,6 +12,9 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import com.example.pokedex2.model.api.response.ResponsedUrlData
+import com.example.pokedex2.ui.theme.TypesColor
 import java.util.Locale
 
 fun capitalized(s:String):String {
@@ -56,4 +59,14 @@ fun NotFoundDialog(
             }
         }
     )
+}
+
+fun getTypeColor(type: ResponsedUrlData): Color {
+    var color = Color.Transparent
+    for (e in TypesColor) {
+        if (e.name == type.name){
+            color = e.color
+        }
+    }
+    return color
 }

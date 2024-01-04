@@ -51,6 +51,7 @@ import com.example.pokedex2.model.api.response.pokemon.Stat
 import com.example.pokedex2.model.data.convert.Pokemon
 import com.example.pokedex2.model.api.response.pokemon.Type
 import com.example.pokedex2.ui.WaitCircle
+import com.example.pokedex2.ui.getTypeColor
 import com.example.pokedex2.ui.theme.*
 import com.example.pokedex2.ui.nav.BackFab
 import com.example.pokedex2.viewModel.PokedexViewModel
@@ -149,7 +150,7 @@ private fun PokemonImage(p: Pokemon, vm: PokedexViewModel) {
 }
 
 @Composable
-fun FormsDialog(
+private fun FormsDialog(
     onDismissRequest: () -> Unit,
     images: List<Any>,
 ) {
@@ -265,7 +266,7 @@ fun PokemonType(types: List<Type>) {
 
 @Composable
 private fun MyTypeLabel(type: Type?) {
-    val color = getTypeColor(type!!)
+    val color = getTypeColor(type?.type!!)
 
     Box(
         modifier = Modifier
@@ -418,16 +419,6 @@ private fun getStatColor(statName: String): Color {
         "speed" -> SpdColor
         else -> Color.Gray
     }
-}
-
-private fun getTypeColor(type: Type): Color {
-    var color = Color.Transparent
-    for (e in TypesColor) {
-        if (e.name == type.type.name){
-            color = e.color
-        }
-    }
-    return color
 }
 
 @Composable
