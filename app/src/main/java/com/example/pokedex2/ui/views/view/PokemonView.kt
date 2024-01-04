@@ -18,8 +18,10 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
+import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -37,9 +39,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.window.Dialog
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import com.example.pokedex2.model.api.response.pokemon.Ability
@@ -93,6 +97,8 @@ fun PokemonView(
 @Composable
 private fun PokemonImage(p: Pokemon, vm: PokedexViewModel) {
     var isFav by rememberSaveable { mutableStateOf(false) }
+    var isOpenDialog by rememberSaveable { mutableStateOf(false) }
+
     Box (
         modifier = Modifier
             .fillMaxWidth()
@@ -129,10 +135,84 @@ private fun PokemonImage(p: Pokemon, vm: PokedexViewModel) {
             modifier = Modifier
                 .size(200.dp)
                 .clickable {
-                    /*isShiny = !isShiny
-                    isFirstClick = false*/
+                    isOpenDialog = true
                 }
         )
+
+        if (isOpenDialog) {
+            FormsDialog(
+                onDismissRequest = { isOpenDialog = false },
+                images = p.forms
+            )
+        }
+    }
+}
+
+@Composable
+fun FormsDialog(
+    onDismissRequest: () -> Unit,
+    images: List<Any>,
+) {
+    Dialog(onDismissRequest = { onDismissRequest() }) {
+        Card(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(375.dp)
+                .padding(16.dp),
+            shape = RoundedCornerShape(16.dp),
+        ) {
+            Column(
+                modifier = Modifier
+                    .fillMaxSize(),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
+                Box {
+                    LazyColumn(
+                        content = {
+                            item {
+                                images.forEach { imageUrl ->
+                                    Box(
+                                        modifier = Modifier.fillMaxWidth(),
+                                        contentAlignment = Alignment.Center
+                                    ) {
+                                        if (imageUrl is String) {
+                                            AsyncImage(
+                                                model = imageUrl,
+                                                contentDescription = "",
+                                                contentScale = ContentScale.Fit,
+                                                modifier = Modifier
+                                                    .height(160.dp)
+                                            )
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    )
+
+                    Box (
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(8.dp),
+                        contentAlignment = Alignment.TopEnd
+                    ) {
+                        IconButton(
+                            onClick = {
+                                onDismissRequest()
+                            },
+                            modifier = Modifier.size(32.dp)
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.Close,
+                                contentDescription = null,
+                                tint = Color.Black
+                            )
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -279,6 +359,12 @@ private fun MyStat(stat: Stat) {
         }
         Spacer(modifier = Modifier.padding(8.dp))
 
+        val barSize = when {
+            stat.base_stat > 165 -> 165
+            stat.base_stat < 20 -> 20
+            else -> stat.base_stat
+        }
+
         Box {
             Canvas(modifier = Modifier
                 .width(300.dp)
@@ -295,7 +381,7 @@ private fun MyStat(stat: Stat) {
             Box(contentAlignment = Alignment.BottomCenter) {
                 Canvas(
                     modifier = Modifier
-                        .width((stat.base_stat * 2).dp)
+                        .width((barSize * 2).dp)
                         .height(36.dp)
                         .padding(8.dp)
                         .clip(RoundedCornerShape(16.dp))
@@ -308,7 +394,7 @@ private fun MyStat(stat: Stat) {
 
                 Box(
                     modifier = Modifier
-                        .width((stat.base_stat * 1.5).dp)
+                        .width((barSize * 1.5).dp)
                         .padding(bottom = 10.dp),
                     contentAlignment = Alignment.CenterEnd
                 ) {
@@ -351,8 +437,8 @@ fun PokemonSize(p:Pokemon){
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Start
     ) {
-        MySize(p.weight/10, SizeType.KG)
-        MySize(p.height/10, SizeType.M)
+        MySize(p.weight, SizeType.KG)
+        MySize(p.height, SizeType.M)
     }
 }
 

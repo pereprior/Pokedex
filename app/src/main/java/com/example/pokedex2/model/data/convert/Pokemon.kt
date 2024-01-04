@@ -8,9 +8,9 @@ class Pokemon(private val p:PokemonInfo = PokemonInfo()) {
 
     val name: String = p.name
 
-    val height: Float = p.height.toFloat()
+    val height: Float = p.height/10f
 
-    val weight: Float = p.weight.toFloat()
+    val weight: Float = p.weight/10f
 
     val stats: List<Stat> = p.stats.map { it }
 
@@ -20,9 +20,16 @@ class Pokemon(private val p:PokemonInfo = PokemonInfo()) {
 
     val normalSprite: String = p.sprites.other.home.front_default
 
-    val shinySprite: String = p.sprites.other.home.front_shiny
-
-    val forms:List<String> = p.forms.map { it.name }
+    val forms:List<Any> = listOf(
+        p.sprites.front_default,
+        p.sprites.back_default,
+        p.sprites.front_shiny,
+        p.sprites.back_shiny,
+        p.sprites.front_female,
+        p.sprites.back_female,
+        p.sprites.front_shiny_female,
+        p.sprites.back_shiny_female
+    )
 
     var favorite = false
 }
