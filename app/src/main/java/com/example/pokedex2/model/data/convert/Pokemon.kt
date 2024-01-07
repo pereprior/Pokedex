@@ -3,7 +3,7 @@ package com.example.pokedex2.model.data.convert
 import com.example.pokedex2.model.api.response.pokemon.PokemonInfo
 import com.example.pokedex2.model.api.response.pokemon.Stat
 
-class Pokemon(private val p:PokemonInfo = PokemonInfo()) {
+class Pokemon(p: PokemonInfo = PokemonInfo()) {
     val dexNumber: Int = p.id
 
     val name: String = p.name

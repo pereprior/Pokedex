@@ -3,7 +3,7 @@ package com.example.pokedex2.model.data.convert
 import com.example.pokedex2.model.api.response.ability.AbilityInfo
 import com.example.pokedex2.ui.theme.LANGUAGE_KEY
 
-class Ability(private val a:AbilityInfo = AbilityInfo()) {
+class Ability(a: AbilityInfo = AbilityInfo()) {
     val id:Int = a.id
 
     val name:String = a.name

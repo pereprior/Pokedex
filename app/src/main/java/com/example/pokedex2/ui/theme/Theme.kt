@@ -15,12 +15,10 @@ import androidx.core.view.WindowCompat
 private val DarkColorScheme = darkColorScheme(
     primary = PrimaryPokedexColor,
     secondary = DarkGrey,
-    tertiary = Pink80,
     background = Color.Black,
     surface = Color.Black,
     onPrimary = Color.Black,
     onSecondary = Color.Black,
-    onTertiary = Color.Black,
     onBackground = Color.White,
     onSurface = Color.White
 )
@@ -28,12 +26,10 @@ private val DarkColorScheme = darkColorScheme(
 private val LightColorScheme = lightColorScheme(
     primary = PrimaryPokedexColor,
     secondary = DarkGrey,
-    tertiary = Pink40,
     background = Color.White,
     surface = Color.White,
     onPrimary = Color.White,
     onSecondary = Color.White,
-    onTertiary = Color.White,
     onBackground = Color.Black,
     onSurface = Color.Black
 )

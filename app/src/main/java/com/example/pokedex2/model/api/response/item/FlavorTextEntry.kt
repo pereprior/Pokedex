@@ -4,6 +4,6 @@ import com.example.pokedex2.model.api.response.ResponsedUrlData
 
 data class FlavorTextEntry(
     val language: ResponsedUrlData,
-    val flavor_text: String,
+    val text: String,
     val version_group: ResponsedUrlData
 )

@@ -50,20 +50,19 @@ fun MyModalDrawer(navController: NavHostController, drawerState: DrawerState){
             item { Spacer(modifier = Modifier.size(30.dp)) }
 
             item {
-                ModalDrawerOption(navController,"Pokedex", R.drawable.pokeball_icon,drawerState)
-                ModalDrawerOption(navController,"Maps", R.drawable.pokeball_icon,drawerState)
-                ModalDrawerOption(navController,"TypeTable", R.drawable.pokeball_icon,drawerState)
-                ModalDrawerOption(navController,"Abilities", R.drawable.pokeball_icon,drawerState)
-                ModalDrawerOption(navController,"Moves", R.drawable.pokeball_icon,drawerState)
-                ModalDrawerOption(navController,"Items", R.drawable.pokeball_icon,drawerState)
-                ModalDrawerOption(navController,"Favorites", R.drawable.pokeball_icon,drawerState)
+                ModalDrawerOption(navController,"PokemonView/Pokedex","Pokedex", R.drawable.pokeball_icon,drawerState)
+                ModalDrawerOption(navController,"Maps/Region Maps","Region Maps", R.drawable.pokeball_icon,drawerState)
+                ModalDrawerOption(navController,"TypeTable/Types Table","Types Table", R.drawable.pokeball_icon,drawerState)
+                ModalDrawerOption(navController,"AbilityView/Abilities","Abilities", R.drawable.pokeball_icon,drawerState)
+                ModalDrawerOption(navController,"MoveView/Moves","Moves", R.drawable.pokeball_icon,drawerState)
+                ModalDrawerOption(navController,"ItemView/Items","Items", R.drawable.pokeball_icon,drawerState)
             }
         }
     )
 }
 
 @Composable
-private fun ModalDrawerOption(navController: NavHostController, route:String, image:Int, drawerState: DrawerState) {
+private fun ModalDrawerOption(navController: NavHostController, route:String, name:String, image:Int, drawerState: DrawerState) {
     val scope = rememberCoroutineScope()
 
     Row(
@@ -86,6 +85,6 @@ private fun ModalDrawerOption(navController: NavHostController, route:String, im
                 .padding(horizontal = 20.dp)
                 .size(24.dp)
         )
-        Text(text = route)
+        Text(text = name)
     }
 }

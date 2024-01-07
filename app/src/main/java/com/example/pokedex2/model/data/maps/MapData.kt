@@ -3,7 +3,7 @@ package com.example.pokedex2.model.data.maps
 import com.example.pokedex2.R
 
 object MapData {
-    val imageList = listOf(
+    private val imageList = listOf(
         R.drawable.mapaalola,
         R.drawable.mapagalar,
         R.drawable.mapahoenn,
@@ -15,7 +15,7 @@ object MapData {
         R.drawable.mapateselia
     )
 
-    val mapNames = listOf(
+    private val mapNames = listOf(
         "Alola",
         "Galar",
         "Hoenn",

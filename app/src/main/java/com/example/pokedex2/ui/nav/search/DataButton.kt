@@ -7,6 +7,8 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -17,14 +19,21 @@ import com.example.pokedex2.ui.capitalized
 fun DataButton(navController: NavHostController, name: String, route: String) {
     Spacer(modifier = Modifier.padding(4.dp))
     Button(
-        onClick = { navController.navigate("$route/$name") },
+        onClick = {
+            navController.navigate("$route/$name")
+        },
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
+            .shadow(
+                elevation = 16.dp,
+                ambientColor = Color.Black,
+                spotColor = Color.Black
+            )
     ) {
         Text(
             text = capitalized(name),
-            textAlign = TextAlign.Start,
+            textAlign = TextAlign.Center,
             fontSize = 30.sp,
             modifier = Modifier.fillMaxWidth()
         )

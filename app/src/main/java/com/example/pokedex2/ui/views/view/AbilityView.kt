@@ -1,10 +1,6 @@
 package com.example.pokedex2.ui.views.view
 
 import android.annotation.SuppressLint
-import android.app.Activity
-import android.content.Context
-import android.content.ContextWrapper
-import android.content.pm.ActivityInfo
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -13,12 +9,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
@@ -44,10 +38,10 @@ fun AbilityView(
     val a by vm.selectedAbility.observeAsState(initial = Ability())
 
     if (a.name.isEmpty()) {
-        WaitCircle()
+        WaitCircle("AbilityView/Abilities", navController)
     } else {
         Scaffold(
-            floatingActionButton = { BackFab(navController, "Abilities") },
+            floatingActionButton = { BackFab(navController, "AbilityView/Abilities") },
             content = {
                 LazyColumn(
                     modifier = Modifier

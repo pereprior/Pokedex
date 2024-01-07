@@ -23,7 +23,7 @@ fun Habilidades(vm: PokedexViewModel, drawerState: DrawerState, navController: N
     val abilityList = dataList.results
 
     if (abilityList.isEmpty()) {
-        WaitCircle()
+        WaitCircle("mainMenu", navController)
     } else {
         SubMenu(
             navController = navController,

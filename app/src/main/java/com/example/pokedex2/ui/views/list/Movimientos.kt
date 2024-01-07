@@ -23,7 +23,7 @@ fun Movimientos(vm: PokedexViewModel, drawerState: DrawerState, navController: N
     val moveList = dataList.results
 
     if (moveList.isEmpty()) {
-        WaitCircle()
+        WaitCircle("mainMenu", navController)
     } else {
         SubMenu(
             navController = navController,

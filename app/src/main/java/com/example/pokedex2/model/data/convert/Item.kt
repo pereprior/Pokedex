@@ -3,12 +3,12 @@ package com.example.pokedex2.model.data.convert
 import com.example.pokedex2.model.api.response.item.ItemInfo
 import com.example.pokedex2.ui.theme.LANGUAGE_KEY
 
-class Item(private val i:ItemInfo) {
+class Item(i: ItemInfo = ItemInfo()) {
     val id:Int = i.id
 
     val name:String = i.name
 
-    val category:String = i.category.pocket.name
+    val category:String = i.category.name
 
     val description:String = getDescription(i)
 
@@ -22,7 +22,7 @@ private fun getDescription(i:ItemInfo):String{
 
     for (e in i.flavor_text_entries){
         if (e.language.name == LANGUAGE_KEY) {
-            result = e.flavor_text
+            result = e.text
         }
     }
 

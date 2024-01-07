@@ -10,7 +10,7 @@ import androidx.compose.ui.platform.LocalContext
 
 @Composable
 fun LockScreenOrientation() {
-    LockScreenOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE)
+    LockScreenOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED)
 }
 
 @Composable
