@@ -9,4 +9,10 @@ Consiste en una Pokédex completa compatible con Android, utilizando los datos d
 * **Pere Prior** - *Creación de la estructura de la aplicación • Implementación del MVVM* - [pereprior](https://github.com/pereprior)
 * **Raúl Simarro** - *Diseño del proyecto • Desarrollo del UI* - [raulsimarro](https://github.com/Alusim0931)
 
-## 
+## Detalles 💻
+
+|               |                  |
+| ------------- | ---------------- |
+| Idioma        | English          |
+| Lenguaje      | Kotlin           |
+| IDE           | Android Studio   |
