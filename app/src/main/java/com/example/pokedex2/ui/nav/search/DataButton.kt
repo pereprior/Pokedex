@@ -29,7 +29,7 @@ fun DataButton(navController: NavHostController, name: String, route: String) {
                 elevation = 16.dp,
                 ambientColor = Color.Black,
                 spotColor = Color.Black
-            ),
+            )
     ) {
         Text(
             text = capitalized(name),

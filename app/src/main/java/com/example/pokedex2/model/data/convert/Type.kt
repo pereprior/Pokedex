@@ -4,7 +4,7 @@ import androidx.compose.ui.graphics.Color
 import com.example.pokedex2.model.api.response.type.TypeInfo
 import com.example.pokedex2.ui.theme.TypesColor
 
-class Type(private val t:TypeInfo = TypeInfo()) {
+class Type(t: TypeInfo = TypeInfo()) {
     val id:Int = t.id
 
     val name:String = t.name

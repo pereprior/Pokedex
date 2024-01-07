@@ -57,11 +57,11 @@ import com.example.pokedex2.model.api.response.pokemon.Stat
 import com.example.pokedex2.model.data.convert.Pokemon
 import com.example.pokedex2.model.api.response.pokemon.Type
 import com.example.pokedex2.ui.WaitCircle
+import com.example.pokedex2.ui.capitalized
 import com.example.pokedex2.ui.getTypeColor
 import com.example.pokedex2.ui.theme.*
 import com.example.pokedex2.ui.nav.BackFab
 import com.example.pokedex2.viewModel.PokedexViewModel
-import java.util.Locale
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
@@ -77,7 +77,7 @@ fun PokemonView(
     val p by vm.selectedPokemon.observeAsState(initial = Pokemon())
 
     if (p.name.isEmpty()) {
-        WaitCircle("Pokedex", navController)
+        WaitCircle("PokemonView/Pokedex", navController)
     } else {
         var offset by remember { mutableFloatStateOf(0f) }
 
@@ -96,7 +96,7 @@ fun PokemonView(
 
         Scaffold (
             modifier = Modifier.offset(offset.dp),
-            floatingActionButton = { BackFab(navController,"Pokedex") },
+            floatingActionButton = { BackFab(navController,"PokemonView/Pokedex") },
             content = {
                 LazyColumn(
                     modifier = Modifier.background(MaterialTheme.colorScheme.secondary),
@@ -264,7 +264,7 @@ private fun PokemonName(name:String) {
         contentAlignment = Alignment.Center
     ) {
         Text(
-            text = name.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString() },
+            text = capitalized(name),
             fontSize = 40.sp,
             color = MaterialTheme.colorScheme.onSecondary,
         )
@@ -299,7 +299,7 @@ private fun MyTypeLabel(type: Type?) {
             .background(color),
         contentAlignment = Alignment.Center
     ) {
-        Text(text = type.type.name.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString() })
+        Text(text = capitalized(type.type.name))
     }
 }
 
@@ -315,7 +315,7 @@ fun PokemonAbilities(abilities: List<Ability>) {
         val normalAbilities = abilities.filter { !it.is_hidden }
         val hiddenAbilities = abilities.filter { it.is_hidden }
 
-        Text(text = "Normal Abilities", modifier = Modifier.padding(8.dp), color = MyGrey)
+        Text(text = "Normal Abilities", modifier = Modifier.padding(8.dp), color = LightGrey)
         Row {
             normalAbilities.forEach { ability ->
                 MyAbilityLabel(ability)
@@ -324,7 +324,7 @@ fun PokemonAbilities(abilities: List<Ability>) {
 
         if (hiddenAbilities.isNotEmpty()) {
             Spacer(modifier = Modifier.height(8.dp))
-            Text(text = "Hidden Abilities", modifier = Modifier.padding(8.dp), color = MyGrey)
+            Text(text = "Hidden Abilities", modifier = Modifier.padding(8.dp), color = LightGrey)
             hiddenAbilities.forEach { hiddenAbility ->
                 MyAbilityLabel(hiddenAbility)
             }
@@ -343,7 +343,7 @@ private fun MyAbilityLabel(ability: Ability?) {
             .background(MaterialTheme.colorScheme.onSecondary),
         contentAlignment = Alignment.Center
     ) {
-        Text(text = ability!!.ability.name)
+        Text(text = capitalized(ability!!.ability.name))
     }
 }
 
@@ -354,7 +354,7 @@ fun PokemonStats(stats: List<Stat>) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Text(text = "Base Stats", modifier = Modifier.padding(bottom = 8.dp, top = 16.dp), color = MyGrey)
+        Text(text = "Base Stats", modifier = Modifier.padding(bottom = 8.dp, top = 16.dp), color = LightGrey)
         Column(modifier = Modifier
             .fillMaxWidth()
             .padding(start = 24.dp)) {
@@ -471,7 +471,7 @@ private fun MySize(value: Float, size: SizeType) {
         Spacer(modifier = Modifier.padding(4.dp))
         Text(
             text = size.value,
-            color = MyGrey
+            color = LightGrey
         )
     }
 }

@@ -40,7 +40,6 @@ class PokedexViewModel(
     val selectedMove: LiveData<Move> = _move
     val selectedItem: LiveData<Item> = _item
     val selectedAbility: LiveData<Ability> = _ability
-    val favorites: LiveData<ArrayList<Pokemon>> = _favorites
 
     fun getPokemon(name:String) {
         viewModelScope.launch {
@@ -138,10 +137,6 @@ class PokedexViewModel(
     fun setFavorite(pokemon: Pokemon) {
         _favorites.value?.add(pokemon)
         _pokemon.value?.favorite = true
-    }
-    fun deleteFavorite(pokemon: Pokemon) {
-        _favorites.value?.removeIf { it == pokemon }
-        _pokemon.value?.favorite = false
     }
 
 }

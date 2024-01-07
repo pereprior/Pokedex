@@ -2,16 +2,10 @@ package com.example.pokedex2.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-// Light Theme
-val Pink80 = Color(0xFFEFB8C8)
-
-// Dark Theme
-val Pink40 = Color(0xFF7D5260)
-
 // Default
 val PrimaryPokedexColor = Color(0xFFC92133)
 val DarkGrey = Color(0xFF2b292c)
-val MyGrey = Color(0xff6d6a6d)
+val LightGrey = Color(0xff6d6a6d)
 
 // Bar Color
 val HPColor = Color(0xFFF5FF00)

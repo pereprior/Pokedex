@@ -1,7 +1,6 @@
 package com.example.pokedex2.ui.views.view
 
 import android.annotation.SuppressLint
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -21,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.pokedex2.model.data.convert.Ability
 import com.example.pokedex2.ui.WaitCircle
+import com.example.pokedex2.ui.capitalized
 import com.example.pokedex2.ui.nav.BackFab
 import com.example.pokedex2.viewModel.PokedexViewModel
 
@@ -38,10 +38,10 @@ fun AbilityView(
     val a by vm.selectedAbility.observeAsState(initial = Ability())
 
     if (a.name.isEmpty()) {
-        WaitCircle("Abilities", navController)
+        WaitCircle("AbilityView/Abilities", navController)
     } else {
         Scaffold(
-            floatingActionButton = { BackFab(navController, "Abilities") },
+            floatingActionButton = { BackFab(navController, "AbilityView/Abilities") },
             content = {
                 LazyColumn(
                     modifier = Modifier
@@ -73,7 +73,7 @@ fun AbilityView(
                             }
                         )
                         for (pokemonName in a.owners) {
-                            Text(text = "- ${pokemonName.capitalize()}")
+                            Text(text = "- ${capitalized(pokemonName)}")
                         }
                     }
 

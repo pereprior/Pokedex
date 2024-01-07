@@ -1,7 +1,6 @@
 package com.example.pokedex2.ui.views.view
 
 import android.annotation.SuppressLint
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -16,13 +15,13 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.text.capitalize
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.pokedex2.model.data.convert.Move
 import com.example.pokedex2.ui.WaitCircle
+import com.example.pokedex2.ui.capitalized
 import com.example.pokedex2.ui.nav.BackFab
 import com.example.pokedex2.viewModel.PokedexViewModel
 
@@ -40,10 +39,10 @@ fun MoveView (
     val m by vm.selectedMove.observeAsState(initial = Move())
 
     if (m.name.isEmpty()) {
-        WaitCircle("Moves", navController)
+        WaitCircle("MoveView/Moves", navController)
     } else {
         Scaffold(
-            floatingActionButton = { BackFab(navController, "Moves") },
+            floatingActionButton = { BackFab(navController, "MoveView/Moves") },
             content = {
                 LazyColumn(
                     modifier = Modifier
@@ -72,7 +71,7 @@ fun MoveView (
                                 withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
                                     append("Category: ")
                                 }
-                                append("${m.category.capitalize()}")
+                                append(capitalized(m.category))
                             }
                         )
                     }
@@ -137,7 +136,7 @@ fun MoveView (
                             }
                         )
                         for (pokemonName in m.learnedBy) {
-                            Text(text = "- ${pokemonName.capitalize()}")
+                            Text(text = "- ${capitalized(pokemonName)}")
                         }
                     }
                 }

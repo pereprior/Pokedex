@@ -58,10 +58,10 @@ fun ItemView(vm: PokedexViewModel, navController: NavHostController, selectedIte
     val blurRange = 0f..10f
 
     if (i.name.isEmpty()) {
-        WaitCircle("Items", navController)
+        WaitCircle("ItemView/Items", navController)
     } else {
         Scaffold (
-            floatingActionButton = { BackFab(navController,"Items") },
+            floatingActionButton = { BackFab(navController,"ItemView/Items") },
             content = {
                 LazyColumn(
                     modifier = Modifier

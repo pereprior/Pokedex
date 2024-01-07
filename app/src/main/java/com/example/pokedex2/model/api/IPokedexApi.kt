@@ -3,7 +3,6 @@ package com.example.pokedex2.model.api
 import com.example.pokedex2.model.api.response.PokedexResponse
 import com.example.pokedex2.model.api.response.ability.AbilityInfo
 import com.example.pokedex2.model.api.response.item.ItemInfo
-import com.example.pokedex2.model.api.response.item.PocketInfo
 import com.example.pokedex2.model.api.response.move.MoveInfo
 import com.example.pokedex2.model.api.response.pokemon.PokemonInfo
 import com.example.pokedex2.model.api.response.type.TypeInfo
@@ -52,8 +51,4 @@ interface IPokedexApi {
     suspend fun getItem(
         @Path("id") id:String
     ): ItemInfo
-    @GET("item-pocket/{id}")
-    suspend fun getItemPocket(
-        @Path("id") id:String
-    ): PocketInfo
 }
