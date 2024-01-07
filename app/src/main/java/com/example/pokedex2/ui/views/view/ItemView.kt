@@ -58,7 +58,7 @@ fun ItemView(vm: PokedexViewModel, navController: NavHostController, selectedIte
     val blurRange = 0f..10f
 
     if (i.name.isEmpty()) {
-        WaitCircle()
+        WaitCircle("Items", navController)
     } else {
         Scaffold (
             floatingActionButton = { BackFab(navController,"Items") },

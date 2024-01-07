@@ -10,11 +10,18 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.navigation.NavHostController
 import com.example.pokedex2.model.api.response.ResponsedUrlData
 import com.example.pokedex2.ui.theme.TypesColor
+import kotlinx.coroutines.delay
 import java.util.Locale
 
 fun capitalized(s:String):String {
@@ -22,12 +29,22 @@ fun capitalized(s:String):String {
 }
 
 @Composable
-fun WaitCircle() {
+fun WaitCircle(route: String, navController: NavHostController) {
     Box (
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
+        var error by remember { mutableStateOf(false) }
         CircularProgressIndicator()
+
+        LaunchedEffect(Unit) {
+            delay(10000)
+            error = true
+        }
+
+        if (error) {
+            NotFoundDialog(onDismissRequest = { navController.navigate(route) })
+        }
     }
 }
 

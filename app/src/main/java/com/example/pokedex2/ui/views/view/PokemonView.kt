@@ -1,6 +1,9 @@
 package com.example.pokedex2.ui.views.view
 
 import android.annotation.SuppressLint
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.animate
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -12,6 +15,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -31,7 +35,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -71,9 +77,25 @@ fun PokemonView(
     val p by vm.selectedPokemon.observeAsState(initial = Pokemon())
 
     if (p.name.isEmpty()) {
-        WaitCircle()
+        WaitCircle("Pokedex", navController)
     } else {
+        var offset by remember { mutableFloatStateOf(0f) }
+
+        LaunchedEffect(Unit) {
+            animate(
+                initialValue = -1000f,
+                targetValue = 0f,
+                animationSpec = tween(
+                    durationMillis = 800,
+                    easing = LinearEasing
+                )
+            ) { value, _ ->
+                offset = value
+            }
+        }
+
         Scaffold (
+            modifier = Modifier.offset(offset.dp),
             floatingActionButton = { BackFab(navController,"Pokedex") },
             content = {
                 LazyColumn(

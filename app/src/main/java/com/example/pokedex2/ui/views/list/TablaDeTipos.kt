@@ -62,7 +62,7 @@ fun TablaDeTipos(vm: PokedexViewModel, navController: NavHostController) {
     var selectedType by rememberSaveable { mutableStateOf("") }
 
     if (typeList.isEmpty()) {
-        WaitCircle()
+        WaitCircle("mainMenu",navController)
     } else {
         Scaffold(
             floatingActionButton = { BackFab(navController, route = "mainMenu") },

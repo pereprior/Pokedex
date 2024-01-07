@@ -23,7 +23,6 @@ import androidx.navigation.navArgument
 import com.example.pokedex2.ui.menu.MainMenu
 import com.example.pokedex2.ui.theme.Pokedex2Theme
 import com.example.pokedex2.ui.nav.MyModalDrawer
-import com.example.pokedex2.ui.views.list.Favoritos
 import com.example.pokedex2.ui.views.list.Habilidades
 import com.example.pokedex2.ui.views.list.Mapas
 import com.example.pokedex2.ui.views.list.Movimientos
@@ -42,7 +41,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             Pokedex2Theme {
                 val navController = rememberNavController()
-                val viewModel by viewModels<PokedexViewModel>()
+                val pokedexVM by viewModels<PokedexViewModel>()
                 val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
 
                 ModalNavigationDrawer(
@@ -55,7 +54,7 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier.fillMaxSize(),
                         color = MaterialTheme.colorScheme.background
                     ) {
-                        NavigationController(navController, viewModel, drawerState)
+                        NavigationController(navController, pokedexVM, drawerState)
                     }
                 }
             }
@@ -66,16 +65,15 @@ class MainActivity : ComponentActivity() {
     private fun NavigationController(
         navController: NavHostController,
         viewModel: PokedexViewModel,
-        drawerState: DrawerState
+        drawerState: DrawerState,
     ) {
         NavHost(navController = navController, startDestination = "mainMenu") {
-            composable("Pokedex") { Pokedex(viewModel, navController, drawerState) }
-            composable("Maps") { Mapas(navController) }
-            composable("TypeTable") { TablaDeTipos(viewModel, navController) }
-            composable("Abilities") { Habilidades(viewModel, drawerState, navController) }
-            composable("Moves") { Movimientos(viewModel, drawerState, navController) }
-            composable("Items") { Objetos(viewModel, navController, drawerState) }
-            composable("Favorites") { Favoritos(viewModel, drawerState) }
+            composable("PokemonView/Pokedex") { Pokedex(viewModel, navController, drawerState) }
+            composable("Maps/Region Maps") { Mapas(navController) }
+            composable("TypeTable/Types Table") { TablaDeTipos(viewModel, navController) }
+            composable("AbilityView/Abilities") { Habilidades(viewModel, drawerState, navController) }
+            composable("MoveView/Moves") { Movimientos(viewModel, drawerState, navController) }
+            composable("ItemView/Items") { Objetos(viewModel, navController, drawerState) }
             composable("mainMenu") { MainMenu(navController) }
             composable(
                 route = "PokemonView/{selectedPokemon}",

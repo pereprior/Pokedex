@@ -127,6 +127,7 @@ private fun HelpDialog(
                         }
                         .padding(20.dp)
                 )
+                Text(text = "authors: Pere Prior & Raul Simarro", color = Color.White)
             }
         }
     )

@@ -40,7 +40,7 @@ fun MoveView (
     val m by vm.selectedMove.observeAsState(initial = Move())
 
     if (m.name.isEmpty()) {
-        WaitCircle()
+        WaitCircle("Moves", navController)
     } else {
         Scaffold(
             floatingActionButton = { BackFab(navController, "Moves") },

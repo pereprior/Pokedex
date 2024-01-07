@@ -38,7 +38,7 @@ fun AbilityView(
     val a by vm.selectedAbility.observeAsState(initial = Ability())
 
     if (a.name.isEmpty()) {
-        WaitCircle()
+        WaitCircle("Abilities", navController)
     } else {
         Scaffold(
             floatingActionButton = { BackFab(navController, "Abilities") },

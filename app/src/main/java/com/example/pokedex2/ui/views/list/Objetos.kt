@@ -25,7 +25,7 @@ fun Objetos(
     val itemList = dataList.results
 
     if (itemList.isEmpty()) {
-        WaitCircle()
+        WaitCircle("mainMenu", navController)
     } else {
         SubMenu(
             navController = navController,
