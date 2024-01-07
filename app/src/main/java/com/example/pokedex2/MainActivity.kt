@@ -64,6 +64,7 @@ class MainActivity : ComponentActivity() {
                         NavigationController(navController, viewModel, drawerState)
                     }
                 }
+                LockScreenOrientation()
             }
         }
     }
