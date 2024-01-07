@@ -138,5 +138,4 @@ class PokedexViewModel(
         _favorites.value?.add(pokemon)
         _pokemon.value?.favorite = true
     }
-
 }
