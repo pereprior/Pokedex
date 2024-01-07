@@ -1,6 +1,6 @@
 # Pokédex
-![Badge](https://img.shields.io/badge/STATUS-EN%20DESAROLLO-green)
 ![Badge](https://img.shields.io/badge/LICENCE-FREE-blue)
+![Badge](https://img.shields.io/badge/STATUS-EN%20DESAROLLO-green)
 
 Consiste en una Pokédex completa compatible con Android, utilizando los datos de [PokeApi v2](https://pokeapi.co/).
 
