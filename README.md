@@ -11,9 +11,11 @@ Consiste en una Pokédex completa compatible con Android, utilizando los datos d
 
 ## Detalles 💻
 <div align="center">
+  
 |               |                  |
 | ------------- | ---------------- |
 | Idioma        | English          |
 | Lenguaje      | Kotlin           |
 | IDE           | Android Studio   |
+
 </div>
