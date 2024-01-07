@@ -9,11 +9,11 @@
 
 Consiste en una Pokédex completa compatible con Android, utilizando los datos de [PokeApi v2](https://pokeapi.co/).
 
-<p align="center">
+<h2>
 
 ## Autores ✒️
 
-</p>
+<h2>
 
 * **Pere Prior** - *Creación de la estructura de la aplicación • Implementación del MVVM* - [pereprior](https://github.com/pereprior)
 * **Raúl Simarro** - *Diseño del proyecto • Desarrollo del UI* - [raulsimarro](https://github.com/Alusim0931)
