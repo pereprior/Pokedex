@@ -57,7 +57,6 @@ class MainActivity : ComponentActivity() {
                         NavigationController(navController, pokedexVM, drawerState)
                     }
                 }
-                LockScreenOrientation()
             }
         }
     }
