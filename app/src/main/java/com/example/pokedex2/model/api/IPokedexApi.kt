@@ -6,22 +6,10 @@ import com.example.pokedex2.model.api.response.item.ItemInfo
 import com.example.pokedex2.model.api.response.move.MoveInfo
 import com.example.pokedex2.model.api.response.pokemon.PokemonInfo
 import com.example.pokedex2.model.api.response.type.TypeInfo
-import okhttp3.OkHttpClient
-import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface IPokedexApi {
-    companion object {
-        val instance: IPokedexApi = Retrofit.Builder()
-            .baseUrl("https://pokeapi.co/api/v2/")
-            .addConverterFactory(MoshiConverterFactory.create())
-            .client(OkHttpClient.Builder().build())
-            .build()
-            .create(IPokedexApi::class.java)
-    }
-
     @GET("{item}?limit=100000&offset=0")
     suspend fun getResponse(
         @Path("item") item:String

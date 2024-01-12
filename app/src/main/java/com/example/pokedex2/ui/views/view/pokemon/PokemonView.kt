@@ -102,7 +102,7 @@ fun PokemonView(
                     modifier = Modifier.background(MaterialTheme.colorScheme.secondary),
                     content = {
                         item {
-                            PokemonImage(p,vm)
+                            PokemonImage(p)
                             Spacer(modifier = Modifier.padding(4.dp))
                             PokemonName(p.name)
                             PokemonType(p.types)
@@ -118,7 +118,7 @@ fun PokemonView(
 }
 
 @Composable
-private fun PokemonImage(p: Pokemon, vm: PokedexViewModel) {
+private fun PokemonImage(p: Pokemon) {
     var isFav by rememberSaveable { mutableStateOf(false) }
     var isOpenDialog by rememberSaveable { mutableStateOf(false) }
 
@@ -138,7 +138,6 @@ private fun PokemonImage(p: Pokemon, vm: PokedexViewModel) {
         ) {
             IconButton(
                 onClick = {
-                    vm.setFavorite(p)
                     isFav = !isFav
                 }
             ) {

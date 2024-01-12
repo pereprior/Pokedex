@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.pokedex2.model.api.IPokedexApi
 import com.example.pokedex2.model.api.PokedexRepository
 import com.example.pokedex2.model.api.response.PokedexResponse
 import com.example.pokedex2.model.data.convert.Ability
@@ -18,7 +17,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class PokedexViewModel @Inject constructor(
-    private val repository: PokedexRepository = PokedexRepository(IPokedexApi.instance)
+    private val repository: PokedexRepository
 ) : ViewModel() {
 
     private var _pokemonList = MutableLiveData<PokedexResponse>()
@@ -31,7 +30,6 @@ class PokedexViewModel @Inject constructor(
     private var _move = MutableLiveData<Move>()
     private var _item = MutableLiveData<Item>()
     private var _ability = MutableLiveData<Ability>()
-    private var _favorites = MutableLiveData<ArrayList<Pokemon>>(ArrayList())
 
     val pokemonList: LiveData<PokedexResponse> = _pokemonList
     val moveList: LiveData<PokedexResponse> = _moveList
@@ -135,10 +133,5 @@ class PokedexViewModel @Inject constructor(
                 _abilityList.value = it
             }.onFailure { /* TODO */ }
         }
-    }
-
-    fun setFavorite(pokemon: Pokemon) {
-        _favorites.value?.add(pokemon)
-        _pokemon.value?.favorite = true
     }
 }
