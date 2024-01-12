@@ -12,9 +12,12 @@ import com.example.pokedex2.model.data.convert.Item
 import com.example.pokedex2.model.data.convert.Move
 import com.example.pokedex2.model.data.convert.Pokemon
 import com.example.pokedex2.model.data.convert.Type
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class PokedexViewModel(
+@HiltViewModel
+class PokedexViewModel @Inject constructor(
     private val repository: PokedexRepository = PokedexRepository(IPokedexApi.instance)
 ) : ViewModel() {
 

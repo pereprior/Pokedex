@@ -9,10 +9,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.example.pokedex2.R
 import com.example.pokedex2.ui.capitalized
 
 @Composable
@@ -35,6 +38,7 @@ fun DataButton(navController: NavHostController, name: String, route: String) {
             text = capitalized(name),
             textAlign = TextAlign.Center,
             fontSize = 30.sp,
+            fontFamily = FontFamily(Font(R.font.pkmndp)),
             modifier = Modifier.fillMaxWidth()
         )
     }

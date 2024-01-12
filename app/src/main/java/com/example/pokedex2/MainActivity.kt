@@ -29,12 +29,14 @@ import com.example.pokedex2.ui.views.list.Movimientos
 import com.example.pokedex2.ui.views.list.Pokedex
 import com.example.pokedex2.ui.views.list.TablaDeTipos
 import com.example.pokedex2.ui.views.list.Objetos
-import com.example.pokedex2.ui.views.view.AbilityView
-import com.example.pokedex2.ui.views.view.ItemView
-import com.example.pokedex2.ui.views.view.MoveView
-import com.example.pokedex2.ui.views.view.PokemonView
+import com.example.pokedex2.ui.views.view.ability.AbilityView
+import com.example.pokedex2.ui.views.view.item.ItemView
+import com.example.pokedex2.ui.views.view.move.MoveView
+import com.example.pokedex2.ui.views.view.pokemon.PokemonView
 import com.example.pokedex2.viewModel.PokedexViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -1,7 +1,6 @@
-package com.example.pokedex2.ui.views.view
+package com.example.pokedex2.ui.views.view.ability
 
 import android.annotation.SuppressLint
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height

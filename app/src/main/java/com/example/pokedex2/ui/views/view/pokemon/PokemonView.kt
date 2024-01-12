@@ -1,4 +1,4 @@
-package com.example.pokedex2.ui.views.view
+package com.example.pokedex2.ui.views.view.pokemon
 
 import android.annotation.SuppressLint
 import androidx.compose.animation.core.LinearEasing

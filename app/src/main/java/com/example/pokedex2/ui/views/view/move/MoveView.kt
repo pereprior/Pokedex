@@ -1,4 +1,4 @@
-package com.example.pokedex2.ui.views.view
+package com.example.pokedex2.ui.views.view.move
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Spacer
