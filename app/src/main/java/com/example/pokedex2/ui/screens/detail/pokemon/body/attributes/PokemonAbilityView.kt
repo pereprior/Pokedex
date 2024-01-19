@@ -3,9 +3,7 @@ package com.example.pokedex2.ui.screens.detail.pokemon.body.attributes
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -18,36 +16,40 @@ import com.example.pokedex2.ui.components.MyLabel
 import com.example.pokedex2.ui.components.theme.LightGrey
 
 @Composable
-fun PokemonAbilities(abilities: List<Ability>) {
+fun PokemonAbilityView(abilities: List<Ability>) {
+    val normalAbilities = abilities.filter { !it.is_hidden }
+    val hiddenAbilities = abilities.filter { it.is_hidden }
+
+    AbilitiesSection("Normal Abilities", normalAbilities)
+
+    // Hay algunos pokemon que no tienen habilidades ocultas
+    if (hiddenAbilities.isNotEmpty()) {
+        AbilitiesSection("Hidden Abilities", hiddenAbilities)
+    }
+}
+
+@Composable
+private fun AbilitiesSection(title: String, abilities: List<Ability>) {
     Column (
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 16.dp),
+            .padding(8.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        val normalAbilities = abilities.filter { !it.is_hidden }
-        val hiddenAbilities = abilities.filter { it.is_hidden }
-
-        Text(text = "Normal Abilities", modifier = Modifier.padding(8.dp), color = LightGrey)
+        Text(text = title, modifier = Modifier.padding(8.dp), color = LightGrey)
         Row {
-            PokemonAbilityLabel(normalAbilities)
-        }
-
-        if (hiddenAbilities.isNotEmpty()) {
-            Spacer(modifier = Modifier.height(8.dp))
-            Text(text = "Hidden Abilities", modifier = Modifier.padding(8.dp), color = LightGrey)
-            PokemonAbilityLabel(hiddenAbilities)
+            abilities.forEach { ability ->
+                AbilityLabel(ability.ability.name)
+            }
         }
     }
 }
 
 @Composable
-private fun PokemonAbilityLabel(abilities: List<Ability>) {
-    abilities.forEach { ability ->
-        MyLabel(
-            color = MaterialTheme.colorScheme.primary,
-            message = ability.ability.name
-        )
-    }
+private fun AbilityLabel(abilityName: String) {
+    MyLabel(
+        color = MaterialTheme.colorScheme.primary,
+        message = abilityName
+    )
 }

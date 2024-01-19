@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -16,7 +15,6 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.pokedex2.model.data.convert.Pokemon
 import com.example.pokedex2.ui.components.WaitCircle
-import com.example.pokedex2.ui.components.nav.BackFab
 import com.example.pokedex2.ui.screens.detail.pokemon.body.PokemonBodyView
 import com.example.pokedex2.ui.screens.detail.pokemon.head.PokemonHeaderView
 import com.example.pokedex2.ui.viewmodels.PokedexViewModel
@@ -37,19 +35,14 @@ fun PokemonDetailScreen(
     if (pokemonData.name.isEmpty()) {
         WaitCircle()
     } else {
-        Scaffold (
-            floatingActionButton = { BackFab(navController,"PokemonView/Pokedex") },
+        LazyColumn(
+            modifier = Modifier.background(MaterialTheme.colorScheme.secondary),
             content = {
-                LazyColumn(
-                    modifier = Modifier.background(MaterialTheme.colorScheme.secondary),
-                    content = {
-                        item {
-                            PokemonHeaderView(pokemonData)
-                            Spacer(modifier = Modifier.padding(4.dp))
-                            PokemonBodyView(pokemonData)
-                        }
-                    }
-                )
+                item {
+                    PokemonHeaderView(pokemonData, navController)
+                    Spacer(modifier = Modifier.padding(4.dp))
+                    PokemonBodyView(pokemonData)
+                }
             }
         )
     }

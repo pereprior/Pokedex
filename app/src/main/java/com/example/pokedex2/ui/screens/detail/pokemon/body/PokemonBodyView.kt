@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.sp
 import com.example.pokedex2.model.data.convert.Pokemon
 import com.example.pokedex2.ui.components.capitalized
-import com.example.pokedex2.ui.screens.detail.pokemon.body.attributes.PokemonAbilities
+import com.example.pokedex2.ui.screens.detail.pokemon.body.attributes.PokemonAbilityView
 import com.example.pokedex2.ui.screens.detail.pokemon.body.attributes.PokemonSize
 import com.example.pokedex2.ui.screens.detail.pokemon.body.attributes.PokemonTypesView
 import com.example.pokedex2.ui.screens.detail.pokemon.body.attributes.stats.PokemonStats
@@ -25,7 +25,7 @@ fun PokemonBodyView(pokemonData: Pokemon){
     ) {
         PokemonNameView(pokemonData)
         PokemonTypesView(types = pokemonData.types)
-        PokemonAbilities(abilities = pokemonData.abilities)
+        PokemonAbilityView(abilities = pokemonData.abilities)
         PokemonStats(stats = pokemonData.stats)
         PokemonSize(p = pokemonData)
     }

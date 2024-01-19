@@ -10,12 +10,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.example.pokedex2.model.data.convert.Pokemon
 import com.example.pokedex2.ui.components.theme.PrimaryPokedexColor
 import com.example.pokedex2.ui.screens.detail.pokemon.head.image.PokemonImageView
 
 @Composable
-fun PokemonHeaderView(pokemonData: Pokemon) {
+fun PokemonHeaderView(pokemonData: Pokemon, navController: NavHostController) {
     Box (
         modifier = Modifier
             .fillMaxWidth()
@@ -24,7 +25,7 @@ fun PokemonHeaderView(pokemonData: Pokemon) {
             .background(color = PrimaryPokedexColor),
         contentAlignment = Alignment.Center
     ) {
-        PokemonDexNumberView(pokemonData)
+        PokemonDexNumberView(pokemonData, navController)
         PokemonImageView(pokemonData)
     }
 }
