@@ -14,7 +14,7 @@ import com.example.pokedex2.ui.components.capitalized
 import com.example.pokedex2.ui.screens.detail.pokemon.body.attributes.PokemonAbilityView
 import com.example.pokedex2.ui.screens.detail.pokemon.body.attributes.PokemonSize
 import com.example.pokedex2.ui.screens.detail.pokemon.body.attributes.PokemonTypesView
-import com.example.pokedex2.ui.screens.detail.pokemon.body.attributes.stats.PokemonStats
+import com.example.pokedex2.ui.screens.detail.pokemon.body.attributes.stats.PokemonStatsView
 
 @Composable
 fun PokemonBodyView(pokemonData: Pokemon){
@@ -26,7 +26,7 @@ fun PokemonBodyView(pokemonData: Pokemon){
         PokemonNameView(pokemonData)
         PokemonTypesView(types = pokemonData.types)
         PokemonAbilityView(abilities = pokemonData.abilities)
-        PokemonStats(stats = pokemonData.stats)
+        PokemonStatsView(stats = pokemonData.stats)
         PokemonSize(p = pokemonData)
     }
 }

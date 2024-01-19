@@ -2,6 +2,7 @@ package com.example.pokedex2.ui.screens.detail.pokemon.head
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -21,12 +22,12 @@ import com.example.pokedex2.model.data.convert.Pokemon
 
 @Composable
 fun PokemonDexNumberView(p: Pokemon, navController: NavHostController) {
-    Column(
+    Row (
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp),
-        verticalArrangement = Arrangement.Top,
-        horizontalAlignment = Alignment.Start
+        horizontalArrangement = Arrangement.Start,
+        verticalAlignment = Alignment.Top
     ) {
         BackButton(navController = navController)
 

@@ -24,6 +24,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.pokedex2.model.api.response.ResponsedUrlData
+import com.example.pokedex2.ui.components.theme.LightGrey
 import com.example.pokedex2.ui.components.theme.TypesColor
 import java.util.Locale
 
@@ -48,6 +49,11 @@ fun CloseIcon(onDismissRequest: () -> Unit) {
             )
         }
     }
+}
+
+@Composable
+fun LightGreyText(text: String) {
+    Text(text = text, modifier = Modifier.padding(8.dp), color = LightGrey)
 }
 
 @Composable
