@@ -2,7 +2,7 @@ package com.example.pokedex2.model.data.convert
 
 import androidx.compose.ui.graphics.Color
 import com.example.pokedex2.model.api.response.type.TypeInfo
-import com.example.pokedex2.ui.theme.TypesColor
+import com.example.pokedex2.ui.components.theme.TypesColor
 
 class Type(t: TypeInfo = TypeInfo()) {
     val id:Int = t.id
