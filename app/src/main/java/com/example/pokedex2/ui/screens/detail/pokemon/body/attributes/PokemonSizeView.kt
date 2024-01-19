@@ -15,42 +15,32 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.pokedex2.model.data.convert.Pokemon
-import com.example.pokedex2.ui.components.theme.LightGrey
+import com.example.pokedex2.model.data.convert.SizeType
+import com.example.pokedex2.ui.components.LightGreyText
 
 @Composable
-fun PokemonSize(p: Pokemon){
+fun PokemonSize(p: Pokemon) {
     Row(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 32.dp),
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.Start
+        horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        MySize(p.weight, SizeType.KG)
-        MySize(p.height, SizeType.M)
+        MySize(value = p.weight, sizeType = SizeType.KG)
+        MySize(value = p.height, sizeType = SizeType.M)
     }
 }
 
 @Composable
-private fun MySize(value: Float, size: SizeType) {
-    Column(
-        modifier = Modifier.padding(30.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
+private fun MySize(value: Float, sizeType: SizeType) {
+    Column {
         Text(
-            text = "$value ${size.name}",
+            text = "$value ${sizeType.unit}",
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
             color = MaterialTheme.colorScheme.onSecondary
         )
-        Spacer(modifier = Modifier.padding(4.dp))
-        Text(
-            text = size.value,
-            color = LightGrey
-        )
+        LightGreyText(text = sizeType.label)
     }
-}
-
-private enum class SizeType(val value: String) {
-    KG("Weight"),
-    M("Height")
 }

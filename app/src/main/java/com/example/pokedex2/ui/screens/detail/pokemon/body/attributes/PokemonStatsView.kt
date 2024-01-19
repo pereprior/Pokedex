@@ -1,4 +1,4 @@
-package com.example.pokedex2.ui.screens.detail.pokemon.body.attributes.stats
+package com.example.pokedex2.ui.screens.detail.pokemon.body.attributes
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Box
