@@ -1,7 +1,7 @@
 package com.example.pokedex2.model.data.convert
 
 import com.example.pokedex2.model.api.response.move.MoveInfo
-import com.example.pokedex2.ui.components.theme.LANGUAGE_KEY
+import com.example.pokedex2.constants.language.LANGUAGE_KEY
 
 class Move(m: MoveInfo = MoveInfo()) {
     val id:Int = m.id

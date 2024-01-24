@@ -19,13 +19,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.pokedex2.model.api.response.pokemon.Stat
-import com.example.pokedex2.ui.components.LightGreyText
 import com.example.pokedex2.ui.components.theme.AtkColor
 import com.example.pokedex2.ui.components.theme.DefColor
 import com.example.pokedex2.ui.components.theme.HPColor
 import com.example.pokedex2.ui.components.theme.SpAtkColor
 import com.example.pokedex2.ui.components.theme.SpDefColor
 import com.example.pokedex2.ui.components.theme.SpdColor
+import com.example.pokedex2.ui.components.theme.text.color.LightGreyText
 
 // Constantes
 private const val MAX_STAT_VALUE = 165

@@ -16,7 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.pokedex2.model.data.convert.Pokemon
 import com.example.pokedex2.model.data.convert.SizeType
-import com.example.pokedex2.ui.components.LightGreyText
+import com.example.pokedex2.ui.components.theme.text.color.LightGreyText
 
 @Composable
 fun PokemonSize(p: Pokemon) {

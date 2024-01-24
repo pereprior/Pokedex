@@ -8,8 +8,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.example.pokedex2.R
 
-const val LANGUAGE_KEY = "en"
-
 val PokemonFont = Typography(
     bodyLarge = TextStyle(
         fontFamily = FontFamily(Font(R.font.pkmndp)),

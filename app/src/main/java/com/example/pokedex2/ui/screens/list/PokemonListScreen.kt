@@ -7,8 +7,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.navigation.NavHostController
 import com.example.pokedex2.model.api.response.PokedexResponse
-import com.example.pokedex2.ui.components.WaitCircle
-import com.example.pokedex2.ui.components.nav.search.SubMenu
+import com.example.pokedex2.ui.components.bar.search.SearchBarScreen
+import com.example.pokedex2.ui.components.charging.WaitCircle
 import com.example.pokedex2.ui.viewmodels.PokedexViewModel
 
 @Composable
@@ -27,11 +27,11 @@ fun PokemonListScreen(
     if (pokemonList.isEmpty()) {
         WaitCircle()
     } else {
-        SubMenu(
+        SearchBarScreen(
             navController = navController,
             drawerState = drawerState,
             data = pokemonList,
-            route = "PokemonView"
+            componentRoute = "PokemonView"
         )
     }
 }

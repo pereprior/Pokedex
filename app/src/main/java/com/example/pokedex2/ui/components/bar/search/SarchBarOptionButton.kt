@@ -1,4 +1,4 @@
-package com.example.pokedex2.ui.components.nav.search
+package com.example.pokedex2.ui.components.bar.search
 
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -16,10 +16,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.pokedex2.R
-import com.example.pokedex2.ui.components.capitalized
+import com.example.pokedex2.ui.components.theme.text.format.capitalized
 
 @Composable
-fun DataButton(navController: NavHostController, name: String, route: String) {
+fun SarchBarOptionButton(navController: NavHostController, name: String, route: String) {
     Spacer(modifier = Modifier.padding(4.dp))
     Button(
         onClick = {

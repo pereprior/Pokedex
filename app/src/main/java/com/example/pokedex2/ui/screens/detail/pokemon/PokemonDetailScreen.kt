@@ -14,7 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.pokedex2.model.data.convert.Pokemon
-import com.example.pokedex2.ui.components.WaitCircle
+import com.example.pokedex2.ui.components.charging.WaitCircle
 import com.example.pokedex2.ui.screens.detail.pokemon.body.PokemonBodyView
 import com.example.pokedex2.ui.screens.detail.pokemon.head.PokemonHeaderView
 import com.example.pokedex2.ui.viewmodels.PokedexViewModel

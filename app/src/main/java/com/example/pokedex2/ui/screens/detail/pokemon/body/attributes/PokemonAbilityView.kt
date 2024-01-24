@@ -4,8 +4,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import com.example.pokedex2.model.api.response.pokemon.Ability
-import com.example.pokedex2.ui.components.LightGreyText
-import com.example.pokedex2.ui.components.MyLabel
+import com.example.pokedex2.ui.components.theme.text.color.LightGreyText
+import com.example.pokedex2.ui.screens.detail.pokemon.body.attributes.common.PokemonDetailsLabel
 
 @Composable
 fun PokemonAbilityView(abilities: List<Ability>) {
@@ -33,7 +33,7 @@ private fun AbilitiesSection(title: String, abilities: List<Ability>) {
 
 @Composable
 private fun AbilityLabel(abilityName: String) {
-    MyLabel(
+    PokemonDetailsLabel(
         color = MaterialTheme.colorScheme.primary,
         message = abilityName
     )

@@ -16,7 +16,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import coil.compose.AsyncImage
-import com.example.pokedex2.ui.components.CloseIcon
+import com.example.pokedex2.ui.components.icons.CloseIcon
 
 @Composable
 fun PokemonSpritesDialog(

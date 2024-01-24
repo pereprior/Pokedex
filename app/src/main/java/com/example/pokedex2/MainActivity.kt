@@ -16,8 +16,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.pokedex2.constants.nav.POKEMON_NAVIGATION_LIST
+import com.example.pokedex2.constants.nav.POKEMON_NAVIGATION_PACKAGE
+import com.example.pokedex2.constants.nav.getAbsoluteNavigationPath
 import com.example.pokedex2.ui.components.theme.Pokedex2Theme
-import com.example.pokedex2.ui.components.nav.MyModalDrawer
+import com.example.pokedex2.ui.components.bar.drawer.MenuModalDrawer
 import com.example.pokedex2.ui.screens.list.PokemonListScreen
 import com.example.pokedex2.ui.screens.detail.pokemon.PokemonDetailScreen
 import com.example.pokedex2.ui.viewmodels.PokedexViewModel
@@ -36,7 +39,7 @@ class MainActivity : ComponentActivity() {
                 ModalNavigationDrawer(
                     drawerState = drawerState,
                     drawerContent = {
-                        ModalDrawerSheet { MyModalDrawer(navController,drawerState) }
+                        ModalDrawerSheet { MenuModalDrawer(navController,drawerState) }
                     },
                 ) {
                     NavigationController(navController, drawerState, pokedexVM)
@@ -51,10 +54,10 @@ class MainActivity : ComponentActivity() {
         drawerState: DrawerState,
         pokedexVM: PokedexViewModel,
     ) {
-        NavHost(navController = navController, startDestination = "PokemonView/Pokedex") {
-            composable("PokemonView/Pokedex") { PokemonListScreen(pokedexVM, navController, drawerState) }
+        NavHost(navController = navController, startDestination = getAbsoluteNavigationPath(POKEMON_NAVIGATION_PACKAGE, POKEMON_NAVIGATION_LIST)) {
+            composable(getAbsoluteNavigationPath(POKEMON_NAVIGATION_PACKAGE, POKEMON_NAVIGATION_LIST)) { PokemonListScreen(pokedexVM, navController, drawerState) }
             composable(
-                route = "PokemonView/{selectedPokemon}",
+                route = "$POKEMON_NAVIGATION_PACKAGE/{selectedPokemon}",
                 arguments = listOf(navArgument("selectedPokemon") { type = NavType.StringType })
             ) { backStackEntry ->
                 val selectedPokemon = backStackEntry.arguments?.getString("selectedPokemon")

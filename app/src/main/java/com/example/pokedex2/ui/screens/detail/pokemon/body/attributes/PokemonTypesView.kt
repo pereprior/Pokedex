@@ -9,8 +9,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.pokedex2.model.api.response.pokemon.Type
-import com.example.pokedex2.ui.components.MyLabel
-import com.example.pokedex2.ui.components.getTypeColor
+import com.example.pokedex2.ui.components.theme.getTypeColor
+import com.example.pokedex2.ui.screens.detail.pokemon.body.attributes.common.PokemonDetailsLabel
 
 @Composable
 fun PokemonTypesView(types: List<Type>) {
@@ -31,5 +31,5 @@ fun PokemonTypesView(types: List<Type>) {
 private fun PokemonTypeLabel(type: Type) {
     val color = getTypeColor(type.type)
 
-    MyLabel(color, type.type.name)
+    PokemonDetailsLabel(color, type.type.name)
 }

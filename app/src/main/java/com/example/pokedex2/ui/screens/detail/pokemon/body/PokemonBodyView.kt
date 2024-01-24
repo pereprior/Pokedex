@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.pokedex2.model.data.convert.Pokemon
-import com.example.pokedex2.ui.components.capitalized
+import com.example.pokedex2.ui.components.theme.text.format.capitalized
 import com.example.pokedex2.ui.screens.detail.pokemon.body.attributes.PokemonAbilityView
 import com.example.pokedex2.ui.screens.detail.pokemon.body.attributes.PokemonSize
 import com.example.pokedex2.ui.screens.detail.pokemon.body.attributes.PokemonTypesView

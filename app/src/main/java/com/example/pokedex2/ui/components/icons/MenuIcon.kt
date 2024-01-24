@@ -1,4 +1,4 @@
-package com.example.pokedex2.ui.components.nav
+package com.example.pokedex2.ui.components.icons
 
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.material.icons.Icons
@@ -25,6 +25,9 @@ fun MenuIcon(drawerState: DrawerState) {
         },
         modifier = Modifier.fillMaxHeight()
     ) {
-        Icon(imageVector = Icons.Filled.Menu, contentDescription = "")
+        Icon(
+            imageVector = Icons.Filled.Menu,
+            contentDescription = "Modal Drawer Icon"
+        )
     }
 }
