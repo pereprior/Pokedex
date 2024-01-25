@@ -18,7 +18,17 @@ val SpDefColor = Color(1f, 0f, 0.8f, 0.7f)
 val SpdColor = Color(0f, 1f, 0.063f, 0.55f)
 
 // Types
-val TypesColor = listOf(
+fun getTypeColor(type: ResponsedUrlData): Color {
+    var color = Color.Transparent
+    for (e in TypesColorList) {
+        if (e.name == type.name){
+            color = e.color
+        }
+    }
+    return color
+}
+
+val TypesColorList = listOf(
     TypeColor("normal", Color(0xFFA8A77A)),
     TypeColor("fire", Color(0xFFEE8130)),
     TypeColor("water", Color(0xFF6390F0)),
@@ -38,13 +48,3 @@ val TypesColor = listOf(
     TypeColor("steel", Color(0xFFB7B7CE)),
     TypeColor("fairy", Color(0xFFD685AD))
 )
-
-fun getTypeColor(type: ResponsedUrlData): Color {
-    var color = Color.Transparent
-    for (e in TypesColor) {
-        if (e.name == type.name){
-            color = e.color
-        }
-    }
-    return color
-}

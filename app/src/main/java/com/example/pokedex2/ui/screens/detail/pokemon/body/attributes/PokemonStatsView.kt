@@ -27,7 +27,7 @@ import com.example.pokedex2.ui.components.theme.SpDefColor
 import com.example.pokedex2.ui.components.theme.SpdColor
 import com.example.pokedex2.ui.components.theme.text.color.LightGreyText
 
-// Constantes
+// Constantes que solo se utilizan aqui
 private const val MAX_STAT_VALUE = 165
 private const val MIN_STAT_VALUE = 20
 private const val STAT_BAR_WIDTH = 300

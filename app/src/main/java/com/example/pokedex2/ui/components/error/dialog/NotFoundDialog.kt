@@ -7,6 +7,9 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import com.example.pokedex2.constants.error.ERROR_404_DESCRIPTION
+import com.example.pokedex2.constants.error.ERROR_404_TITLE
+import com.example.pokedex2.constants.error.ERROR_DISMISS_TEXT
 
 @Composable
 fun NotFoundDialog(
@@ -14,13 +17,16 @@ fun NotFoundDialog(
 ) {
     AlertDialog(
         icon = {
-            Icon(imageVector = Icons.Filled.Warning, contentDescription = "")
+            Icon(
+                imageVector = Icons.Filled.Warning,
+                contentDescription = "Warning Icon"
+            )
         },
         title = {
-            Text(text = "ERROR 404 NOT FOUND")
+            Text(text = ERROR_404_TITLE)
         },
         text = {
-            Text(text = "The name is not correct. Please, check it and try again.")
+            Text(text = ERROR_404_DESCRIPTION)
         },
         onDismissRequest = {
             onDismissRequest()
@@ -32,7 +38,7 @@ fun NotFoundDialog(
                     onDismissRequest()
                 }
             ) {
-                Text("Dismiss")
+                Text(ERROR_DISMISS_TEXT)
             }
         }
     )

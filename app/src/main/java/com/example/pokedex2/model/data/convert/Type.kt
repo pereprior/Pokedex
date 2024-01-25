@@ -2,7 +2,7 @@ package com.example.pokedex2.model.data.convert
 
 import androidx.compose.ui.graphics.Color
 import com.example.pokedex2.model.api.response.type.TypeInfo
-import com.example.pokedex2.ui.components.theme.TypesColor
+import com.example.pokedex2.ui.components.theme.TypesColorList
 
 class Type(t: TypeInfo = TypeInfo()) {
     val id:Int = t.id
@@ -27,7 +27,7 @@ class Type(t: TypeInfo = TypeInfo()) {
 private fun getColor(name:String):Color{
     var color = Color.Transparent
 
-    for (e in TypesColor){
+    for (e in TypesColorList){
         if (e.name == name){
             color = e.color
         }

@@ -24,6 +24,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.pokedex2.R
+import com.example.pokedex2.constants.nav.POKEMON_NAVIGATION_LIST
+import com.example.pokedex2.constants.nav.POKEMON_NAVIGATION_PACKAGE
+import com.example.pokedex2.constants.nav.getAbsoluteNavigationPath
 import kotlinx.coroutines.launch
 
 @Composable
@@ -41,7 +44,7 @@ fun MenuModalDrawer(navController: NavHostController, drawerState: DrawerState) 
         ) {
             Image(
                 painter = painterResource(id = R.drawable.pokedex),
-                contentDescription = "Pokedex",
+                contentDescription = "Pokedex Image",
                 modifier = Modifier
                     .width(200.dp)
                     .height(164.dp),
@@ -51,7 +54,13 @@ fun MenuModalDrawer(navController: NavHostController, drawerState: DrawerState) 
 
         Spacer(modifier = Modifier.size(30.dp))
 
-        ModalDrawerSection(navController, "PokemonView/Pokedex", R.drawable.pokeball_icon, drawerState)
+        // Plantilla para las opciones del menu
+        ModalDrawerSection(
+            navController = navController,
+            route = getAbsoluteNavigationPath(POKEMON_NAVIGATION_PACKAGE, POKEMON_NAVIGATION_LIST),
+            image = R.drawable.pokeball_icon,
+            drawerState = drawerState
+        )
     }
 }
 

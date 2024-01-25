@@ -25,7 +25,7 @@ fun SearchBarScreen(
     navController: NavHostController,
     drawerState: DrawerState,
     data: List<ResponsedUrlData>,
-    componentRoute: String
+    packageRoute: String
 ) {
     val searchBarViewModel = SearchBarViewModel()
     val query: String by searchBarViewModel.query.observeAsState(initial = "")
@@ -39,7 +39,7 @@ fun SearchBarScreen(
         searchBarViewModel = searchBarViewModel,
         filteredDataList = filteredData,
         navController = navController,
-        componentRoute = componentRoute,
+        packageRoute = packageRoute,
         drawerState = drawerState
     )
 
@@ -55,7 +55,7 @@ private fun GenericSearchBar(
     searchBarViewModel: SearchBarViewModel,
     filteredDataList: List<String>,
     navController: NavHostController,
-    componentRoute: String,
+    packageRoute: String,
     drawerState: DrawerState
 ) {
     val active: Boolean by searchBarViewModel.isActive.observeAsState(initial = true)
@@ -67,7 +67,7 @@ private fun GenericSearchBar(
         },
         onSearch = {
             if (filteredDataList.any { it.equals(query, ignoreCase = true) }) {
-                navController.navigate("$componentRoute/${query.lowercase()}")
+                navController.navigate("$packageRoute/${query.lowercase()}")
                 searchBarViewModel.setActive(false)
             } else {
                 searchBarViewModel.setOpenDialog(true)
@@ -91,7 +91,7 @@ private fun GenericSearchBar(
             modifier = Modifier.fillMaxSize()
         ) {
             items(filteredDataList) {
-                SarchBarOptionButton(navController, it, componentRoute)
+                SarchBarOptionButton(navController, it, packageRoute)
             }
         }
     }

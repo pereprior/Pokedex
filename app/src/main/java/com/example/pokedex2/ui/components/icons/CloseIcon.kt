@@ -30,7 +30,7 @@ fun CloseIcon(onDismissRequest: () -> Unit) {
         ) {
             Icon(
                 imageVector = Icons.Default.Close,
-                contentDescription = null,
+                contentDescription = "Close Icon",
                 tint = Color.Black
             )
         }
