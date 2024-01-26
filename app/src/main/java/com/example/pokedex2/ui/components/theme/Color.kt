@@ -2,7 +2,6 @@ package com.example.pokedex2.ui.components.theme
 
 import androidx.compose.ui.graphics.Color
 import com.example.pokedex2.model.api.response.ResponsedUrlData
-import com.example.pokedex2.model.data.convert.TypeColor
 
 // Default
 val PrimaryPokedexColor = Color(0xFFC92133)
@@ -21,30 +20,30 @@ val SpdColor = Color(0f, 1f, 0.063f, 0.55f)
 fun getTypeColor(type: ResponsedUrlData): Color {
     var color = Color.Transparent
     for (e in TypesColorList) {
-        if (e.name == type.name){
-            color = e.color
+        if (e.key == type.name){
+            color = e.value
         }
     }
     return color
 }
 
-val TypesColorList = listOf(
-    TypeColor("normal", Color(0xFFA8A77A)),
-    TypeColor("fire", Color(0xFFEE8130)),
-    TypeColor("water", Color(0xFF6390F0)),
-    TypeColor("electric", Color(0xFFF7D02C)),
-    TypeColor("grass", Color(0xFF7AC74C)),
-    TypeColor("ice", Color(0xFF96D9D6)),
-    TypeColor("fighting", Color(0xFFC22E28)),
-    TypeColor("poison", Color(0xFFA33EA1)),
-    TypeColor("ground", Color(0xFFE2BF65)),
-    TypeColor("flying", Color(0xFFA98FF3)),
-    TypeColor("psychic", Color(0xFFF95587)),
-    TypeColor("bug", Color(0xFFA6B91A)),
-    TypeColor("rock", Color(0xFFB6A136)),
-    TypeColor("ghost", Color(0xFF735797)),
-    TypeColor("dragon", Color(0xFF6F35FC)),
-    TypeColor("dark", Color(0xFF705746)),
-    TypeColor("steel", Color(0xFFB7B7CE)),
-    TypeColor("fairy", Color(0xFFD685AD))
+val TypesColorList = mapOf(
+    Pair("normal", Color(0xFFA8A77A)),
+    Pair("fire", Color(0xFFEE8130)),
+    Pair("water", Color(0xFF6390F0)),
+    Pair("electric", Color(0xFFF7D02C)),
+    Pair("grass", Color(0xFF7AC74C)),
+    Pair("ice", Color(0xFF96D9D6)),
+    Pair("fighting", Color(0xFFC22E28)),
+    Pair("poison", Color(0xFFA33EA1)),
+    Pair("ground", Color(0xFFE2BF65)),
+    Pair("flying", Color(0xFFA98FF3)),
+    Pair("psychic", Color(0xFFF95587)),
+    Pair("bug", Color(0xFFA6B91A)),
+    Pair("rock", Color(0xFFB6A136)),
+    Pair("ghost", Color(0xFF735797)),
+    Pair("dragon", Color(0xFF6F35FC)),
+    Pair("dark", Color(0xFF705746)),
+    Pair("steel", Color(0xFFB7B7CE)),
+    Pair("fairy", Color(0xFFD685AD))
 )

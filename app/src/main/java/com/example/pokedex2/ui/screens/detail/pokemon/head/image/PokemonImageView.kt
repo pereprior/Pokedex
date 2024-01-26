@@ -10,14 +10,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.example.pokedex2.model.data.convert.Pokemon
+import com.example.pokedex2.domain.models.Pokemon
 
 @Composable
 fun PokemonImageView(pokemonData: Pokemon) {
     var isOpenDialog by rememberSaveable { mutableStateOf(false) }
 
     AsyncImage(
-        model = pokemonData.normalSprite,
+        model = pokemonData.artwork,
         contentDescription = null,
         modifier = Modifier
             .size(200.dp)
@@ -29,7 +29,7 @@ fun PokemonImageView(pokemonData: Pokemon) {
     if (isOpenDialog) {
         PokemonSpritesDialog(
             onDismissRequest = { isOpenDialog = false },
-            spritesList = pokemonData.forms
+            spritesList = pokemonData.sprites
         )
     }
 }

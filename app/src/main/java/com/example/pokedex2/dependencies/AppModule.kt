@@ -1,7 +1,7 @@
 package com.example.pokedex2.dependencies
 
-import com.example.pokedex2.model.api.IPokedexApi
-import com.example.pokedex2.model.api.PokedexRepository
+import com.example.pokedex2.data.sources.remote.PokemonApiService
+import com.example.pokedex2.data.repositories.PokemonRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,18 +16,18 @@ import javax.inject.Singleton
 object AppModule {
     @Provides
     @Singleton
-    fun provideApi(): IPokedexApi {
+    fun provideApi(): PokemonApiService {
         return Retrofit.Builder()
             .baseUrl("https://pokeapi.co/api/v2/")
             .addConverterFactory(MoshiConverterFactory.create())
             .client(OkHttpClient.Builder().build())
             .build()
-            .create(IPokedexApi::class.java)
+            .create(PokemonApiService::class.java)
     }
 
     @Provides
     @Singleton
-    fun provideRepository(api: IPokedexApi): PokedexRepository {
-        return PokedexRepository(api)
+    fun provideRepository(api: PokemonApiService): PokemonRepositoryImpl {
+        return PokemonRepositoryImpl(api)
     }
 }

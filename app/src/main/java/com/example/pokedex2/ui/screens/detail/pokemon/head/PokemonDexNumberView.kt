@@ -16,7 +16,7 @@ import androidx.navigation.NavHostController
 import com.example.pokedex2.constants.nav.POKEMON_NAVIGATION_LIST
 import com.example.pokedex2.constants.nav.POKEMON_NAVIGATION_PACKAGE
 import com.example.pokedex2.constants.nav.getAbsoluteNavigationPath
-import com.example.pokedex2.model.data.convert.Pokemon
+import com.example.pokedex2.domain.models.Pokemon
 import com.example.pokedex2.ui.components.icons.BackIcon
 
 @Composable

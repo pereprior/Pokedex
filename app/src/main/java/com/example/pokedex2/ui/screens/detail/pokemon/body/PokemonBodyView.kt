@@ -12,10 +12,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.pokedex2.model.data.convert.Pokemon
+import com.example.pokedex2.domain.models.Pokemon
 import com.example.pokedex2.ui.components.theme.text.format.capitalized
 import com.example.pokedex2.ui.screens.detail.pokemon.body.attributes.PokemonAbilityView
-import com.example.pokedex2.ui.screens.detail.pokemon.body.attributes.PokemonSize
+import com.example.pokedex2.ui.screens.detail.pokemon.body.attributes.PokemonSizeView
 import com.example.pokedex2.ui.screens.detail.pokemon.body.attributes.PokemonTypesView
 import com.example.pokedex2.ui.screens.detail.pokemon.body.attributes.PokemonStatsView
 
@@ -31,7 +31,7 @@ fun PokemonBodyView(pokemonData: Pokemon){
         PokemonAbilityView(abilities = pokemonData.abilities)
         PokemonStatsView(stats = pokemonData.stats)
         Spacer(modifier = Modifier.padding(16.dp))
-        PokemonSize(p = pokemonData)
+        PokemonSizeView(p = pokemonData)
     }
 }
 

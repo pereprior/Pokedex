@@ -1,9 +1,7 @@
 package com.example.pokedex2.ui.screens.detail.pokemon.body.attributes
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
@@ -14,12 +12,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.pokedex2.model.data.convert.Pokemon
-import com.example.pokedex2.model.data.convert.SizeType
-import com.example.pokedex2.ui.components.theme.text.color.LightGreyText
+import com.example.pokedex2.constants.language.MEASURE_UNIT_KEY
+import com.example.pokedex2.constants.language.WEIGHT_UNIT_KEY
+import com.example.pokedex2.domain.models.Pokemon
 
 @Composable
-fun PokemonSize(p: Pokemon) {
+fun PokemonSizeView(p: Pokemon) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -27,20 +25,24 @@ fun PokemonSize(p: Pokemon) {
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        MySize(value = p.weight, sizeType = SizeType.KG)
-        MySize(value = p.height, sizeType = SizeType.M)
+        SizeViewTemplate(
+            value = p.weight,
+            unitKey = WEIGHT_UNIT_KEY
+        )
+
+        SizeViewTemplate(
+            value = p.height,
+            unitKey = MEASURE_UNIT_KEY
+        )
     }
 }
 
 @Composable
-private fun MySize(value: Float, sizeType: SizeType) {
-    Column {
-        Text(
-            text = "$value ${sizeType.unit}",
-            fontSize = 24.sp,
-            fontWeight = FontWeight.Bold,
-            color = MaterialTheme.colorScheme.onSecondary
-        )
-        LightGreyText(text = sizeType.label)
-    }
+private fun SizeViewTemplate(value: Float, unitKey: String) {
+    Text(
+        text = "$value $unitKey}",
+        fontSize = 24.sp,
+        fontWeight = FontWeight.Bold,
+        color = MaterialTheme.colorScheme.onSecondary
+    )
 }
