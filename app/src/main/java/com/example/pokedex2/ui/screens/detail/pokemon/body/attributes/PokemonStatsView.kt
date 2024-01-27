@@ -18,7 +18,6 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.pokedex2.model.api.response.pokemon.Stat
 import com.example.pokedex2.ui.components.theme.AtkColor
 import com.example.pokedex2.ui.components.theme.DefColor
 import com.example.pokedex2.ui.components.theme.HPColor
@@ -40,27 +39,28 @@ private const val STAT_TEXT_BOTTOM_PADDING = 10
 private const val STAT_TEXT_FONT_SIZE = 14
 
 @Composable
-fun PokemonStatsView(stats: List<Stat>) {
+fun PokemonStatsView(stats: Map<String, Int>) {
     LightGreyText(text = "Base Stats")
+
     stats.forEach { stat ->
         StatSection(stat)
     }
 }
 
 @Composable
-private fun StatSection(stat: Stat) {
+private fun StatSection(stat: Map.Entry<String, Int>) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 20.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        StatName(stat.stat.name)
+        StatName(stat.key)
 
         val barSize = when {
-            stat.base_stat > MAX_STAT_VALUE -> MAX_STAT_VALUE
-            stat.base_stat < MIN_STAT_VALUE -> MIN_STAT_VALUE
-            else -> stat.base_stat
+            stat.value > MAX_STAT_VALUE -> MAX_STAT_VALUE
+            stat.value < MIN_STAT_VALUE -> MIN_STAT_VALUE
+            else -> stat.value
         }
 
         StatBar(stat = stat, barSize = barSize)
@@ -84,7 +84,7 @@ private fun StatName(name: String) {
 
 // TODO REFECTOR STATBAR
 @Composable
-private fun StatBar(stat: Stat, barSize: Int) {
+private fun StatBar(stat: Map.Entry<String, Int>, barSize: Int) {
     val backgroundBarColor = MaterialTheme.colorScheme.onPrimary
 
     Box {
@@ -96,7 +96,7 @@ private fun StatBar(stat: Stat, barSize: Int) {
         Box(contentAlignment = Alignment.BottomCenter) {
             BarTemplate(
                 barWidth = (barSize * STAT_BAR_SCALE_FACTOR),
-                barColor = getStatColor(stat.stat.name)
+                barColor = getStatColor(stat.key)
             )
             Box(
                 modifier = Modifier
@@ -105,7 +105,7 @@ private fun StatBar(stat: Stat, barSize: Int) {
                 contentAlignment = Alignment.BottomEnd
             ) {
                 Text(
-                    text = "${stat.base_stat}",
+                    text = "${stat.value}",
                     fontSize = STAT_TEXT_FONT_SIZE.sp
                 )
             }

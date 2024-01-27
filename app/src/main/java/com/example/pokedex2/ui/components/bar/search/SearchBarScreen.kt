@@ -15,7 +15,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
-import com.example.pokedex2.model.api.response.ResponsedUrlData
 import com.example.pokedex2.ui.components.error.dialog.NotFoundDialog
 import com.example.pokedex2.ui.components.icons.MenuIcon
 import com.example.pokedex2.ui.viewmodels.SearchBarViewModel
@@ -24,7 +23,7 @@ import com.example.pokedex2.ui.viewmodels.SearchBarViewModel
 fun SearchBarScreen(
     navController: NavHostController,
     drawerState: DrawerState,
-    data: List<ResponsedUrlData>,
+    data: List<String>,
     packageRoute: String
 ) {
     val searchBarViewModel = SearchBarViewModel()

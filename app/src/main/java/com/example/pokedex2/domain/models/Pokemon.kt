@@ -6,7 +6,7 @@ data class Pokemon(
     val height: Float,
     val weight: Float,
     val stats: Map<String, Int>,
-    val abilities: List<String>,
+    val abilities: Map<String, Boolean>,
     val types: List<String>,
     val artwork: String,
     val sprites:List<Any>

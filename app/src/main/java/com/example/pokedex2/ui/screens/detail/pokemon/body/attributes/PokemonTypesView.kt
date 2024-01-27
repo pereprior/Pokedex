@@ -8,12 +8,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.pokedex2.model.api.response.pokemon.Type
 import com.example.pokedex2.ui.components.theme.getTypeColor
 import com.example.pokedex2.ui.screens.detail.pokemon.body.attributes.common.PokemonDetailsLabel
 
 @Composable
-fun PokemonTypesView(types: List<Type>) {
+fun PokemonTypesView(types: List<String>) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -28,8 +27,8 @@ fun PokemonTypesView(types: List<Type>) {
 }
 
 @Composable
-private fun PokemonTypeLabel(type: Type) {
-    val color = getTypeColor(type.type)
+private fun PokemonTypeLabel(typeName: String) {
+    val color = getTypeColor(typeName)
 
-    PokemonDetailsLabel(color, type.type.name)
+    PokemonDetailsLabel(color, typeName)
 }

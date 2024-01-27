@@ -13,7 +13,7 @@ class PokemonDetailDataMapper(
             height = pokemonDetails.height.toFloat(),
             weight = pokemonDetails.weight.toFloat(),
             stats = pokemonStatsConvert(),
-            abilities = pokemonDetails.abilities.map { it.ability.name },
+            abilities = pokemonAbilitiesConvert(),
             types = pokemonDetails.types.map { it.type.name },
             artwork = pokemonDetails.sprites.other.official.frontDefault,
             sprites = listOf(
@@ -41,4 +41,18 @@ class PokemonDetailDataMapper(
 
         return pokemonStatsConverted
     }
+
+    private fun pokemonAbilitiesConvert(): Map<String, Boolean> {
+        val pokemonAbilitiesConverted = HashMap<String,Boolean>()
+
+        pokemonDetails.abilities.map {
+            pokemonAbilitiesConverted.put(
+                key = it.ability.name,
+                value = it.isHidden
+            )
+        }
+
+        return pokemonAbilitiesConverted
+    }
+
 }

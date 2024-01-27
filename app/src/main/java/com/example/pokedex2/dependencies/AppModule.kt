@@ -2,6 +2,7 @@ package com.example.pokedex2.dependencies
 
 import com.example.pokedex2.data.sources.remote.PokemonApiService
 import com.example.pokedex2.data.repositories.PokemonRepositoryImpl
+import com.example.pokedex2.data.sources.remote.PokemonRemoteDataSource
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -28,6 +29,8 @@ object AppModule {
     @Provides
     @Singleton
     fun provideRepository(api: PokemonApiService): PokemonRepositoryImpl {
-        return PokemonRepositoryImpl(api)
+        return PokemonRepositoryImpl(
+            PokemonRemoteDataSource(api)
+        )
     }
 }

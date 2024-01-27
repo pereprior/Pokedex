@@ -14,7 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.pokedex2.domain.models.Pokemon
-import com.example.pokedex2.ui.components.charging.WaitCircle
+import com.example.pokedex2.ui.components.charging.WaitScreen
 import com.example.pokedex2.ui.screens.detail.pokemon.body.PokemonBodyView
 import com.example.pokedex2.ui.screens.detail.pokemon.head.PokemonHeaderView
 import com.example.pokedex2.ui.viewmodels.PokedexViewModel
@@ -30,10 +30,10 @@ fun PokemonDetailScreen(
         vm.getPokemon(selectedPokemon!!)
     }
 
-    val pokemonData by vm.selectedPokemon.observeAsState(initial = Pokemon())
+    val pokemonData by vm.selectedPokemon.observeAsState(initial = Pokemon(0,"",0f,0f, emptyMap(), emptyMap(), emptyList(),"", emptyList()))
 
     if (pokemonData.name.isEmpty()) {
-        WaitCircle()
+        WaitScreen()
     } else {
         LazyColumn(
             modifier = Modifier.background(MaterialTheme.colorScheme.secondary),

@@ -3,7 +3,6 @@ package com.example.pokedex2.ui.viewmodels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.pokedex2.model.api.response.ResponsedUrlData
 
 class SearchBarViewModel: ViewModel() {
 
@@ -25,8 +24,8 @@ class SearchBarViewModel: ViewModel() {
         _isActive.value = value
     }
 
-    fun setDataList(values: List<ResponsedUrlData>, query: String) {
-        val data = values.map { it.name }
+    fun setDataList(values: List<String>, query: String) {
+        val data = values.map { it }
         _filteredList.value = data.filter { it.contains(query, true) }
     }
 

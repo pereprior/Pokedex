@@ -7,9 +7,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.navigation.NavHostController
 import com.example.pokedex2.constants.nav.POKEMON_NAVIGATION_PACKAGE
-import com.example.pokedex2.data.sources.remote.dto.list.PokemonListDTO
 import com.example.pokedex2.ui.components.bar.search.SearchBarScreen
-import com.example.pokedex2.ui.components.charging.WaitCircle
+import com.example.pokedex2.ui.components.charging.WaitScreen
 import com.example.pokedex2.ui.viewmodels.PokedexViewModel
 
 @Composable
@@ -22,11 +21,10 @@ fun PokemonListScreen(
         vm.getPokemonList()
     }
 
-    val dataList by vm.pokemonList.observeAsState(initial = PokemonListDTO())
-    val pokemonList = dataList.results
+    val pokemonList by vm.pokemonList.observeAsState(initial = emptyList())
 
     if (pokemonList.isEmpty()) {
-        WaitCircle()
+        WaitScreen()
     } else {
         SearchBarScreen(
             navController = navController,

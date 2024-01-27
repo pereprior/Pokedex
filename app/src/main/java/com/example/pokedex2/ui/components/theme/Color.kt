@@ -1,7 +1,6 @@
 package com.example.pokedex2.ui.components.theme
 
 import androidx.compose.ui.graphics.Color
-import com.example.pokedex2.model.api.response.ResponsedUrlData
 
 // Default
 val PrimaryPokedexColor = Color(0xFFC92133)
@@ -17,10 +16,10 @@ val SpDefColor = Color(1f, 0f, 0.8f, 0.7f)
 val SpdColor = Color(0f, 1f, 0.063f, 0.55f)
 
 // Types
-fun getTypeColor(type: ResponsedUrlData): Color {
+fun getTypeColor(typeName: String): Color {
     var color = Color.Transparent
     for (e in TypesColorList) {
-        if (e.key == type.name){
+        if (e.key == typeName){
             color = e.value
         }
     }
