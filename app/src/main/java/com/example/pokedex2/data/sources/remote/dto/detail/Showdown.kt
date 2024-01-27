@@ -1,29 +1,30 @@
 package com.example.pokedex2.data.sources.remote.dto.detail
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
+
 
 data class Showdown(
-    @SerializedName("back_default")
+    @field:Json(name = "back_default")
     val backDefault: String,
 
-    @SerializedName("back_female")
+    @field:Json(name = "back_female")
     val backFemale: Any,
 
-    @SerializedName("back_shiny")
+    @field:Json(name = "back_shiny")
     val backShiny: String,
 
-    @SerializedName("back_shiny_female")
+    @field:Json(name = "back_shiny_female")
     val backShinyFemale: Any,
 
-    @SerializedName("front_default")
+    @field:Json(name = "front_default")
     val frontDefault: String,
 
-    @SerializedName("front_female")
+    @field:Json(name = "front_female")
     val frontFemale: Any,
 
-    @SerializedName("front_shiny")
+    @field:Json(name = "front_shiny")
     val frontShiny: String,
 
-    @SerializedName("front_shiny_female")
+    @field:Json(name = "front_shiny_female")
     val frontShinyFemale: Any
 )

@@ -1,4 +1,4 @@
-package com.example.pokedex2.ui.components.charging
+package com.example.pokedex2.ui.components.loading
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable

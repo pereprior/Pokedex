@@ -1,14 +1,14 @@
 package com.example.pokedex2.data.sources.remote.dto.detail
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 
 data class StatDTO(
-    @SerializedName("base_stat")
+    @field:Json(name = "base_stat")
     val baseStat: Int,
 
-    @SerializedName("effort")
+    @field:Json(name = "effort")
     val effort: Int,
 
-    @SerializedName("stat")
+    @field:Json(name = "stat")
     val stat: Stat
 )

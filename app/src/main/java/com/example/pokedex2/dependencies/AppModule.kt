@@ -3,6 +3,9 @@ package com.example.pokedex2.dependencies
 import com.example.pokedex2.data.sources.remote.PokemonApiService
 import com.example.pokedex2.data.repositories.PokemonRepositoryImpl
 import com.example.pokedex2.data.sources.remote.PokemonRemoteDataSource
+import com.example.pokedex2.domain.usecases.GetPokemonDetailsUseCase
+import com.example.pokedex2.domain.usecases.GetPokemonListUseCase
+import com.example.pokedex2.ui.viewmodels.PokedexViewModel
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -31,6 +34,15 @@ object AppModule {
     fun provideRepository(api: PokemonApiService): PokemonRepositoryImpl {
         return PokemonRepositoryImpl(
             PokemonRemoteDataSource(api)
+        )
+    }
+
+    @Provides
+    @Singleton
+    fun provideViewModel(repository: PokemonRepositoryImpl): PokedexViewModel {
+        return PokedexViewModel(
+            GetPokemonListUseCase(repository),
+            GetPokemonDetailsUseCase(repository)
         )
     }
 }

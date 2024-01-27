@@ -1,17 +1,17 @@
 package com.example.pokedex2.data.sources.remote.dto.detail
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 
 data class Other(
-    @SerializedName("dream_world")
+    @field:Json(name = "dream_world")
     val dreamWorld: DreamWorld,
 
-    @SerializedName("home")
+    @field:Json(name = "home")
     val home: Home,
 
-    @SerializedName("official")
+    @field:Json(name = "official")
     val official: OfficialArtwork,
 
-    @SerializedName("showdown")
+    @field:Json(name = "showdown")
     val showdown: Showdown
 )

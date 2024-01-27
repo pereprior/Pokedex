@@ -1,14 +1,15 @@
 package com.example.pokedex2.data.sources.remote.dto.detail
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
+
 
 data class VersionGroupDetail(
-    @SerializedName("level_learned_at")
+    @field:Json(name = "level_learned_at")
     val levelLearnedAt: Int,
 
-    @SerializedName("move_learn_method")
+    @field:Json(name = "move_learn_method")
     val moveLearnMethod: MoveLearnMethod,
 
-    @SerializedName("version_group")
+    @field:Json(name = "version_group")
     val versionGroup: VersionGroup
 )

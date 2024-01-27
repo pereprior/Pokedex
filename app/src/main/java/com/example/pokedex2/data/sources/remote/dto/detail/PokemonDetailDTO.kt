@@ -1,62 +1,62 @@
 package com.example.pokedex2.data.sources.remote.dto.detail
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 
 data class PokemonDetailDTO(
-    @SerializedName("abilities")
+    @field:Json(name = "abilities")
     val abilities: List<AbilityDTO>,
 
-    @SerializedName("base_experience")
+    @field:Json(name = "base_experience")
     val baseExperience: Int,
 
-    @SerializedName("forms")
+    @field:Json(name = "forms")
     val forms: List<Form>,
 
-    @SerializedName("game_indices")
+    @field:Json(name = "game_indices")
     val gameIndices: List<GameIndice>,
 
-    @SerializedName("height")
+    @field:Json(name = "height")
     val height: Int,
 
-    @SerializedName("held_items")
+    @field:Json(name = "held_items")
     val heldItems: List<Any>,
 
-    @SerializedName("id")
+    @field:Json(name = "id")
     val id: Int,
 
-    @SerializedName("is_default")
+    @field:Json(name = "is_default")
     val isDefault: Boolean,
 
-    @SerializedName("location_area_encounters")
+    @field:Json(name = "location_area_encounters")
     val locationAreaEncounters: String,
 
-    @SerializedName("moves")
+    @field:Json(name = "moves")
     val moves: List<MoveDTO>,
 
-    @SerializedName("name")
+    @field:Json(name = "name")
     val name: String,
 
-    @SerializedName("order")
+    @field:Json(name = "order")
     val order: Int,
 
-    @SerializedName("past_abilities")
+    @field:Json(name = "past_abilities")
     val pastAbilities: List<Any>,
 
-    @SerializedName("past_types")
+    @field:Json(name = "past_types")
     val pastTypes: List<Any>,
 
-    @SerializedName("species")
+    @field:Json(name = "species")
     val species: Species,
 
-    @SerializedName("sprites")
+    @field:Json(name = "sprites")
     val sprites: Sprites,
 
-    @SerializedName("stats")
+    @field:Json(name = "stats")
     val stats: List<StatDTO>,
 
-    @SerializedName("types")
+    @field:Json(name = "types")
     val types: List<TypeDTO>,
 
-    @SerializedName("weight")
+    @field:Json(name = "weight")
     val weight: Int
 )

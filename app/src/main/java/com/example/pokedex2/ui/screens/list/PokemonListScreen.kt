@@ -8,7 +8,7 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.navigation.NavHostController
 import com.example.pokedex2.constants.nav.POKEMON_NAVIGATION_PACKAGE
 import com.example.pokedex2.ui.components.bar.search.SearchBarScreen
-import com.example.pokedex2.ui.components.charging.WaitScreen
+import com.example.pokedex2.ui.components.loading.WaitScreen
 import com.example.pokedex2.ui.viewmodels.PokedexViewModel
 
 @Composable

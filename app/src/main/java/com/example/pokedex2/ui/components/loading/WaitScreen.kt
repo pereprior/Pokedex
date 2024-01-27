@@ -1,4 +1,4 @@
-package com.example.pokedex2.ui.components.charging
+package com.example.pokedex2.ui.components.loading
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.fillMaxSize

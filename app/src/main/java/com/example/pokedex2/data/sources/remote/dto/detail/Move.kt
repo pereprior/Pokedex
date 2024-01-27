@@ -1,11 +1,11 @@
 package com.example.pokedex2.data.sources.remote.dto.detail
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 
 data class Move(
-    @SerializedName("name")
+    @field:Json(name = "name")
     val name: String,
 
-    @SerializedName("url")
+    @field:Json(name = "url")
     val url: String
 )

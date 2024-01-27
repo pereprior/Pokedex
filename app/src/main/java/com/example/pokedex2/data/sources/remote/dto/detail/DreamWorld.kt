@@ -1,11 +1,11 @@
 package com.example.pokedex2.data.sources.remote.dto.detail
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 
 data class DreamWorld(
-    @SerializedName("front_default")
+    @field:Json(name = "front_default")
     val frontDefault: String,
 
-    @SerializedName("front_female")
+    @field:Json(name = "front_female")
     val frontFemale: Any
 )

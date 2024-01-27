@@ -1,4 +1,4 @@
-package com.example.pokedex2.ui.components.charging
+package com.example.pokedex2.ui.components.loading
 
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat

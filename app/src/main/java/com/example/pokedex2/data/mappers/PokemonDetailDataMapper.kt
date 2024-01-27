@@ -1,5 +1,6 @@
 package com.example.pokedex2.data.mappers
 
+import com.example.pokedex2.constants.language.REFACTOR_UNIT
 import com.example.pokedex2.data.sources.remote.dto.detail.PokemonDetailDTO
 import com.example.pokedex2.domain.models.Pokemon
 
@@ -10,12 +11,12 @@ class PokemonDetailDataMapper(
         return Pokemon(
             dexNumber = pokemonDetails.id,
             name = pokemonDetails.name,
-            height = pokemonDetails.height.toFloat(),
-            weight = pokemonDetails.weight.toFloat(),
+            height = pokemonDetails.height * REFACTOR_UNIT,
+            weight = pokemonDetails.weight * REFACTOR_UNIT,
             stats = pokemonStatsConvert(),
             abilities = pokemonAbilitiesConvert(),
             types = pokemonDetails.types.map { it.type.name },
-            artwork = pokemonDetails.sprites.other.official.frontDefault,
+            artwork = pokemonDetails.sprites.other.home.frontDefault,
             sprites = listOf(
                 pokemonDetails.sprites.frontDefault,
                 pokemonDetails.sprites.backDefault,
