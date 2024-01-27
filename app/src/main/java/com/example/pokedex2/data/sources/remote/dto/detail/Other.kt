@@ -1,8 +1,17 @@
 package com.example.pokedex2.data.sources.remote.dto.detail
 
+import com.google.gson.annotations.SerializedName
+
 data class Other(
-    val dream_world: DreamWorld,
+    @SerializedName("dream_world")
+    val dreamWorld: DreamWorld,
+
+    @SerializedName("home")
     val home: Home,
+
+    @SerializedName("official")
     val official: OfficialArtwork,
+
+    @SerializedName("showdown")
     val showdown: Showdown
 )

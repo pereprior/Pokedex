@@ -1,8 +1,17 @@
 package com.example.pokedex2.data.sources.remote.dto.detail
 
+import com.google.gson.annotations.SerializedName
+
 data class Home(
-    val front_default: String,
-    val front_female: Any,
-    val front_shiny: String,
-    val front_shiny_female: Any
+    @SerializedName("front_default")
+    val frontDefault: String,
+
+    @SerializedName("front_female")
+    val frontFemale: Any,
+
+    @SerializedName("front_shiny")
+    val frontShiny: String,
+
+    @SerializedName("front_shiny_female")
+    val frontShinyFemale: Any
 )

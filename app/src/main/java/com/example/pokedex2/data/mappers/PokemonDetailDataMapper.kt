@@ -15,16 +15,16 @@ class PokemonDetailDataMapper(
             stats = pokemonStatsConvert(),
             abilities = pokemonDetails.abilities.map { it.ability.name },
             types = pokemonDetails.types.map { it.type.name },
-            artwork = pokemonDetails.sprites.other.official.front_default,
+            artwork = pokemonDetails.sprites.other.official.frontDefault,
             sprites = listOf(
-                pokemonDetails.sprites.front_default,
-                pokemonDetails.sprites.back_default,
-                pokemonDetails.sprites.front_female,
-                pokemonDetails.sprites.back_female,
-                pokemonDetails.sprites.front_shiny,
-                pokemonDetails.sprites.back_shiny,
-                pokemonDetails.sprites.front_shiny_female,
-                pokemonDetails.sprites.back_shiny_female
+                pokemonDetails.sprites.frontDefault,
+                pokemonDetails.sprites.backDefault,
+                pokemonDetails.sprites.frontFemale,
+                pokemonDetails.sprites.backFemale,
+                pokemonDetails.sprites.frontShiny,
+                pokemonDetails.sprites.backShiny,
+                pokemonDetails.sprites.frontShinyFemale,
+                pokemonDetails.sprites.backShinyFemale
             )
         )
     }
@@ -35,7 +35,7 @@ class PokemonDetailDataMapper(
         pokemonDetails.stats.map {
             pokemonStatsConverted.put(
                 key = it.stat.name,
-                value = it.base_stat
+                value = it.baseStat
             )
         }
 

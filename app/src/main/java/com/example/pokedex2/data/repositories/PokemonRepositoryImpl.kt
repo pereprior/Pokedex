@@ -23,7 +23,7 @@ class PokemonRepositoryImpl(
             val result = remoteDataSource.getDetailDataFromApi(dataName)
             PokemonDetailDataMapper(result).convert()
         } catch (e: Exception) {
-            return Pokemon()
+            return Pokemon(0,"",0f,0f, emptyMap(), emptyList(), emptyList(),"", emptyList())
         }
     }
 

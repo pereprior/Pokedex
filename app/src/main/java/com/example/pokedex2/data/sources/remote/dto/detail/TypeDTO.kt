@@ -2,10 +2,10 @@ package com.example.pokedex2.data.sources.remote.dto.detail
 
 import com.google.gson.annotations.SerializedName
 
-data class Type(
-    @SerializedName("name")
-    val name: String,
+data class TypeDTO(
+    @SerializedName("slot")
+    val slot: Int,
 
-    @SerializedName("url")
-    val url: String
+    @SerializedName("type")
+    val type: Type
 )
