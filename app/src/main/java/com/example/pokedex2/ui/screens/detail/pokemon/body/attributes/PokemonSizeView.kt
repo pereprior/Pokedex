@@ -40,7 +40,7 @@ fun PokemonSizeView(p: Pokemon) {
 @Composable
 private fun SizeViewTemplate(value: Float, unitKey: String) {
     Text(
-        text = "$value $unitKey}",
+        text = "$value $unitKey",
         fontSize = 24.sp,
         fontWeight = FontWeight.Bold,
         color = MaterialTheme.colorScheme.onSecondary

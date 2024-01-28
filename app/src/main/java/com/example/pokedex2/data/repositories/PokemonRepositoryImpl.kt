@@ -6,9 +6,8 @@ import com.example.pokedex2.data.mappers.PokemonListDataMapper
 import com.example.pokedex2.data.sources.remote.PokemonRemoteDataSource
 import com.example.pokedex2.domain.repositories.PokemonRepository
 import com.example.pokedex2.domain.models.Pokemon
-import javax.inject.Inject
 
-class PokemonRepositoryImpl @Inject constructor(
+class PokemonRepositoryImpl(
     private val remoteDataSource: PokemonRemoteDataSource,
 ) : PokemonRepository {
     override suspend fun getListData(dataName:String): List<String> {

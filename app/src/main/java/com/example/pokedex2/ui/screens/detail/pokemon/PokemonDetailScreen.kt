@@ -3,6 +3,7 @@ package com.example.pokedex2.ui.screens.detail.pokemon
 import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.MaterialTheme
@@ -36,7 +37,9 @@ fun PokemonDetailScreen(
         WaitScreen()
     } else {
         LazyColumn(
-            modifier = Modifier.background(MaterialTheme.colorScheme.secondary),
+            modifier = Modifier
+                .fillMaxSize()
+                .background(MaterialTheme.colorScheme.secondary),
             content = {
                 item {
                     PokemonHeaderView(pokemonData, navController)
