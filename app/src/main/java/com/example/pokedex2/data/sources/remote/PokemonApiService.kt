@@ -1,12 +1,13 @@
 package com.example.pokedex2.data.sources.remote
 
-import com.example.pokedex2.data.sources.remote.dto.detail.PokemonDetailDTO
-import com.example.pokedex2.data.sources.remote.dto.list.PokemonListDTO
+import com.example.pokedex2.constants.api.API_UNLIMIT_KEY
+import com.example.pokedex2.data.sources.dto.detail.PokemonDetailDTO
+import com.example.pokedex2.data.sources.dto.list.PokemonListDTO
 import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface PokemonApiService {
-    @GET("{item}?limit=100000&offset=0")
+    @GET("{item}$API_UNLIMIT_KEY")
     suspend fun getDataList(
         @Path("item") item:String
     ): PokemonListDTO

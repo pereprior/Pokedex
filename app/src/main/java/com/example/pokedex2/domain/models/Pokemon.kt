@@ -8,6 +8,6 @@ data class Pokemon(
     val stats: Map<String, Int> = emptyMap(),
     val abilities: Map<String, Boolean> = emptyMap(),
     val types: List<String> = emptyList(),
-    val artwork: String = "",
+    val artwork: String? = "",
     val sprites: List<Any> = emptyList()
-)
+): IPokedexData

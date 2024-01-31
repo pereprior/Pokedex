@@ -1,7 +1,7 @@
 package com.example.pokedex2.data.mappers
 
 import com.example.pokedex2.constants.language.REFACTOR_UNIT
-import com.example.pokedex2.data.sources.remote.dto.detail.PokemonDetailDTO
+import com.example.pokedex2.data.sources.dto.detail.PokemonDetailDTO
 import com.example.pokedex2.domain.models.Pokemon
 
 class PokemonDetailDataMapper(

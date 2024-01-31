@@ -1,32 +1,35 @@
 package com.example.pokedex2.data.repositories
 
-import android.util.Log
 import com.example.pokedex2.data.mappers.PokemonDetailDataMapper
 import com.example.pokedex2.data.mappers.PokemonListDataMapper
+import com.example.pokedex2.data.sources.dto.detail.PokemonDetailDTO
+import com.example.pokedex2.data.sources.dto.list.PokemonListDTO
+import com.example.pokedex2.data.sources.local.file.PokemonFileDataSource
 import com.example.pokedex2.data.sources.remote.PokemonRemoteDataSource
 import com.example.pokedex2.domain.repositories.PokemonRepository
 import com.example.pokedex2.domain.models.Pokemon
 
 class PokemonRepositoryImpl(
     private val remoteDataSource: PokemonRemoteDataSource,
+    private val fileDataSource: PokemonFileDataSource
 ) : PokemonRepository {
     override suspend fun getListData(dataName:String): List<String> {
-        return try {
-            val result = remoteDataSource.getListDataFromApi(dataName)
-            PokemonListDataMapper(result).convert()
+        val result: PokemonListDTO = try {
+            remoteDataSource.getListDataFromApi(dataName)
         } catch (e: Exception) {
-            return emptyList()
+            fileDataSource.obtainListFromJson(dataName)
         }
+
+        return PokemonListDataMapper(result).convert()
     }
 
     override suspend fun getDetailData(dataName:String): Pokemon {
-        return try {
-            val result = remoteDataSource.getDetailDataFromApi(dataName)
-            PokemonDetailDataMapper(result).convert()
+        val result: PokemonDetailDTO = try {
+            remoteDataSource.getDetailDataFromApi(dataName)
         } catch (e: Exception) {
-            Log.e("PokemonRepositoryImpl", "Error fetching Pokemon details", e)
-            Pokemon()
+            fileDataSource.obtainDetailsFromJson(dataName)
         }
-    }
 
+        return PokemonDetailDataMapper(result).convert()
+    }
 }

@@ -1,6 +1,6 @@
 package com.example.pokedex2.data.mappers
 
-import com.example.pokedex2.data.sources.remote.dto.list.PokemonListDTO
+import com.example.pokedex2.data.sources.dto.list.PokemonListDTO
 
 class PokemonListDataMapper(
     private val pokemonList: PokemonListDTO
