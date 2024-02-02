@@ -16,9 +16,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.example.pokedex2.constants.nav.POKEMON_NAVIGATION_LIST
-import com.example.pokedex2.constants.nav.POKEMON_NAVIGATION_PACKAGE
-import com.example.pokedex2.constants.nav.getAbsoluteNavigationPath
+import com.example.pokedex2.constants.nav.POKEMON_NAVIGATION_PATH
 import com.example.pokedex2.ui.components.theme.Pokedex2Theme
 import com.example.pokedex2.ui.components.bar.drawer.MenuModalDrawer
 import com.example.pokedex2.ui.screens.list.PokemonListScreen
@@ -54,10 +52,10 @@ class MainActivity : ComponentActivity() {
         drawerState: DrawerState,
         pokedexVM: PokedexViewModel,
     ) {
-        NavHost(navController = navController, startDestination = getAbsoluteNavigationPath(POKEMON_NAVIGATION_PACKAGE, POKEMON_NAVIGATION_LIST)) {
-            composable(getAbsoluteNavigationPath(POKEMON_NAVIGATION_PACKAGE, POKEMON_NAVIGATION_LIST)) { PokemonListScreen(pokedexVM, navController, drawerState) }
+        NavHost(navController = navController, startDestination = POKEMON_NAVIGATION_PATH) {
+            composable(POKEMON_NAVIGATION_PATH) { PokemonListScreen(pokedexVM, navController, drawerState) }
             composable(
-                route = "$POKEMON_NAVIGATION_PACKAGE/{selectedPokemon}",
+                route = "$POKEMON_NAVIGATION_PATH/{selectedPokemon}",
                 arguments = listOf(navArgument("selectedPokemon") { type = NavType.StringType })
             ) { backStackEntry ->
                 val selectedPokemon = backStackEntry.arguments?.getString("selectedPokemon")

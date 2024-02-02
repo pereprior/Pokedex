@@ -1,17 +1,17 @@
 package com.example.pokedex2.data.sources.dto.list
 
-import com.squareup.moshi.Json
+import com.google.gson.annotations.SerializedName
 
 data class PokemonListDTO(
-    @field:Json(name = "count")
+    @SerializedName("count")
     val count: Int,
 
-    @field:Json(name = "next")
+    @SerializedName("next")
     val next: String,
 
-    @field:Json(name = "previous")
+    @SerializedName("previous")
     val previous: Any,
 
-    @field:Json(name = "results")
+    @SerializedName("results")
     var results: List<Results>
 )

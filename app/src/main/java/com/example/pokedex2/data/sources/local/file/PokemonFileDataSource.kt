@@ -13,7 +13,7 @@ class PokemonFileDataSource @Inject constructor(application: Application) : IFil
 
     private val context: Context = application.applicationContext
     override fun obtainDetailsFromJson(dataName: String): PokemonDetailDTO {
-        val jsonFile = context.assets.open("ditto.json").bufferedReader().use { it.readText() }
+        val jsonFile = context.assets.open("imposter.json").bufferedReader().use { it.readText() }
         val gson: Gson = GsonBuilder().create()
         return gson.fromJson(jsonFile, PokemonDetailDTO::class.java)
     }

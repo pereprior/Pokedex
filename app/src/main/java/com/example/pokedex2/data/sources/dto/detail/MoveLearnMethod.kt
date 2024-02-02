@@ -1,11 +1,11 @@
 package com.example.pokedex2.data.sources.dto.detail
 
-import com.squareup.moshi.Json
+import com.google.gson.annotations.SerializedName
 
 data class MoveLearnMethod(
-    @field:Json(name = "name")
+    @SerializedName("name")
     val name: String,
 
-    @field:Json(name = "url")
+    @SerializedName("url")
     val url: String
 )

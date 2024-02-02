@@ -1,11 +1,11 @@
 package com.example.pokedex2.data.sources.dto.detail
 
-import com.squareup.moshi.Json
+import com.google.gson.annotations.SerializedName
 
 data class TypeDTO(
-    @field:Json(name = "slot")
+    @SerializedName("slot")
     val slot: Int,
 
-    @field:Json(name = "type")
+    @SerializedName("type")
     val type: Type
 )

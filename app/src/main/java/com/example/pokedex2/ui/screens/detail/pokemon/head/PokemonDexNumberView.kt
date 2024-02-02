@@ -13,9 +13,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import com.example.pokedex2.constants.nav.POKEMON_NAVIGATION_LIST
-import com.example.pokedex2.constants.nav.POKEMON_NAVIGATION_PACKAGE
-import com.example.pokedex2.constants.nav.getAbsoluteNavigationPath
+import com.example.pokedex2.constants.nav.POKEMON_NAVIGATION_PATH
 import com.example.pokedex2.domain.models.Pokemon
 import com.example.pokedex2.ui.components.icons.BackIcon
 
@@ -30,7 +28,7 @@ fun PokemonDexNumberView(p: Pokemon, navController: NavHostController) {
     ) {
         BackIcon(
             navController = navController,
-            route = getAbsoluteNavigationPath(POKEMON_NAVIGATION_PACKAGE, POKEMON_NAVIGATION_LIST)
+            route = POKEMON_NAVIGATION_PATH
         )
 
         DexNumber(p.dexNumber)

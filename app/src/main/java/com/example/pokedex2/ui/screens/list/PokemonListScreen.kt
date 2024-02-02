@@ -6,7 +6,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.navigation.NavHostController
-import com.example.pokedex2.constants.nav.POKEMON_NAVIGATION_PACKAGE
+import com.example.pokedex2.constants.nav.POKEMON_NAVIGATION_PATH
 import com.example.pokedex2.ui.components.bar.search.SearchBarScreen
 import com.example.pokedex2.ui.components.loading.WaitScreen
 import com.example.pokedex2.ui.viewmodels.PokedexViewModel
@@ -30,7 +30,7 @@ fun PokemonListScreen(
             navController = navController,
             drawerState = drawerState,
             data = pokemonList,
-            packageRoute = POKEMON_NAVIGATION_PACKAGE
+            packageRoute = POKEMON_NAVIGATION_PATH
         )
     }
 }

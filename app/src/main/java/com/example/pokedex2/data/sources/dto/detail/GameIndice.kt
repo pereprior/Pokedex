@@ -1,11 +1,11 @@
 package com.example.pokedex2.data.sources.dto.detail
 
-import com.squareup.moshi.Json
+import com.google.gson.annotations.SerializedName
 
 data class GameIndice(
-    @field:Json(name = "game_index")
+    @SerializedName("game_index")
     val gameIndex: Int,
 
-    @field:Json(name = "version")
+    @SerializedName("version")
     val version: Version
 )

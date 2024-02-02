@@ -24,9 +24,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.pokedex2.R
-import com.example.pokedex2.constants.nav.POKEMON_NAVIGATION_LIST
-import com.example.pokedex2.constants.nav.POKEMON_NAVIGATION_PACKAGE
-import com.example.pokedex2.constants.nav.getAbsoluteNavigationPath
+import com.example.pokedex2.constants.nav.POKEMON_NAVIGATION_PATH
 import kotlinx.coroutines.launch
 
 @Composable
@@ -57,7 +55,7 @@ fun MenuModalDrawer(navController: NavHostController, drawerState: DrawerState) 
         // Plantilla para las opciones del menu
         ModalDrawerSection(
             navController = navController,
-            route = getAbsoluteNavigationPath(POKEMON_NAVIGATION_PACKAGE, POKEMON_NAVIGATION_LIST),
+            route = POKEMON_NAVIGATION_PATH,
             image = R.drawable.pokeball_icon,
             drawerState = drawerState
         )
