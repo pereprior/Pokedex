@@ -13,7 +13,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.example.pokedex2.R
+import com.example.pokedex2.constants.error.ERROR_651_DESCRIPTION
+import com.example.pokedex2.constants.error.ERROR_651_TITLE
 import com.example.pokedex2.domain.models.Pokemon
+import com.example.pokedex2.ui.components.error.dialog.NotFoundDialog
 
 @Composable
 fun PokemonImageView(pokemonData: Pokemon) {
@@ -42,9 +45,17 @@ fun PokemonImageView(pokemonData: Pokemon) {
     }
 
     if (isOpenDialog) {
-        PokemonSpritesDialog(
-            onDismissRequest = { isOpenDialog = false },
-            spritesList = pokemonData.sprites
-        )
+        if (isError) {
+            NotFoundDialog(
+                onDismissRequest = { isOpenDialog = false },
+                title = ERROR_651_TITLE,
+                description = ERROR_651_DESCRIPTION
+            )
+        } else {
+            PokemonSpritesDialog(
+                onDismissRequest = { isOpenDialog = false },
+                spritesList = pokemonData.sprites
+            )
+        }
     }
 }

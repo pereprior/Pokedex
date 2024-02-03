@@ -15,6 +15,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
+import com.example.pokedex2.constants.error.ERROR_404_DESCRIPTION
+import com.example.pokedex2.constants.error.ERROR_404_TITLE
 import com.example.pokedex2.ui.components.error.dialog.NotFoundDialog
 import com.example.pokedex2.ui.components.icons.MenuIcon
 import com.example.pokedex2.ui.viewmodels.SearchBarViewModel
@@ -43,7 +45,11 @@ fun SearchBarScreen(
     )
 
     if (isOpenDialog) {
-        NotFoundDialog(onDismissRequest = { searchBarViewModel.setOpenDialog(false) })
+        NotFoundDialog(
+            onDismissRequest = { searchBarViewModel.setOpenDialog(false) },
+            title = ERROR_404_TITLE,
+            description = ERROR_404_DESCRIPTION
+        )
     }
 }
 

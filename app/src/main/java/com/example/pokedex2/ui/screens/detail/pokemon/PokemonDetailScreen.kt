@@ -23,15 +23,15 @@ import com.example.pokedex2.ui.viewmodels.PokedexViewModel
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun PokemonDetailScreen(
-    vm: PokedexViewModel,
+    viewModel: PokedexViewModel,
     selectedPokemon: String?,
     navController: NavHostController
 ) {
     LaunchedEffect(Unit) {
-        vm.getPokemon(selectedPokemon!!)
+        viewModel.getPokemon(selectedPokemon!!)
     }
 
-    val pokemonData by vm.selectedPokemon.observeAsState(initial = Pokemon())
+    val pokemonData by viewModel.selectedPokemon.observeAsState(initial = Pokemon())
 
     if (pokemonData.name.isEmpty()) {
         WaitScreen()

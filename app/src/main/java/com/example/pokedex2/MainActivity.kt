@@ -16,6 +16,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.pokedex2.constants.nav.POKEMON_NAVIGATION_KEY
 import com.example.pokedex2.constants.nav.POKEMON_NAVIGATION_PATH
 import com.example.pokedex2.ui.components.theme.Pokedex2Theme
 import com.example.pokedex2.ui.components.bar.drawer.MenuModalDrawer
@@ -31,35 +32,71 @@ class MainActivity : ComponentActivity() {
         setContent {
             Pokedex2Theme {
                 val navController = rememberNavController()
-                val pokedexVM by viewModels<PokedexViewModel>()
+                val pokedexViewModel by viewModels<PokedexViewModel>()
                 val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
 
-                ModalNavigationDrawer(
+                SetupPokedexNavigation(
+                    navController = navController,
                     drawerState = drawerState,
-                    drawerContent = {
-                        ModalDrawerSheet { MenuModalDrawer(navController,drawerState) }
-                    },
-                ) {
-                    NavigationController(navController, drawerState, pokedexVM)
-                }
+                    viewModel = pokedexViewModel
+                )
             }
         }
     }
 
     @Composable
-    private fun NavigationController(
+    private fun SetupPokedexNavigation(
         navController: NavHostController,
         drawerState: DrawerState,
-        pokedexVM: PokedexViewModel,
+        viewModel: PokedexViewModel
     ) {
-        NavHost(navController = navController, startDestination = POKEMON_NAVIGATION_PATH) {
-            composable(POKEMON_NAVIGATION_PATH) { PokemonListScreen(pokedexVM, navController, drawerState) }
+        ModalNavigationDrawer(
+            drawerState = drawerState,
+            drawerContent = {
+                ModalDrawerSheet {
+                    MenuModalDrawer(
+                        navController = navController,
+                        drawerState = drawerState
+                    )
+                }
+            },
+        ) {
+            PokedexNavigation(
+                navController = navController,
+                drawerState = drawerState,
+                viewModel = viewModel
+            )
+        }
+    }
+
+    @Composable
+    private fun PokedexNavigation(
+        navController: NavHostController,
+        drawerState: DrawerState,
+        viewModel: PokedexViewModel,
+    ) {
+        NavHost(
+            navController = navController,
+            startDestination = POKEMON_NAVIGATION_PATH
+        ) {
+            composable(POKEMON_NAVIGATION_PATH) {
+                PokemonListScreen(viewModel, navController, drawerState)
+            }
+
             composable(
-                route = "$POKEMON_NAVIGATION_PATH/{selectedPokemon}",
-                arguments = listOf(navArgument("selectedPokemon") { type = NavType.StringType })
+                route = "$POKEMON_NAVIGATION_PATH/{$POKEMON_NAVIGATION_KEY}",
+                arguments = listOf(
+                    navArgument(POKEMON_NAVIGATION_KEY) {
+                        type = NavType.StringType
+                    }
+                )
             ) { backStackEntry ->
-                val selectedPokemon = backStackEntry.arguments?.getString("selectedPokemon")
-                PokemonDetailScreen(pokedexVM, selectedPokemon, navController)
+                val selectedPokemon = backStackEntry.arguments?.getString(POKEMON_NAVIGATION_KEY)
+                PokemonDetailScreen(
+                    viewModel = viewModel,
+                    selectedPokemon = selectedPokemon,
+                    navController = navController
+                )
             }
         }
     }
