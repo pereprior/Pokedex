@@ -16,13 +16,13 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.example.pokedex2.constants.nav.POKEMON_NAVIGATION_KEY
-import com.example.pokedex2.constants.nav.POKEMON_NAVIGATION_PATH
+import com.example.pokedex2.constants.POKEMON_NAVIGATION_KEY
+import com.example.pokedex2.constants.POKEMON_NAVIGATION_PATH
 import com.example.pokedex2.ui.components.theme.Pokedex2Theme
-import com.example.pokedex2.ui.components.bar.drawer.MenuModalDrawer
+import com.example.pokedex2.ui.components.mainbar.drawer.MenuModalDrawer
 import com.example.pokedex2.ui.screens.list.PokemonListScreen
 import com.example.pokedex2.ui.screens.detail.pokemon.PokemonDetailScreen
-import com.example.pokedex2.ui.viewmodels.PokedexViewModel
+import com.example.pokedex2.ui.viewmodels.PokemonViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -32,13 +32,13 @@ class MainActivity : ComponentActivity() {
         setContent {
             Pokedex2Theme {
                 val navController = rememberNavController()
-                val pokedexViewModel by viewModels<PokedexViewModel>()
+                val pokemonViewModel by viewModels<PokemonViewModel>()
                 val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
 
                 SetupPokedexNavigation(
                     navController = navController,
                     drawerState = drawerState,
-                    viewModel = pokedexViewModel
+                    viewModel = pokemonViewModel
                 )
             }
         }
@@ -48,8 +48,9 @@ class MainActivity : ComponentActivity() {
     private fun SetupPokedexNavigation(
         navController: NavHostController,
         drawerState: DrawerState,
-        viewModel: PokedexViewModel
+        viewModel: PokemonViewModel
     ) {
+        // Navegación entre hipotéticas pantallas (Objetos, habilidades, etc...)
         ModalNavigationDrawer(
             drawerState = drawerState,
             drawerContent = {
@@ -73,16 +74,24 @@ class MainActivity : ComponentActivity() {
     private fun PokedexNavigation(
         navController: NavHostController,
         drawerState: DrawerState,
-        viewModel: PokedexViewModel,
+        viewModel: PokemonViewModel,
     ) {
         NavHost(
             navController = navController,
             startDestination = POKEMON_NAVIGATION_PATH
         ) {
-            composable(POKEMON_NAVIGATION_PATH) {
-                PokemonListScreen(viewModel, navController, drawerState)
+            // Navegacion a la lista de pokemon
+            composable(
+                route = POKEMON_NAVIGATION_PATH
+            ) {
+                PokemonListScreen(
+                    pokemonViewModel = viewModel,
+                    navController = navController,
+                    drawerState = drawerState
+                )
             }
 
+            // Navegacion a cada pokemon especifico, filtrado por su nombre
             composable(
                 route = "$POKEMON_NAVIGATION_PATH/{$POKEMON_NAVIGATION_KEY}",
                 arguments = listOf(
@@ -93,7 +102,7 @@ class MainActivity : ComponentActivity() {
             ) { backStackEntry ->
                 val selectedPokemon = backStackEntry.arguments?.getString(POKEMON_NAVIGATION_KEY)
                 PokemonDetailScreen(
-                    viewModel = viewModel,
+                    pokemonViewModel = viewModel,
                     selectedPokemon = selectedPokemon,
                     navController = navController
                 )

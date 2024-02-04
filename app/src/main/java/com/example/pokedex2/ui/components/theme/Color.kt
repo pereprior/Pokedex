@@ -15,34 +15,61 @@ val SpAtkColor = Color(0.671f, 0f, 1f, 0.57f)
 val SpDefColor = Color(1f, 0f, 0.8f, 0.7f)
 val SpdColor = Color(0f, 1f, 0.063f, 0.55f)
 
-// Types
-fun getTypeColor(typeName: String): Color {
-    var color = Color.Transparent
-    for (e in TypesColorList) {
-        if (e.key == typeName){
-            color = e.value
-        }
-    }
-    return color
+val statColorMapping = mapOf(
+    "hp" to HPColor,
+    "attack" to AtkColor,
+    "defense" to DefColor,
+    "special-attack" to SpAtkColor,
+    "special-defense" to SpDefColor,
+    "speed" to SpdColor
+)
+
+fun getStatColor(statName: String): Color {
+    return statColorMapping[statName] ?: Color.Gray
 }
 
-val TypesColorList = mapOf(
-    Pair("normal", Color(0xFFA8A77A)),
-    Pair("fire", Color(0xFFEE8130)),
-    Pair("water", Color(0xFF6390F0)),
-    Pair("electric", Color(0xFFF7D02C)),
-    Pair("grass", Color(0xFF7AC74C)),
-    Pair("ice", Color(0xFF96D9D6)),
-    Pair("fighting", Color(0xFFC22E28)),
-    Pair("poison", Color(0xFFA33EA1)),
-    Pair("ground", Color(0xFFE2BF65)),
-    Pair("flying", Color(0xFFA98FF3)),
-    Pair("psychic", Color(0xFFF95587)),
-    Pair("bug", Color(0xFFA6B91A)),
-    Pair("rock", Color(0xFFB6A136)),
-    Pair("ghost", Color(0xFF735797)),
-    Pair("dragon", Color(0xFF6F35FC)),
-    Pair("dark", Color(0xFF705746)),
-    Pair("steel", Color(0xFFB7B7CE)),
-    Pair("fairy", Color(0xFFD685AD))
+// Types
+val normalColor = Color(0xFFA8A77A)
+val fireColor = Color(0xFFEE8130)
+val waterColor = Color(0xFF6390F0)
+val electricColor = Color(0xFFF7D02C)
+val grassColor = Color(0xFF7AC74C)
+val iceColor = Color(0xFF96D9D6)
+val fightingColor = Color(0xFFC22E28)
+val poisonColor = Color(0xFFA33EA1)
+val groundColor = Color(0xFFE2BF65)
+val flyingColor = Color(0xFFA98FF3)
+val psychicColor = Color(0xFFF95587)
+val bugColor = Color(0xFFA6B91A)
+val rockColor = Color(0xFFB6A136)
+val ghostColor = Color(0xFF735797)
+val dragonColor = Color(0xFF6F35FC)
+val darkColor = Color(0xFF705746)
+val steelColor = Color(0xFFB7B7CE)
+val fairyColor = Color(0xFFD685AD)
+
+val typesColorMapping = mapOf(
+    "normal" to normalColor,
+    "fire" to fireColor,
+    "water" to waterColor,
+    "electric" to electricColor,
+    "grass" to grassColor,
+    "ice" to iceColor,
+    "fighting" to fightingColor,
+    "poison" to poisonColor,
+    "ground" to groundColor,
+    "flying" to flyingColor,
+    "psychic" to psychicColor,
+    "bug" to bugColor,
+    "rock" to rockColor,
+    "ghost" to ghostColor,
+    "dragon" to dragonColor,
+    "dark" to darkColor,
+    "steel" to steelColor,
+    "fairy" to fairyColor
 )
+
+// Usage
+fun getTypeColor(type: String): Color {
+    return typesColorMapping[type] ?: Color.Gray
+}
