@@ -6,20 +6,23 @@ import androidx.compose.runtime.Composable
 import com.example.pokedex2.ui.components.utils.text.color.LightGreyText
 import com.example.pokedex2.ui.screens.detail.pokemon.components.body.attributes.label.DetailsLabel
 
-private const val NORMAL_ABILITIES_TITLE = "Normal Abilities"
-private const val HIDDEN_ABILITIES_TITLE = "Hidden Abilities"
-
 @Composable
 fun PokemonAbilityView(pokemonAbilities: Map<String,Boolean>) {
     // Filtramos las abilidades entre normales y ocultas
     val normalAbilities = pokemonAbilities.filter { !it.value }
     val hiddenAbilities = pokemonAbilities.filter { it.value }
 
-    AbilitiesSection(NORMAL_ABILITIES_TITLE, normalAbilities)
+    AbilitiesSection(
+        title = "Normal Abilities",
+        abilities = normalAbilities
+    )
 
     // No todos los pokemon tienen habilidades ocultas
     if (hiddenAbilities.isNotEmpty()) {
-        AbilitiesSection(HIDDEN_ABILITIES_TITLE, hiddenAbilities)
+        AbilitiesSection(
+            title = "Hidden Abilities",
+            abilities = hiddenAbilities
+        )
     }
 }
 

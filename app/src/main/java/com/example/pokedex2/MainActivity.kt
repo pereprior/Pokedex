@@ -20,7 +20,7 @@ import com.example.pokedex2.constants.POKEMON_NAVIGATION_KEY
 import com.example.pokedex2.constants.POKEMON_NAVIGATION_PATH
 import com.example.pokedex2.ui.components.theme.Pokedex2Theme
 import com.example.pokedex2.ui.components.mainbar.drawer.MenuModalDrawer
-import com.example.pokedex2.ui.screens.list.PokemonListScreen
+import com.example.pokedex2.ui.screens.list.pokemon.PokemonListScreen
 import com.example.pokedex2.ui.screens.detail.pokemon.PokemonDetailScreen
 import com.example.pokedex2.ui.viewmodels.PokemonViewModel
 import dagger.hilt.android.AndroidEntryPoint

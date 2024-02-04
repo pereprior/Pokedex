@@ -15,11 +15,10 @@ import coil.compose.AsyncImage
 import com.example.pokedex2.R
 import com.example.pokedex2.constants.messages.ERROR_651_DESCRIPTION
 import com.example.pokedex2.constants.messages.ERROR_651_TITLE
+import com.example.pokedex2.constants.values.IMAGES_SIZE
 import com.example.pokedex2.domain.models.Pokemon
 import com.example.pokedex2.ui.components.utils.dialog.NotFoundDialog
 import com.example.pokedex2.ui.components.utils.dialog.PokemonSpritesDialog
-
-private const val IMAGE_SIZE = 200
 
 @Composable
 fun PokemonImageView(pokemonData: Pokemon) {
@@ -31,7 +30,7 @@ fun PokemonImageView(pokemonData: Pokemon) {
         model = pokemonData.artwork,
         contentDescription = "Pokemon Image",
         modifier = Modifier
-            .size(IMAGE_SIZE.dp)
+            .size(IMAGES_SIZE.dp)
             .clickable {
                 isOpenDialog = true
             },
@@ -45,7 +44,7 @@ fun PokemonImageView(pokemonData: Pokemon) {
         Image(
             painter = painterResource(id = R.drawable.ditto),
             contentDescription = null,
-            modifier = Modifier.size(IMAGE_SIZE.dp)
+            modifier = Modifier.size(IMAGES_SIZE.dp)
         )
     }
 

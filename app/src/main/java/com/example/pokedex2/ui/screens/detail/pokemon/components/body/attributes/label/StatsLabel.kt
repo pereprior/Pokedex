@@ -10,10 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.example.pokedex2.constants.values.MEDIUM_PADDING_VALUE
-
-private const val STAT_TEXT_FONT_SIZE = 14
 
 @Composable
 fun StatNameLabel(name: String) {
@@ -41,9 +38,6 @@ fun StatNumberLabel(
             .padding(bottom = MEDIUM_PADDING_VALUE.dp),
         contentAlignment = Alignment.BottomEnd
     ) {
-        Text(
-            text = "$statValue",
-            fontSize = STAT_TEXT_FONT_SIZE.sp
-        )
+        Text(text = "$statValue")
     }
 }

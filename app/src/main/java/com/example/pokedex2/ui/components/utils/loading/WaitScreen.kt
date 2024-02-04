@@ -8,6 +8,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.pokedex2.R
+import com.example.pokedex2.constants.messages.LOADING_DESCRIPTION
+import com.example.pokedex2.constants.messages.LOADING_TITLE
+import com.example.pokedex2.constants.values.MEDIUM_PADDING_VALUE
 
 @Composable
 fun WaitScreen() {
@@ -16,9 +19,12 @@ fun WaitScreen() {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
+        // Icono de la pantalla de carga
         LoadingImage(R.drawable.pokeball_icon)
-        Spacer(modifier = Modifier.padding(8.dp))
-        LoadingText("Obtaining data")
-        Text(text = "Please, wait few seconds")
+        Spacer(modifier = Modifier.padding(MEDIUM_PADDING_VALUE.dp))
+
+        // Texto de la pantalla de carga
+        LoadingText(LOADING_TITLE)
+        Text(text = LOADING_DESCRIPTION)
     }
 }

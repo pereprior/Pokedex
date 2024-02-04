@@ -13,13 +13,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.example.pokedex2.constants.values.MEDIUM_PADDING_VALUE
 
 @Composable
 fun CloseIcon(onDismissRequest: () -> Unit) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .padding(8.dp),
+            .padding(MEDIUM_PADDING_VALUE.dp),
         contentAlignment = Alignment.TopEnd
     ) {
         IconButton(

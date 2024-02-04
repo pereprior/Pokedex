@@ -13,11 +13,10 @@ import androidx.compose.ui.unit.dp
 import com.example.pokedex2.constants.values.HIGH_PADDING_VALUE
 import com.example.pokedex2.ui.components.utils.text.color.LightGreyText
 import com.example.pokedex2.ui.components.theme.getStatColor
-import com.example.pokedex2.ui.components.utils.canvan.CanvasBarTemplate
+import com.example.pokedex2.ui.components.utils.canvas.CanvasBarTemplate
 import com.example.pokedex2.ui.screens.detail.pokemon.components.body.attributes.label.StatNameLabel
 import com.example.pokedex2.ui.screens.detail.pokemon.components.body.attributes.label.StatNumberLabel
 
-private const val STATS_TITLE = "Base Stats"
 private const val MAX_STAT_VALUE = 165
 private const val MIN_STAT_VALUE = 20
 private const val STAT_BAR_WIDTH = 300
@@ -27,7 +26,7 @@ private const val STAT_TEXT_SCALE_FACTOR = 1.5f
 
 @Composable
 fun PokemonStatsView(pokemonStats: Map<String, Int>) {
-    LightGreyText(text = STATS_TITLE)
+    LightGreyText(text = "Base Stats")
 
     pokemonStats.forEach { stat ->
         StatSection(

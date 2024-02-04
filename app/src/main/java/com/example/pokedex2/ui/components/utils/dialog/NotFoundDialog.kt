@@ -17,6 +17,7 @@ fun NotFoundDialog(
     title: String,
     description: String,
 ) {
+    // Se encarga de mandar un mensaje al usuario cuando intenta acceder a una informacion que no existe
     AlertDialog(
         icon = {
             Icon(

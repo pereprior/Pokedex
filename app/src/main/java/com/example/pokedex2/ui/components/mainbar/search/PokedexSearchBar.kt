@@ -1,6 +1,5 @@
 package com.example.pokedex2.ui.components.mainbar.search
 
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
@@ -13,54 +12,18 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
-import com.example.pokedex2.constants.messages.ERROR_404_DESCRIPTION
-import com.example.pokedex2.constants.messages.ERROR_404_TITLE
-import com.example.pokedex2.ui.components.utils.dialog.NotFoundDialog
 import com.example.pokedex2.ui.components.utils.icons.MenuIcon
 import com.example.pokedex2.ui.viewmodels.SearchBarViewModel
 
 @Composable
-fun SearchBarScreen(
-    navController: NavHostController,
-    drawerState: DrawerState,
-    dataList: List<String>,
-    packageRoute: String
-) {
-    val searchBarViewModel = SearchBarViewModel()
-    val query: String by searchBarViewModel.query.observeAsState(initial = "")
-    val filteredData: List<String> by searchBarViewModel.filteredList.observeAsState(initial = emptyList())
-    val isOpenDialog: Boolean by searchBarViewModel.openDialog.observeAsState(initial = false)
-
-    searchBarViewModel.setDataList(dataList,query)
-
-    GenericSearchBar(
-        query = query,
-        searchBarViewModel = searchBarViewModel,
-        filteredDataList = filteredData,
-        navController = navController,
-        packageRoute = packageRoute,
-        drawerState = drawerState
-    )
-
-    if (isOpenDialog) {
-        NotFoundDialog(
-            onDismissRequest = { searchBarViewModel.setOpenDialog(false) },
-            title = ERROR_404_TITLE,
-            description = ERROR_404_DESCRIPTION
-        )
-    }
-}
-
-@Composable
 @OptIn(ExperimentalMaterial3Api::class)
-private fun GenericSearchBar(
+fun PokedexSearchBar(
     query: String,
     searchBarViewModel: SearchBarViewModel,
     filteredDataList: List<String>,
     navController: NavHostController,
-    packageRoute: String,
+    route: String,
     drawerState: DrawerState
 ) {
     val active: Boolean by searchBarViewModel.isActive.observeAsState(initial = true)
@@ -71,8 +34,10 @@ private fun GenericSearchBar(
             searchBarViewModel.setQuery(it)
         },
         onSearch = {
+            // Comprobamos que en la lista existe un objeto igual que el que ha buscado el usuario
             if (filteredDataList.any { it.equals(query, ignoreCase = true) }) {
-                navController.navigate("$packageRoute/${query.lowercase()}")
+                // Con lowercase, el usuario puede buscar con mayusculas y minusculas como quiera
+                navController.navigate("$route/${query.lowercase()}")
                 searchBarViewModel.setActive(false)
             } else {
                 searchBarViewModel.setOpenDialog(true)
@@ -83,6 +48,7 @@ private fun GenericSearchBar(
             searchBarViewModel.setActive(it)
         },
         leadingIcon = {
+            // Icono que gestiona el menu drawer
             MenuIcon(drawerState)
         },
         placeholder = {
@@ -92,11 +58,10 @@ private fun GenericSearchBar(
             Icon(imageVector = Icons.Filled.Search, contentDescription = "")
         }
     ) {
-        LazyColumn(
-            modifier = Modifier.fillMaxSize()
-        ) {
+        LazyColumn {
             items(filteredDataList) {
-                SarchBarOptionButton(navController, it, packageRoute)
+                // Botones que contienen todos los datos de la api/json
+                SarchBarOptionButton(navController, it, route)
             }
         }
     }

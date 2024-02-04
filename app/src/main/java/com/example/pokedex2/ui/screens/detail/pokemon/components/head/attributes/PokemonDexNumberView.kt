@@ -18,13 +18,13 @@ import com.example.pokedex2.constants.format.FOUR_DIGITS_FORMAT
 import com.example.pokedex2.constants.values.HIGH_PADDING_VALUE
 import com.example.pokedex2.ui.components.utils.icons.BackIcon
 
-private const val DEX_NUMBER_FONT_SIZE = 28
-
 @Composable
 fun PokemonDexNumberView(
     pokemonDexNumber: Int,
     navController: NavHostController
 ) {
+    val dexNumberFontSize = 28
+
     Row (
         modifier = Modifier
             .fillMaxSize()
@@ -43,7 +43,7 @@ fun PokemonDexNumberView(
             // Formato de texto para que siempre se vean 4 digitos en el numero de la pokedex
             text = "#${String.format(FOUR_DIGITS_FORMAT, pokemonDexNumber)}",
             color = MaterialTheme.colorScheme.onPrimary,
-            fontSize = DEX_NUMBER_FONT_SIZE.sp,
+            fontSize = dexNumberFontSize.sp,
             textAlign = TextAlign.End
         )
     }

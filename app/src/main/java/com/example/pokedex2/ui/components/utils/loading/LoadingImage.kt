@@ -13,11 +13,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun LoadingImage(imageResId: Int, imageSize: Dp = 50.dp) {
+fun LoadingImage(
+    imageResId: Int,
+    // Tendra un valor por defecto de 50, pero se puede modificar al llamar a la funcion si se quiere
+    imageSize: Int = 50
+) {
+    // Animacion para la imagen para que cree una sensacion de carga.
     val infiniteTransition = rememberInfiniteTransition(label = "ImageTransition")
     val scale by infiniteTransition.animateFloat(
         label = "ImageScaleAnimation",
@@ -33,7 +37,7 @@ fun LoadingImage(imageResId: Int, imageSize: Dp = 50.dp) {
         painter = painterResource(id = imageResId),
         contentDescription = "Loading Image",
         modifier = Modifier
-            .size(imageSize)
+            .size(imageSize.dp)
             .graphicsLayer(scaleX = scale, scaleY = scale),
         contentScale = ContentScale.Crop
     )

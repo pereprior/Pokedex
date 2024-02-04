@@ -1,4 +1,4 @@
-package com.example.pokedex2.ui.components.utils.canvan
+package com.example.pokedex2.ui.components.utils.canvas
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.height
@@ -20,6 +20,7 @@ fun CanvasBarTemplate(
     barHeight: Int,
     barColor: Color
 ) {
+    // Se encarga de construir la plantilla para las barras de las stats de los pokemon
     Canvas(
         modifier = Modifier
             .width(barWidth.dp)

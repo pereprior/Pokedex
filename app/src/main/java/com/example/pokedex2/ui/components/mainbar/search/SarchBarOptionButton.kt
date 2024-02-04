@@ -1,6 +1,5 @@
 package com.example.pokedex2.ui.components.mainbar.search
 
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
@@ -16,26 +15,31 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.pokedex2.R
+import com.example.pokedex2.constants.values.MEDIUM_PADDING_VALUE
 import com.example.pokedex2.ui.components.utils.text.format.capitalized
 
 @Composable
-fun SarchBarOptionButton(navController: NavHostController, name: String, route: String) {
-    Spacer(modifier = Modifier.padding(4.dp))
+fun SarchBarOptionButton(
+    navController: NavHostController,
+    dataName: String,
+    route: String
+) {
     Button(
-        onClick = {
-            navController.navigate("$route/$name")
-        },
         modifier = Modifier
             .fillMaxWidth()
-            .padding(8.dp)
+            .padding(MEDIUM_PADDING_VALUE.dp)
             .shadow(
-                elevation = 16.dp,
+                elevation = MEDIUM_PADDING_VALUE.dp,
                 ambientColor = Color.Black,
                 spotColor = Color.Black
-            )
+            ),
+        onClick = {
+            // Accedemos a la pantalla de detalles del objeto seleccionado
+            navController.navigate("$route/$dataName")
+        }
     ) {
         Text(
-            text = capitalized(name),
+            text = capitalized(dataName),
             textAlign = TextAlign.Center,
             fontSize = 30.sp,
             fontFamily = FontFamily(Font(R.font.pkmndp)),

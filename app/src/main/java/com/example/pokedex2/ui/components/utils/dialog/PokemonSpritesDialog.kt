@@ -23,6 +23,7 @@ fun PokemonSpritesDialog(
     onDismissRequest: () -> Unit,
     spritesList: List<Any>, // La lista es ANY ya que puede recibir nulos. No todos los pokemon tienen sprites diferentes para las hembras
 ) {
+    // Muestra los diferentes sprites del pokemon cuando pulsas sibre su imagen
     Dialog (
         onDismissRequest = { onDismissRequest() }
     ) {
@@ -46,19 +47,16 @@ fun PokemonSpritesDialog(
 
 @Composable
 private fun PokemonSpritesList(images: List<Any>) {
-    LazyColumn(
-        content = {
-            items(images) {imageUrl ->
-                if (imageUrl is String) {
-                    AsyncImage(
-                        model = imageUrl,
-                        contentDescription = "Pokemon Sprite",
-                        contentScale = ContentScale.Fit,
-                        modifier = Modifier
-                            .height(160.dp)
-                    )
-                }
+    LazyColumn {
+        items(images) {imageUrl ->
+            if (imageUrl is String) {
+                AsyncImage(
+                    model = imageUrl,
+                    contentDescription = "Pokemon Sprite",
+                    contentScale = ContentScale.Fit,
+                    modifier = Modifier.height(160.dp)
+                )
             }
         }
-    )
+    }
 }

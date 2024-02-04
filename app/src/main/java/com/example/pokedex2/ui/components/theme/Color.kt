@@ -2,12 +2,12 @@ package com.example.pokedex2.ui.components.theme
 
 import androidx.compose.ui.graphics.Color
 
-// Default
+// Used colors
 val PrimaryPokedexColor = Color(0xFFC92133)
 val DarkGrey = Color(0xFF2b292c)
 val LightGrey = Color(0xff6d6a6d)
 
-// Bar Color
+// Stats Bar Colors
 val HPColor = Color(0xFFF5FF00)
 val AtkColor = Color(1f, 0f, 0f, 0.66f)
 val DefColor = Color(0f, 0f, 1f, 0.44f)
@@ -28,7 +28,7 @@ fun getStatColor(statName: String): Color {
     return statColorMapping[statName] ?: Color.Gray
 }
 
-// Types
+// Type Label Colors
 val normalColor = Color(0xFFA8A77A)
 val fireColor = Color(0xFFEE8130)
 val waterColor = Color(0xFF6390F0)
