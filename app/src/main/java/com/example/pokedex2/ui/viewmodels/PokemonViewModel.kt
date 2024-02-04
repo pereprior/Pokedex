@@ -5,8 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pokedex2.domain.models.Pokemon
-import com.example.pokedex2.domain.usecases.GetPokemonDetailsUseCase
-import com.example.pokedex2.domain.usecases.GetPokemonListUseCase
+import com.example.pokedex2.domain.usecases.pokemon.GetPokemonDetailsUseCase
+import com.example.pokedex2.domain.usecases.pokemon.GetPokemonListUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

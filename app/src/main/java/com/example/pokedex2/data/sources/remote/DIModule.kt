@@ -17,19 +17,19 @@ import javax.inject.Singleton
 object DIModule {
     @Provides
     @Singleton
-    fun provideApi(): PokemonApiService {
+    fun provideApi(): ApiService {
         return Retrofit.Builder()
             .baseUrl("https://pokeapi.co/api/v2/")
             .addConverterFactory(GsonConverterFactory.create())
             .client(OkHttpClient.Builder().build())
             .build()
-            .create(PokemonApiService::class.java)
+            .create(ApiService::class.java)
     }
 
     @Provides
     @Singleton
     fun provideRepository(
-        api: PokemonApiService,
+        api: ApiService,
         application: Application
     ): PokemonRepositoryImpl {
         return PokemonRepositoryImpl(
